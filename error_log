@@ -1,0 +1,39 @@
+[12-Mar-2017 22:34:03 America/Sao_Paulo] PHP Warning:  Module 'ionCube Loader' already loaded in Unknown on line 0
+[12-Mar-2017 22:34:03 America/Sao_Paulo] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /home/softcondcom/public_html/empregoja/BDOperacoes.php:13
+Stack trace:
+#0 /home/softcondcom/public_html/empregoja/BDOperacoes.php(13): PDO->__construct('mysql:host=127....', 'root', 'vertrigo')
+#1 /home/softcondcom/public_html/empregoja/Funcoes.php(11): DBOperations->__construct()
+#2 /home/softcondcom/public_html/empregoja/index.php(5): Functions->__construct()
+#3 {main}
+  thrown in /home/softcondcom/public_html/empregoja/BDOperacoes.php on line 13
+[12-Mar-2017 22:34:11 America/Sao_Paulo] PHP Warning:  Module 'ionCube Loader' already loaded in Unknown on line 0
+[12-Mar-2017 22:34:11 America/Sao_Paulo] PHP Fatal error:  Call to undefined function password_hash() in /home/softcondcom/public_html/empregoja/BDOperacoes.php on line 114
+[12-Mar-2017 22:34:41 America/Sao_Paulo] PHP Warning:  Module 'ionCube Loader' already loaded in Unknown on line 0
+[12-Mar-2017 22:34:41 America/Sao_Paulo] PHP Fatal error:  Call to undefined function password_hash() in /home/softcondcom/public_html/empregoja/BDOperacoes.php on line 114
+[12-Mar-2017 22:36:09 America/Sao_Paulo] PHP Warning:  Module 'ionCube Loader' already loaded in Unknown on line 0
+[12-Mar-2017 22:36:09 America/Sao_Paulo] PHP Fatal error:  Call to undefined function password_hash() in /home/softcondcom/public_html/empregoja/BDOperacoes.php on line 114
+[12-Mar-2017 22:59:12 America/Sao_Paulo] PHP Warning:  Module 'ionCube Loader' already loaded in Unknown on line 0
+[12-Mar-2017 22:59:12 America/Sao_Paulo] PHP Fatal error:  Call to undefined function password_hash() in /home/softcondcom/public_html/empregoja/BDOperacoes.php on line 114
+[12-Mar-2017 23:03:53 America/Sao_Paulo] PHP Warning:  Module 'ionCube Loader' already loaded in Unknown on line 0
+[12-Mar-2017 23:03:53 America/Sao_Paulo] PHP Fatal error:  Call to undefined function password_hash() in /home/softcondcom/public_html/empregoja/BDOperacoes.php on line 114
+[12-Mar-2017 23:07:06 America/Sao_Paulo] PHP Warning:  Module 'ionCube Loader' already loaded in Unknown on line 0
+[12-Mar-2017 23:07:14 America/Sao_Paulo] PHP Warning:  Module 'ionCube Loader' already loaded in Unknown on line 0
+[12-Mar-2017 23:07:16 America/Sao_Paulo] PHP Warning:  Module 'ionCube Loader' already loaded in Unknown on line 0
+[12-Mar-2017 23:07:17 America/Sao_Paulo] PHP Warning:  Module 'ionCube Loader' already loaded in Unknown on line 0
+[13-Mar-2017 10:44:39 America/Sao_Paulo] PHP Warning:  Module 'ionCube Loader' already loaded in Unknown on line 0
+[13-Mar-2017 10:45:01 America/Sao_Paulo] PHP Warning:  Module 'ionCube Loader' already loaded in Unknown on line 0
+[13-Mar-2017 12:11:50 America/Sao_Paulo] PHP Warning:  Module 'ionCube Loader' already loaded in Unknown on line 0
+[13-Mar-2017 12:11:50 America/Sao_Paulo] PHP Fatal error:  Call to undefined function password_hash() in /home/softcondcom/public_html/empregoja/BDOperacoes.php on line 114
+[13-Mar-2017 12:23:22 America/Sao_Paulo] PHP Warning:  Module 'ionCube Loader' already loaded in Unknown on line 0
+[13-Mar-2017 12:23:22 America/Sao_Paulo] PHP Fatal error:  Call to undefined function password_hash() in /home/softcondcom/public_html/empregoja/BDOperacoes.php on line 114
+[13-Mar-2017 12:23:57 America/Sao_Paulo] PHP Warning:  Module 'ionCube Loader' already loaded in Unknown on line 0
+[13-Mar-2017 12:23:57 America/Sao_Paulo] PHP Fatal error:  Call to undefined function password_hash() in /home/softcondcom/public_html/empregoja/BDOperacoes.php on line 114
+[13-Mar-2017 12:23:59 America/Sao_Paulo] PHP Warning:  Module 'ionCube Loader' already loaded in Unknown on line 0
+[13-Mar-2017 12:23:59 America/Sao_Paulo] PHP Fatal error:  Call to undefined function password_hash() in /home/softcondcom/public_html/empregoja/BDOperacoes.php on line 114
+[13-Mar-2017 12:24:24 America/Sao_Paulo] PHP Warning:  Module 'ionCube Loader' already loaded in Unknown on line 0
+[13-Mar-2017 12:24:24 America/Sao_Paulo] PHP Fatal error:  Call to undefined function password_hash() in /home/softcondcom/public_html/empregoja/BDOperacoes.php on line 114
+[13-Mar-2017 12:24:25 America/Sao_Paulo] PHP Warning:  Module 'ionCube Loader' already loaded in Unknown on line 0
+[13-Mar-2017 12:24:25 America/Sao_Paulo] PHP Fatal error:  Call to undefined function password_hash() in /home/softcondcom/public_html/empregoja/BDOperacoes.php on line 114
+[13-Mar-2017 12:26:07 America/Sao_Paulo] PHP Warning:  Module 'ionCube Loader' already loaded in Unknown on line 0
+[13-Mar-2017 12:26:08 America/Sao_Paulo] PHP Warning:  Module 'ionCube Loader' already loaded in Unknown on line 0
+[13-Mar-2017 12:26:08 America/Sao_Paulo] PHP Warning:  Module 'ionCube Loader' already loaded in Unknown on line 0

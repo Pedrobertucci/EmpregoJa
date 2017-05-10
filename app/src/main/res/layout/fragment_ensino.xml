@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="29dp"
+            android:text="Cadastro de Escolaridade"
+            android:textSize="22sp" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textView"
+            android:layout_margin="20dp"
+            android:layout_marginTop="38dp">
+
+            <EditText
+                android:id="@+id/et_instituicao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="26dp"
+                android:hint="Instituição"
+                android:inputType="text" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInputLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/textInputLayout"
+            android:layout_alignLeft="@+id/textInputLayout"
+            android:layout_alignRight="@+id/textInputLayout"
+            android:layout_alignStart="@+id/textInputLayout"
+            android:layout_below="@+id/textInputLayout"
+            android:layout_margin="2dp">
+
+            <EditText
+                android:id="@+id/et_grau"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="26dp"
+                android:hint="Grau"
+                android:inputType="text" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInputLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/textInputLayout"
+            android:layout_alignLeft="@+id/textInputLayout2"
+            android:layout_alignRight="@+id/textInputLayout"
+            android:layout_alignStart="@+id/textInputLayout2"
+            android:layout_centerVertical="true">
+
+            <EditText
+                android:id="@+id/et_area"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/textInputLayout3"
+                android:layout_alignLeft="@+id/textInputLayout2"
+                android:layout_alignRight="@+id/textInputLayout3"
+                android:layout_alignStart="@+id/textInputLayout2"
+                android:layout_below="@+id/textInputLayout2"
+                android:layout_marginTop="26dp"
+                android:layout_weight="1"
+                android:hint="Curso"
+                android:inputType="text" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInputLayout4"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textInputLayout"
+            android:layout_alignStart="@+id/textInputLayout"
+            android:layout_below="@+id/textInputLayout3"
+            android:layout_marginTop="25dp">
+
+            <EditText
+                android:id="@+id/et_anoIncio"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/textInputLayout3"
+                android:layout_alignLeft="@+id/textInputLayout2"
+                android:layout_alignRight="@+id/textInputLayout3"
+                android:layout_alignStart="@+id/textInputLayout2"
+                android:layout_below="@+id/textInputLayout2"
+                android:layout_marginTop="26dp"
+                android:layout_weight="1"
+                android:hint="Ano Inicio"
+                android:inputType="numberDecimal"
+                android:maxLength="4" />
+
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInputLayout5"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textInputLayout"
+            android:layout_alignStart="@+id/textInputLayout"
+            android:layout_below="@+id/textInputLayout3"
+            android:layout_marginLeft="170dp"
+            android:layout_marginTop="25dp">
+
+            <EditText
+                android:id="@+id/et_semestreInicio"
+                android:layout_width="152dp"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/textInputLayout3"
+                android:layout_alignLeft="@+id/textInputLayout2"
+                android:layout_alignRight="@+id/textInputLayout3"
+                android:layout_alignStart="@+id/textInputLayout2"
+                android:layout_below="@+id/textInputLayout2"
+                android:layout_marginTop="26dp"
+                android:hint="Semestre Início"
+                android:inputType="numberDecimal"
+                android:maxLength="1" />
+
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInputLayout6"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+
+            android:layout_alignLeft="@+id/textInputLayout4"
+            android:layout_alignStart="@+id/textInputLayout4"
+            android:layout_below="@+id/textInputLayout4">
+
+            <EditText
+                android:id="@+id/et_anoFinal"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/textInputLayout3"
+                android:layout_alignLeft="@+id/textInputLayout2"
+                android:layout_alignRight="@+id/textInputLayout3"
+                android:layout_alignStart="@+id/textInputLayout2"
+                android:layout_below="@+id/textInputLayout2"
+                android:layout_marginTop="26dp"
+                android:layout_weight="1"
+                android:hint="Ano Final"
+                android:inputType="numberDecimal"
+                android:maxLength="4" />
+
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInputLayout7"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textInputLayout4"
+            android:layout_alignStart="@+id/textInputLayout4"
+            android:layout_below="@+id/textInputLayout4"
+            android:layout_marginLeft="170dp">
+
+            <EditText
+                android:id="@+id/et_semestreFinal"
+                android:layout_width="152dp"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/textInputLayout3"
+                android:layout_alignLeft="@+id/textInputLayout2"
+                android:layout_alignRight="@+id/textInputLayout3"
+                android:layout_alignStart="@+id/textInputLayout2"
+                android:layout_below="@+id/textInputLayout2"
+                android:layout_marginTop="26dp"
+                android:hint="Semestre Final"
+                android:inputType="numberDecimal"
+                android:maxLength="1" />
+
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <Button
+            android:id="@+id/btnCadastraEnsino"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textInputLayout6"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:background="@color/colorPrimary"
+            android:padding="10dp"
+            android:text="Cadastrar Ensino"
+            android:textColor="@android:color/background_light" />
+
+    </RelativeLayout>
+
+</LinearLayout>
