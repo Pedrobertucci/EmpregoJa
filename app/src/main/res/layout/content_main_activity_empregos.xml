@@ -13,4 +13,12 @@
     tools:context="bertucci.pedro.empregoja.MainActivityEmpregos"
     tools:showIn="@layout/app_bar_main_activity_empregos">
 
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="112dp"
+        android:text="lista empregos" />
 </RelativeLayout>

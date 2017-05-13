@@ -1,6 +1,8 @@
 package bertucci.pedro.empregoja;
 
+import android.app.Activity;
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.location.Address;
 import android.location.Geocoder;
@@ -14,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 import java.util.Locale;
@@ -80,7 +83,21 @@ public class RegisterFragment extends Fragment  implements View.OnClickListener{
 
                      if(password.length()>= 6){
                          progress.setVisibility(View.VISIBLE);
-                         registerProcess(name,sobrenome,email,password);
+                         /* registerProcess(name,sobrenome,email,password);
+
+                         Bundle bundle = new Bundle();
+                         bundle.putString("name", name);
+                         bundle.putString("sobrenome", sobrenome);
+                         bundle.putString("email",email);
+                         bundle.putString("password",password);
+
+                         register.setArguments(bundle);*/
+
+                         Fragment register = new RegisterFragmentTwo();
+                         FragmentTransaction ft = getFragmentManager().beginTransaction();
+                         ft.replace(R.id.fragment_frame,register);
+                         ft.commit();
+
                      }else{
                          Snackbar.make(getView(), "Senha a partir de 6 caracteres!", Snackbar.LENGTH_LONG).show();
                      }
@@ -90,7 +107,7 @@ public class RegisterFragment extends Fragment  implements View.OnClickListener{
 
                     Snackbar.make(getView(), "Os campos estão vazios!", Snackbar.LENGTH_LONG).show();
                 }
-                break;
+
 
         }
 
@@ -144,4 +161,7 @@ public class RegisterFragment extends Fragment  implements View.OnClickListener{
         ft.replace(R.id.fragment_frame,login);
         ft.commit();
     }
+
+
+
 }

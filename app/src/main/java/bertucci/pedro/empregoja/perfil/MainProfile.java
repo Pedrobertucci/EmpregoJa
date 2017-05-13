@@ -32,6 +32,7 @@ public class MainProfile extends AppCompatActivity
       private SharedPreferences pref;
 
 
+
     private TextView nome;
     private TextView email;
     private String unique_id;
@@ -71,10 +72,6 @@ public class MainProfile extends AppCompatActivity
 
     }
 
-
-
-
-
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -108,15 +105,6 @@ public class MainProfile extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-
-
-
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        displaySelectedScreen(item.getItemId());
-        return true;
-    }
 
     private void displaySelectedScreen(int itemId) {
 
@@ -155,6 +143,14 @@ public class MainProfile extends AppCompatActivity
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
+    }
+
+
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        displaySelectedScreen(item.getItemId());
+        return true;
     }
 
     private void logout() {

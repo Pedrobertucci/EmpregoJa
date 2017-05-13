@@ -2,6 +2,7 @@ package bertucci.pedro.empregoja.perfil;
 
 import android.app.AlertDialog;
 import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import bertucci.pedro.empregoja.R;
 import bertucci.pedro.empregoja.interfaces.RequestInterface;
@@ -46,9 +48,9 @@ public class ProfileEnsino extends Fragment implements View.OnClickListener {
 
 
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         unique_id = getArguments().getString("parametro");
         View view = inflater.inflate(R.layout.fragment_ensino,container,false);
         initViews(view);
@@ -63,11 +65,7 @@ public class ProfileEnsino extends Fragment implements View.OnClickListener {
         inflater.inflate(R.menu.menu_main, menu);
     }
     public void onViewCreated(View view, Bundle savedInstanceState) {
-
-
-
-
-
+        getActivity().setTitle("Ensino");
     }
 
     private void initViews(View view){
@@ -149,19 +147,14 @@ public class ProfileEnsino extends Fragment implements View.OnClickListener {
         response.enqueue(new Callback<ServerResponse>() {
             @Override
             public void onResponse(Call<ServerResponse> call, retrofit2.Response<ServerResponse> response) {
-
-                ServerResponse resp = response.body();
-                Snackbar.make(getView(), resp.getMessage(), Snackbar.LENGTH_LONG).show();
-
+                Toast.makeText(getActivity(),"Ensino Cadastrado com sucesso", Toast.LENGTH_LONG).show();
+                getFragmentManager().popBackStack();
+                return;
             }
 
             @Override
             public void onFailure(Call<ServerResponse> call, Throwable t) {
-
-                Log.d(Constants.TAG,"Errou");
-                Snackbar.make(getView(), t.getLocalizedMessage(), Snackbar.LENGTH_LONG).show();
-
-
+                Toast.makeText(getActivity(),"Erro a o cadastrar o Ensino!", Toast.LENGTH_SHORT).show();
             }
         });
     }

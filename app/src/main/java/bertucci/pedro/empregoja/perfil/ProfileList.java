@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import bertucci.pedro.empregoja.Adapter.AdapterEnsino;
 import bertucci.pedro.empregoja.LoginFragment;
 import bertucci.pedro.empregoja.R;
+import bertucci.pedro.empregoja.RegisterFragment;
 
 /**
  * Created by b_ped on 19/04/2017.
@@ -34,14 +35,21 @@ public class ProfileList extends Fragment  implements View.OnClickListener{
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+
         unique_id = getArguments().getString("parametro");
+
         View view = inflater.inflate(R.layout.fragment_listaestudo,container,false);
+
+
+
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.card_recycler_view);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this.getActivity());
         recyclerView.setLayoutManager(layoutManager);
         escolaridadeList = new ArrayList<>();
         escolaridadeList.add("Ensino 1");
         escolaridadeList.add("Ensino 2");
+        declara(view);
 
         RecyclerView.Adapter adapter = new AdapterEnsino(escolaridadeList);
         recyclerView.setAdapter(adapter);
@@ -65,7 +73,6 @@ public class ProfileList extends Fragment  implements View.OnClickListener{
                             int position = rv.getChildAdapterPosition(child);
 
                         }
-
                         return false;
                     }
 
@@ -81,26 +88,42 @@ public class ProfileList extends Fragment  implements View.OnClickListener{
 
                 });
 
-         btnCadastrar = (Button) view.findViewById(R.id.btnCadastrar);
-
-         btnCadastrar.setOnClickListener(new View.OnClickListener() {
-                 @Override
-                     public void onClick(View v) {
-                     FragmentManager fm = getActivity().getFragmentManager();
-                     Fragment newFrame = new ProfileEnsino();
-                     fm.beginTransaction().replace(R.id.btnCadastraEnsino, newFrame).commit();
-                 }
-
-         });
-
 
 
         return view;
 
     }
 
+    public void declara(View v){
+        btnCadastrar = (Button) v.findViewById(R.id.btnCadastrar);
+        btnCadastrar.setOnClickListener(this);
+    }
+
     @Override
     public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.btnCadastrar:
+                profileEnsino();
+                break;
+        }
+
 
     }
+
+
+    public void profileEnsino(){
+        Bundle bundle = new Bundle();
+        bundle.putString("parametro", this.unique_id);
+        Fragment register = new ProfileEnsino();
+        register.setArguments(bundle);
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        ft.replace(R.id.content_frame,register);
+        ft.addToBackStack(null);
+        ft.commit();
+    }
+
+
+
+
+
 }
