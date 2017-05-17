@@ -1,11 +1,7 @@
-package bertucci.pedro.empregoja;
+package bertucci.pedro.empregoja.Register;
 
-import android.app.Activity;
 import android.app.Fragment;
-import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.location.Address;
-import android.location.Geocoder;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.AppCompatButton;
@@ -16,23 +12,20 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.List;
-import java.util.Locale;
-
+import bertucci.pedro.empregoja.Login.LoginFragment;
+import bertucci.pedro.empregoja.R;
 import bertucci.pedro.empregoja.interfaces.RequestInterface;
 import bertucci.pedro.empregoja.models.Constants;
-import bertucci.pedro.empregoja.models.ServerResponse;
 import bertucci.pedro.empregoja.models.ServerRequest;
+import bertucci.pedro.empregoja.models.ServerResponse;
 import bertucci.pedro.empregoja.models.User;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class RegisterFragment extends Fragment  implements View.OnClickListener{
+public class RegisterFragmentTwo extends Fragment  implements View.OnClickListener{
 
     private AppCompatButton btn_register;
     private EditText et_email,et_password,et_name, et_sobrenome;
@@ -42,23 +35,16 @@ public class RegisterFragment extends Fragment  implements View.OnClickListener{
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-        View view = inflater.inflate(R.layout.fragment_register,container,false);
+        View view = inflater.inflate(R.layout.fragment_register_second,container,false);
         initViews(view);
+
+
+
         return view;
     }
 
-    private void initViews(View view){
 
-        btn_register = (AppCompatButton)view.findViewById(R.id.btn_register);
-        tv_login = (TextView)view.findViewById(R.id.tv_login);
-        et_name = (EditText)view.findViewById(R.id.et_name);
-        et_email = (EditText)view.findViewById(R.id.et_email);
-        et_password = (EditText)view.findViewById(R.id.et_password);
-        et_sobrenome = (EditText)view.findViewById(R.id.et_sobrenome);
-        progress = (ProgressBar)view.findViewById(R.id.progress);
-        btn_register.setOnClickListener(this);
-        tv_login.setOnClickListener(this);
+    private void initViews(View view){
 
 
     }
@@ -81,33 +67,14 @@ public class RegisterFragment extends Fragment  implements View.OnClickListener{
 
                  if(!name.isEmpty() && !sobrenome.isEmpty() && !email.isEmpty() && !password.isEmpty()) {
 
-                     if(password.length()>= 6){
-                         progress.setVisibility(View.VISIBLE);
-                         /* registerProcess(name,sobrenome,email,password);
-
-                         Bundle bundle = new Bundle();
-                         bundle.putString("name", name);
-                         bundle.putString("sobrenome", sobrenome);
-                         bundle.putString("email",email);
-                         bundle.putString("password",password);
-
-                         register.setArguments(bundle);*/
-
-                         Fragment register = new RegisterFragmentTwo();
-                         FragmentTransaction ft = getFragmentManager().beginTransaction();
-                         ft.replace(R.id.fragment_frame,register);
-                         ft.commit();
-
-                     }else{
-                         Snackbar.make(getView(), "Senha a partir de 6 caracteres!", Snackbar.LENGTH_LONG).show();
-                     }
-
+                    progress.setVisibility(View.VISIBLE);
+                    registerProcess(name,sobrenome,email,password);
 
                 } else {
 
                     Snackbar.make(getView(), "Os campos estão vazios!", Snackbar.LENGTH_LONG).show();
                 }
-
+                break;
 
         }
 
@@ -161,7 +128,4 @@ public class RegisterFragment extends Fragment  implements View.OnClickListener{
         ft.replace(R.id.fragment_frame,login);
         ft.commit();
     }
-
-
-
 }

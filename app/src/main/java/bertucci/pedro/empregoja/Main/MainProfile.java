@@ -1,12 +1,11 @@
-package bertucci.pedro.empregoja.perfil;
+
+package bertucci.pedro.empregoja.Main;
 
 import android.app.Fragment;
-import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -18,19 +17,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-import bertucci.pedro.empregoja.LoginFragment;
-import bertucci.pedro.empregoja.MainActivity;
+import bertucci.pedro.empregoja.Dados.MainDados;
+import bertucci.pedro.empregoja.Ensino.MainEnsino;
 import bertucci.pedro.empregoja.R;
-import bertucci.pedro.empregoja.RegisterFragment;
-import bertucci.pedro.empregoja.RegisterFragmentTwo;
-import bertucci.pedro.empregoja.models.Constants;
 
 public class MainProfile extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
-      private SharedPreferences pref;
-
+implements NavigationView.OnNavigationItemSelectedListener {
+    private SharedPreferences pref;
 
 
     private TextView nome;
@@ -114,18 +107,23 @@ public class MainProfile extends AppCompatActivity
 
         switch (itemId) {
             case R.id.nav_dados:
-                fragment = new ProfileList();
+                Bundle bundle2 = new Bundle();
+                bundle2.putString("parametro", unique_id);
+                Intent intent2 = new Intent(this, MainDados.class);
+                intent2.putExtras(bundle2);
+                startActivity(intent2);
                 break;
 
             case R.id.nav_ensino:
                 Bundle bundle = new Bundle();
                 bundle.putString("parametro", unique_id);
-                fragment = new ProfileList();
-                fragment.setArguments(bundle);
+                Intent intent = new Intent(this, MainEnsino.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
                 break;
 
             case R.id.nav_candidatura:
-                fragment = new RegisterFragmentTwo();
+
                 break;
 
             case R.id.nav_sair:
@@ -154,7 +152,7 @@ public class MainProfile extends AppCompatActivity
     }
 
     private void logout() {
-         goToLogin();
+        goToLogin();
     }
 
     private void goToLogin(){

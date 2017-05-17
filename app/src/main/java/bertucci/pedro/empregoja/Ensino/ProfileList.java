@@ -1,27 +1,20 @@
-package bertucci.pedro.empregoja.perfil;
+package bertucci.pedro.empregoja.Ensino;
 
 import android.app.Fragment;
-import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import bertucci.pedro.empregoja.Adapter.AdapterEnsino;
-import bertucci.pedro.empregoja.LoginFragment;
 import bertucci.pedro.empregoja.R;
-import bertucci.pedro.empregoja.RegisterFragment;
 
 /**
  * Created by b_ped on 19/04/2017.
@@ -106,8 +99,6 @@ public class ProfileList extends Fragment  implements View.OnClickListener{
                 profileEnsino();
                 break;
         }
-
-
     }
 
 
@@ -117,7 +108,7 @@ public class ProfileList extends Fragment  implements View.OnClickListener{
         Fragment register = new ProfileEnsino();
         register.setArguments(bundle);
         FragmentTransaction ft = getFragmentManager().beginTransaction();
-        ft.replace(R.id.content_frame,register);
+        ft.replace(R.id.frame_ensino,register);
         ft.addToBackStack(null);
         ft.commit();
     }

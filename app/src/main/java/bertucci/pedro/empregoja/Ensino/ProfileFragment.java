@@ -1,4 +1,4 @@
-package bertucci.pedro.empregoja.perfil;
+package bertucci.pedro.empregoja.Ensino;
 
 /**
  * Created by b_ped on 12/03/2017.

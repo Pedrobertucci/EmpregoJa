@@ -1,4 +1,4 @@
-package bertucci.pedro.empregoja.perfil;
+package bertucci.pedro.empregoja.Empregos;
 
 import android.app.Fragment;
 import android.os.Bundle;

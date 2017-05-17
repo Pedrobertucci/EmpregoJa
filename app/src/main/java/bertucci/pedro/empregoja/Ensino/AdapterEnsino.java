@@ -1,4 +1,4 @@
-package bertucci.pedro.empregoja.Adapter;
+package bertucci.pedro.empregoja.Ensino;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;

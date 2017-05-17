@@ -1,14 +1,11 @@
-package bertucci.pedro.empregoja.perfil;
+package bertucci.pedro.empregoja.Ensino;
 
-import android.app.AlertDialog;
 import android.app.Fragment;
-import android.app.FragmentTransaction;
-import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.AppCompatButton;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -17,7 +14,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import bertucci.pedro.empregoja.R;
@@ -26,7 +22,6 @@ import bertucci.pedro.empregoja.models.Constants;
 import bertucci.pedro.empregoja.models.Ensino;
 import bertucci.pedro.empregoja.models.ServerRequest;
 import bertucci.pedro.empregoja.models.ServerResponse;
-import bertucci.pedro.empregoja.models.User;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Retrofit;
@@ -43,7 +38,7 @@ public class ProfileEnsino extends Fragment implements View.OnClickListener {
     private SharedPreferences pref;
     private EditText et_instituicao,et_grau,et_area,et_anoInicio,et_anoFinal,et_semestreInicio,et_semestreFinal;
     private ProgressBar progress;
-    private Button btnCadastraEnsino;
+    private FloatingActionButton btnCadastraEnsino;
     private String unique_id;
 
 
@@ -65,12 +60,12 @@ public class ProfileEnsino extends Fragment implements View.OnClickListener {
         inflater.inflate(R.menu.menu_main, menu);
     }
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        getActivity().setTitle("Ensino");
+        getActivity().setTitle("Cadastrando Ensino");
     }
 
     private void initViews(View view){
 
-        btnCadastraEnsino = (AppCompatButton)view.findViewById(R.id.btnCadastraEnsino);
+        btnCadastraEnsino = (FloatingActionButton)view.findViewById(R.id.btnCadastraEnsino);
         et_instituicao = (EditText)view.findViewById(R.id.et_instituicao);
         et_grau = (EditText)view.findViewById(R.id.et_grau);
         et_area =  (EditText)view.findViewById(R.id.et_area);
@@ -106,8 +101,6 @@ public class ProfileEnsino extends Fragment implements View.OnClickListener {
                     }else{
                         Snackbar.make(getView(), "Preencha o ano início e o ano final corretamente!", Snackbar.LENGTH_LONG).show();
                     }
-
-
                 } else {
 
                     Snackbar.make(getView(), "Os campos estão vazios!", Snackbar.LENGTH_LONG).show();
