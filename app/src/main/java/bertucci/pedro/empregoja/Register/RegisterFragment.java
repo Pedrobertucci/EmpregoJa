@@ -3,6 +3,7 @@ package bertucci.pedro.empregoja.Register;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.AppCompatButton;
 import android.util.Log;
@@ -28,7 +29,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RegisterFragment extends Fragment  implements View.OnClickListener{
 
-    private AppCompatButton btn_register;
+    private FloatingActionButton btn_register;
     private EditText et_email,et_password,et_name, et_sobrenome;
     private TextView tv_login;
     private ProgressBar progress;
@@ -38,21 +39,22 @@ public class RegisterFragment extends Fragment  implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_register,container,false);
+
         initViews(view);
+
         return view;
     }
 
     private void initViews(View view){
 
-        btn_register = (AppCompatButton)view.findViewById(R.id.btn_register);
-        tv_login = (TextView)view.findViewById(R.id.tv_login);
+        btn_register = (FloatingActionButton)view.findViewById(R.id.btnCadastrar);
         et_name = (EditText)view.findViewById(R.id.et_name);
         et_email = (EditText)view.findViewById(R.id.et_email);
         et_password = (EditText)view.findViewById(R.id.et_password);
         et_sobrenome = (EditText)view.findViewById(R.id.et_sobrenome);
         progress = (ProgressBar)view.findViewById(R.id.progress);
         btn_register.setOnClickListener(this);
-        tv_login.setOnClickListener(this);
+
 
 
     }
@@ -62,11 +64,9 @@ public class RegisterFragment extends Fragment  implements View.OnClickListener{
     public void onClick(View v) {
 
         switch (v.getId()){
-            case R.id.tv_login:
-                goToLogin();
-                break;
 
-            case R.id.btn_register:
+
+            case R.id.btnCadastrar:
 
                 String name = et_name.getText().toString();
                 String sobrenome = et_sobrenome.getText().toString();

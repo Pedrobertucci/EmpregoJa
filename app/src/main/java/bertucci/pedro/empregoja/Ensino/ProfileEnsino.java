@@ -11,10 +11,15 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.Toast;
+
+import java.lang.reflect.Array;
 
 import bertucci.pedro.empregoja.R;
 import bertucci.pedro.empregoja.interfaces.RequestInterface;
@@ -28,7 +33,6 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 
-
 /**
  * Created by b_ped on 19/04/2017.
  */
@@ -36,11 +40,22 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ProfileEnsino extends Fragment implements View.OnClickListener {
 
     private SharedPreferences pref;
-    private EditText et_instituicao,et_grau,et_area,et_anoInicio,et_anoFinal,et_semestreInicio,et_semestreFinal;
+    private EditText et_instituicao,et_area,et_anoInicio,et_anoFinal,et_semestreInicio,et_semestreFinal;
     private ProgressBar progress;
     private FloatingActionButton btnCadastraEnsino;
-    private String unique_id;
+    private String unique_id, selectEnsino;
+    Spinner spinner;
 
+    String[] ensino = {
+            "Selecione o Grau",
+            "Ensino Fundamental",
+            "Tecnico",
+            "Tecnologo",
+            "Graduaçao",
+            "Pos-Graduaçao",
+            "Mestrado",
+            "Doutorado"
+    };
 
 
 
@@ -48,6 +63,31 @@ public class ProfileEnsino extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         unique_id = getArguments().getString("parametro");
         View view = inflater.inflate(R.layout.fragment_ensino,container,false);
+
+        spinner = (Spinner)view.findViewById(R.id.et_grau);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, ensino);
+
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(
+                new AdapterView.OnItemSelectedListener() {
+
+                    @Override
+                    public void onItemSelected(AdapterView<?> arg0, View arg1,
+                                               int arg2, long arg3) {
+                        int position = spinner.getSelectedItemPosition();
+                        selectEnsino = ensino[position];
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> arg0) {
+                        // TODO Auto-generated method stub
+
+                    }
+
+                }
+        );
+
+
         initViews(view);
         return view;
 
@@ -67,7 +107,6 @@ public class ProfileEnsino extends Fragment implements View.OnClickListener {
 
         btnCadastraEnsino = (FloatingActionButton)view.findViewById(R.id.btnCadastraEnsino);
         et_instituicao = (EditText)view.findViewById(R.id.et_instituicao);
-        et_grau = (EditText)view.findViewById(R.id.et_grau);
         et_area =  (EditText)view.findViewById(R.id.et_area);
         et_anoInicio = (EditText)view.findViewById(R.id.et_anoIncio);
         et_semestreInicio = (EditText)view.findViewById(R.id.et_semestreInicio);
@@ -86,7 +125,7 @@ public class ProfileEnsino extends Fragment implements View.OnClickListener {
             case R.id.btnCadastraEnsino:
                 String unique_id = this.unique_id;
                 String instituicao = et_instituicao.getText().toString();
-                String grau = et_grau.getText().toString();
+                String grau = selectEnsino;
                 String areaEstudo = et_area.getText().toString();
                 String semestreInicio = et_semestreInicio.getText().toString();
                 String anoInicio = et_anoInicio.getText().toString();

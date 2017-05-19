@@ -17,7 +17,7 @@
         android:layout_marginTop="40dp">
 
         <EditText
-            android:id="@+id/et_name"
+            android:id="@+id/at_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableRight="@drawable/ic_user"
@@ -33,7 +33,7 @@
         android:layout_marginTop="8dp">
 
         <EditText
-            android:id="@+id/et_sobrenome"
+            android:id="@+id/at_sobrenome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableRight="@drawable/ic_user"
@@ -50,7 +50,7 @@
         android:layout_marginTop="8dp">
 
         <EditText
-            android:id="@+id/et_email"
+            android:id="@+id/at_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableRight="@drawable/ic_mail"
@@ -67,7 +67,7 @@
         android:layout_marginTop="8dp">
 
         <EditText
-            android:id="@+id/et_password"
+            android:id="@+id/at_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableRight="@drawable/ic_key"
@@ -83,7 +83,7 @@
         android:layout_marginTop="8dp">
 
         <EditText
-            android:id="@+id/et_password2"
+            android:id="@+id/at_password2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableRight="@drawable/ic_key"
@@ -118,7 +118,7 @@
             android:layout_marginBottom="17dp"
             android:clickable="true"
             app:fabSize="normal"
-            app:srcCompat="@drawable/right" />
+            app:srcCompat="@drawable/update" />
     </RelativeLayout>
 
 

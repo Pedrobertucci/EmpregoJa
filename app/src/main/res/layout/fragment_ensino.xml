@@ -1,129 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:orientation="vertical">
+    android:orientation="horizontal">
 
 
-    <EditText
-        android:id="@+id/et_grau"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/et_area"
-        android:layout_marginLeft="20sp"
-        android:layout_marginRight="20sp"
-        android:layout_marginTop="20sp"
-        android:hint="Grau"
-        android:inputType="text" />
+        android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/et_instituicao"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20sp"
-        android:layout_marginRight="20sp"
-        android:hint="Instituição"
-        android:inputType="text"
-        android:layout_marginTop="15sp"
-        android:layout_below="@+id/textView" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="509dp"
+            android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Cadastro de Escolaridade"
-        android:textSize="22sp"
-        tools:layout_editor_absoluteX="0sp"
-        tools:layout_editor_absoluteY="0sp"
-        android:layout_alignParentTop="true"
-        android:layout_toStartOf="@+id/btnCadastraEnsino"
-        android:layout_marginTop="46dp" />
+            <EditText
+                android:id="@+id/et_semestreFinal"
+                android:layout_width="150sp"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/et_anoFinal"
+                android:layout_alignBottom="@+id/et_anoFinal"
+                android:layout_alignEnd="@+id/et_semestreInicio"
+                android:layout_below="@+id/et_semestreInicio"
+                android:layout_weight="1"
+                android:hint="Semestre Final"
+                android:inputType="numberDecimal"
+                android:maxLength="1"
+                tools:layout_editor_absoluteX="16sp"
+                tools:layout_editor_absoluteY="367sp" />
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/btnCadastraEnsino"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/et_semestreFinal"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="17sp"
+                android:layout_weight="1"
+                android:clickable="true"
+                app:elevation="4dp"
+                app:fabSize="normal"
+                app:srcCompat="@drawable/seta" />
+
+            <EditText
+                android:id="@+id/et_anoIncio"
+                android:layout_width="150sp"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/et_grau"
+                android:layout_below="@+id/et_grau"
+                android:layout_marginTop="20sp"
+                android:layout_weight="1"
+                android:hint="Ano Inicio"
+                android:inputType="numberDecimal"
+                android:maxLength="4"
+                tools:layout_editor_absoluteX="188sp"
+                tools:layout_editor_absoluteY="320sp" />
+
+            <EditText
+                android:id="@+id/et_semestreInicio"
+                android:layout_width="150sp"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/et_anoIncio"
+                android:layout_alignBottom="@+id/et_anoIncio"
+                android:layout_alignEnd="@+id/et_grau"
+                android:layout_below="@+id/et_grau"
+                android:layout_weight="1"
+                android:hint="Semestre Início"
+                android:inputType="numberDecimal"
+                android:maxLength="1"
+                tools:layout_editor_absoluteX="16sp"
+                tools:layout_editor_absoluteY="324sp" />
+
+            <EditText
+                android:id="@+id/et_anoFinal"
+                android:layout_width="150sp"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/et_anoIncio"
+                android:layout_below="@+id/et_anoIncio"
+                android:layout_marginTop="13dp"
+                android:layout_weight="1"
+                android:hint="Ano Final"
+                android:inputType="numberDecimal"
+                android:maxLength="4"
+                tools:layout_editor_absoluteX="188sp"
+                tools:layout_editor_absoluteY="367sp" />
+
+            <EditText
+                android:id="@+id/et_area"
+                android:layout_width="368sp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/et_instituicao"
+                android:layout_marginLeft="20sp"
+                android:layout_marginRight="20sp"
+                android:layout_marginTop="18sp"
+                android:layout_weight="1"
+                android:hint="Curso"
+                android:inputType="text"
+                tools:layout_editor_absoluteX="8sp"
+                tools:layout_editor_absoluteY="68sp" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="46dp"
+                android:layout_toStartOf="@+id/btnCadastraEnsino"
+                android:layout_weight="1"
+                android:text="Cadastro de Escolaridade"
+                android:textSize="22sp"
+                tools:layout_editor_absoluteX="0sp"
+                tools:layout_editor_absoluteY="0sp" />
+
+            <EditText
+                android:id="@+id/et_instituicao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView"
+                android:layout_marginLeft="20sp"
+                android:layout_marginRight="20sp"
+                android:layout_marginTop="15sp"
+                android:layout_weight="1"
+                android:hint="Instituição"
+                android:inputType="text" />
 
 
-    <EditText
-        android:id="@+id/et_anoFinal"
-        android:layout_width="150sp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:hint="Ano Final"
-        android:inputType="numberDecimal"
-        android:maxLength="4"
-        tools:layout_editor_absoluteX="188sp"
-        tools:layout_editor_absoluteY="367sp"
-        android:layout_below="@+id/et_anoIncio"
-        android:layout_alignStart="@+id/et_anoIncio"
-        android:layout_marginTop="13dp" />
-
-    <EditText
-        android:id="@+id/et_anoIncio"
-        android:layout_width="150sp"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/et_grau"
-        android:layout_below="@+id/et_grau"
-        android:layout_marginTop="20sp"
-        android:hint="Ano Inicio"
-        android:inputType="numberDecimal"
-        android:maxLength="4"
-        tools:layout_editor_absoluteX="188sp"
-        tools:layout_editor_absoluteY="320sp" />
-
-    <EditText
-        android:id="@+id/et_semestreFinal"
-        android:layout_width="150sp"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/et_anoFinal"
-        android:layout_alignBottom="@+id/et_anoFinal"
-        android:layout_alignEnd="@+id/et_semestreInicio"
-        android:layout_below="@+id/et_semestreInicio"
-        android:hint="Semestre Final"
-        android:inputType="numberDecimal"
-        android:maxLength="1"
-        tools:layout_editor_absoluteX="16sp"
-        tools:layout_editor_absoluteY="367sp" />
-
-    <EditText
-        android:id="@+id/et_semestreInicio"
-        android:layout_width="150sp"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/et_anoIncio"
-        android:layout_alignBottom="@+id/et_anoIncio"
-        android:layout_alignEnd="@+id/et_grau"
-        android:layout_below="@+id/et_grau"
-        android:hint="Semestre Início"
-        android:inputType="numberDecimal"
-        android:maxLength="1"
-        tools:layout_editor_absoluteX="16sp"
-        tools:layout_editor_absoluteY="324sp" />
-
-    <EditText
-        android:id="@+id/et_area"
-        android:layout_width="368sp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/et_instituicao"
-        android:layout_marginLeft="20sp"
-        android:layout_marginRight="20sp"
-        android:layout_marginTop="18sp"
-        android:hint="Curso"
-        android:inputType="text"
-        tools:layout_editor_absoluteX="8sp"
-        tools:layout_editor_absoluteY="68sp" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/btnCadastraEnsino"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/et_semestreFinal"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="31dp"
-        android:clickable="true"
-        app:elevation="2dp"
-        app:fabSize="normal"
-        app:srcCompat="@drawable/seta" />
+            <Spinner
+                android:id="@+id/et_grau"
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:layout_alignEnd="@+id/et_area"
+                android:layout_alignStart="@+id/et_area"
+                android:layout_below="@+id/et_area"
+                android:layout_marginTop="9dp"
+                android:textSize="30sp" />
 
 
-</RelativeLayout>
+        </RelativeLayout>
+    </FrameLayout>
+
+
+</ScrollView>

@@ -21,4 +21,16 @@
         <item>MG</item>
         <item>BH</item>
     </string-array>
+
+
+    <string name="array_escola">
+        <item>Ensino Medio</item>
+        <item>Ensino Fundamental</item>
+        <item>Tecnico</item>
+        <item>Tecnologo</item>
+        <item>Graduaçao</item>
+        <item>Pos Graduaçao</item>
+        <item>Mestrado</item>
+        <item>Doutorado</item>
+    </string>
 </resources>

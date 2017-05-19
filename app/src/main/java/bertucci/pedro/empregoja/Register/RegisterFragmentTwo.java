@@ -3,6 +3,7 @@ package bertucci.pedro.empregoja.Register;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.AppCompatButton;
 import android.util.Log;
@@ -27,7 +28,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RegisterFragmentTwo extends Fragment  implements View.OnClickListener{
 
-    private AppCompatButton btn_register;
+    private FloatingActionButton btnCadastrar;
     private EditText et_email,et_password,et_name, et_sobrenome;
     private TextView tv_login;
     private ProgressBar progress;
@@ -54,11 +55,9 @@ public class RegisterFragmentTwo extends Fragment  implements View.OnClickListen
     public void onClick(View v) {
 
         switch (v.getId()){
-            case R.id.tv_login:
-                goToLogin();
-                break;
 
-            case R.id.btn_register:
+
+            case R.id.btnCadastrar:
 
                 String name = et_name.getText().toString();
                 String sobrenome = et_sobrenome.getText().toString();

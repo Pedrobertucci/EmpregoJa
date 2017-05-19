@@ -3,6 +3,7 @@ package bertucci.pedro.empregoja.Ensino;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.GestureDetector;
@@ -24,7 +25,7 @@ public class ProfileList extends Fragment  implements View.OnClickListener{
 
     private ArrayList escolaridadeList;
     private String unique_id;
-    private Button btnCadastrar;
+    private FloatingActionButton btnCadastrar;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -88,14 +89,14 @@ public class ProfileList extends Fragment  implements View.OnClickListener{
     }
 
     public void declara(View v){
-        btnCadastrar = (Button) v.findViewById(R.id.btnCadastrar);
+        btnCadastrar = (FloatingActionButton) v.findViewById(R.id.btnCadastarEnsino);
         btnCadastrar.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.btnCadastrar:
+            case R.id.btnCadastarEnsino:
                 profileEnsino();
                 break;
         }
