@@ -1,125 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="40dp"
-    android:layout_marginRight="40dp"
-    android:gravity="center"
-    android:orientation="vertical"
     android:weightSum="1">
 
-
-    <android.support.design.widget.TextInputLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="40dp">
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="19dp"
+        android:id="@+id/linearLayout2">
 
-        <EditText
-            android:id="@+id/et_name"
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableRight="@drawable/ic_user"
-            android:hint="Nome"
-            android:inputType="textPersonName" />
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="40dp">
 
-    </android.support.design.widget.TextInputLayout>
+            <EditText
+                android:id="@+id/et_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableRight="@drawable/ic_user"
+                android:hint="Nome"
+                android:inputType="textPersonName" />
 
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp">
+        </android.support.design.widget.TextInputLayout>
 
-        <EditText
-            android:id="@+id/et_sobrenome"
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableRight="@drawable/ic_user"
-            android:hint="Sobrenome"
-            android:inputType="textPersonName" />
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp">
 
-    </android.support.design.widget.TextInputLayout>
+            <EditText
+                android:id="@+id/et_sobrenome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableRight="@drawable/ic_user"
+                android:hint="Sobrenome"
+                android:inputType="textPersonName" />
 
+        </android.support.design.widget.TextInputLayout>
 
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp">
-
-        <EditText
-            android:id="@+id/et_email"
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableRight="@drawable/ic_mail"
-            android:hint="Email"
-            android:inputType="textEmailAddress" />
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp">
 
-    </android.support.design.widget.TextInputLayout>
+            <EditText
+                android:id="@+id/et_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableRight="@drawable/ic_mail"
+                android:hint="Email"
+                android:inputType="textEmailAddress" />
 
+        </android.support.design.widget.TextInputLayout>
 
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="1dp"
-        android:layout_marginTop="8dp">
-
-        <EditText
-            android:id="@+id/et_password"
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableRight="@drawable/ic_key"
-            android:hint="Senha"
-            android:inputType="textPassword" />
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="8dp">
+
+            <EditText
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableRight="@drawable/ic_key"
+                android:hint="Senha"
+                android:inputType="textPassword" />
 
 
-    </android.support.design.widget.TextInputLayout>
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="1dp"
-        android:layout_marginTop="8dp">
+        </android.support.design.widget.TextInputLayout>
 
-        <EditText
-            android:id="@+id/et_password2"
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableRight="@drawable/ic_key"
-            android:hint="Repitir a senha"
-            android:inputType="textPassword" />
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="8dp">
+
+            <EditText
+                android:id="@+id/et_password2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableRight="@drawable/ic_key"
+                android:hint="Repitir a senha"
+                android:inputType="textPassword" />
 
 
-    </android.support.design.widget.TextInputLayout>
+        </android.support.design.widget.TextInputLayout>
+    </LinearLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+
 
         <ProgressBar
             android:id="@+id/progress"
             style="@style/Base.Widget.AppCompat.ProgressBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="false"
-            android:layout_centerHorizontal="true"
             android:layout_weight="1"
             android:indeterminate="true"
-            android:visibility="invisible" />
+            android:visibility="invisible"
+            android:layout_alignBottom="@+id/btnCadastrar1"
+            android:layout_centerHorizontal="true" />
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/btnCadastrar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginBottom="17dp"
-            android:clickable="true"
-            app:fabSize="normal"
-            app:srcCompat="@drawable/right" />
-    </RelativeLayout>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/btnCadastrar1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="17dp"
+        android:clickable="true"
+        android:elevation="10dp"
+        android:padding="10dp"
+        app:layout_anchorGravity="bottom|right"
+        app:srcCompat="@drawable/right"
+        android:layout_alignParentBottom="true"
+        android:layout_alignEnd="@+id/linearLayout2" />
 
 
-</LinearLayout>
+
+</RelativeLayout>

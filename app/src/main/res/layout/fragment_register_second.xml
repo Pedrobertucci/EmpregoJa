@@ -1,117 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:layout_marginLeft="40dp"
-    android:layout_marginRight="40dp"
     android:gravity="center"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="1">
 
 
-
-    <android.support.design.widget.TextInputLayout
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="40dp">
-
-        <EditText
-            android:id="@+id/et_cidade"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btnCadastrar2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="33dp"
+        android:id="@+id/linearLayout">
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableRight="@drawable/ic_user"
-            android:hint="Cidade"
-            android:inputType="textPersonName" />
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="40dp">
 
-    </android.support.design.widget.TextInputLayout>
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp">
+            <EditText
+                android:id="@+id/et_cidade"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableRight="@drawable/ic_user"
+                android:hint="Cidade"
+                android:inputType="textPersonName" />
 
-        <EditText
-            android:id="@+id/et_salarial"
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableRight="@drawable/ic_mail"
-            android:hint="Pretençao salarial"
-            android:inputType="textEmailAddress" />
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp">
 
-    </android.support.design.widget.TextInputLayout>
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp">
+            <EditText
+                android:id="@+id/et_salarial"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableRight="@drawable/ic_mail"
+                android:hint="Pretençao salarial"
+                android:inputType="numberDecimal" />
 
-        <EditText
-            android:id="@+id/et_rg"
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableRight="@drawable/ic_mail"
-            android:hint="RG"
-            android:inputType="textEmailAddress" />
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp">
 
-    </android.support.design.widget.TextInputLayout>
+            <EditText
+                android:id="@+id/et_rg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableRight="@drawable/ic_mail"
+                android:hint="RG"
+                android:inputType="number" />
 
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp">
-
-        <EditText
-            android:id="@+id/et_cpf"
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableRight="@drawable/ic_mail"
-            android:hint="CPF"
-            android:inputType="textEmailAddress" />
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp">
 
-    </android.support.design.widget.TextInputLayout>
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp">
+            <EditText
+                android:id="@+id/et_cpf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableRight="@drawable/ic_mail"
+                android:hint="CPF"
+                android:inputType="number" />
 
-
-        <CheckBox
-            android:id="@+id/checkBox"
-            android:layout_width="wrap_content"
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textColor="#c9c9c9"
-            android:text="Termos de Uso do aplicativo" />
-    </android.support.design.widget.TextInputLayout>
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp">
+            <EditText
+                android:id="@+id/et_telefone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableRight="@drawable/ic_mail"
+                android:hint="Telefone"
+                android:inputType="number" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="107dp">
+        </android.support.design.widget.TextInputLayout>
+    </LinearLayout>
+
+
+
 
         <ProgressBar
             android:id="@+id/progress"
             style="@style/Base.Widget.AppCompat.ProgressBar"
-            android:layout_width="wrap_content"
+            android:layout_width="77dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="false"
-            android:layout_centerHorizontal="true"
-            android:layout_weight="1"
+            android:layout_weight="0.30"
             android:indeterminate="true"
-            android:visibility="invisible" />
+            android:visibility="invisible"
+            android:layout_alignBottom="@+id/btnCadastrar2"
+            android:layout_centerHorizontal="true" />
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/btnCadastrar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/progress"
-            android:layout_alignParentEnd="true"
-            android:clickable="true"
-            app:fabSize="normal"
-            app:srcCompat="@drawable/adduser" />
-    </RelativeLayout>
-</LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/btnCadastrar2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/linearLayout"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="24dp"
+        android:clickable="true"
+        android:elevation="10dp"
+        android:padding="10dp"
+        app:fabSize="normal"
+        app:layout_anchorGravity="right"
+        app:srcCompat="@drawable/adduser" />
+
+
+
+
+</RelativeLayout>

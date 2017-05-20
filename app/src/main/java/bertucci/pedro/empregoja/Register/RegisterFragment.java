@@ -39,7 +39,7 @@ public class RegisterFragment extends Fragment  implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_register,container,false);
-
+        getActivity().setTitle("Trabalho ja - Cadastro Usuario");
         initViews(view);
 
         return view;
@@ -47,7 +47,7 @@ public class RegisterFragment extends Fragment  implements View.OnClickListener{
 
     private void initViews(View view){
 
-        btn_register = (FloatingActionButton)view.findViewById(R.id.btnCadastrar);
+        btn_register = (FloatingActionButton)view.findViewById(R.id.btnCadastrar1);
         et_name = (EditText)view.findViewById(R.id.et_name);
         et_email = (EditText)view.findViewById(R.id.et_email);
         et_password = (EditText)view.findViewById(R.id.et_password);
@@ -66,7 +66,7 @@ public class RegisterFragment extends Fragment  implements View.OnClickListener{
         switch (v.getId()){
 
 
-            case R.id.btnCadastrar:
+            case R.id.btnCadastrar1:
 
                 String name = et_name.getText().toString();
                 String sobrenome = et_sobrenome.getText().toString();
