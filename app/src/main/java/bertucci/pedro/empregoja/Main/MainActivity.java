@@ -9,7 +9,7 @@ import android.os.Bundle;
 import bertucci.pedro.empregoja.Login.LoginFragment;
 import bertucci.pedro.empregoja.R;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  {
 
     private SharedPreferences pref;
 

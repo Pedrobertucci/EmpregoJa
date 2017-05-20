@@ -136,8 +136,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
             public void onFailure(Call<ServerResponse> call, Throwable t) {
 
                 progress.setVisibility(View.INVISIBLE);
-                Log.d(Constants.TAG,"FALECEU");
-                    Snackbar.make(getView(), t.getLocalizedMessage(), Snackbar.LENGTH_LONG).show();
+                Snackbar.make(getView(), "Ops! verifique sua Conexao!", Snackbar.LENGTH_LONG).show();
 
             }
         });

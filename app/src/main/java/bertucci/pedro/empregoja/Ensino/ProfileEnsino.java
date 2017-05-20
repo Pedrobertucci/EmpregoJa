@@ -65,7 +65,7 @@ public class ProfileEnsino extends Fragment implements View.OnClickListener {
         View view = inflater.inflate(R.layout.fragment_ensino,container,false);
 
         spinner = (Spinner)view.findViewById(R.id.et_grau);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, ensino);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.textview, ensino);
 
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(

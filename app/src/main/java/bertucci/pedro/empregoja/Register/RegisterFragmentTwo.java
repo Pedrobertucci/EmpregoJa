@@ -2,6 +2,12 @@ package bertucci.pedro.empregoja.Register;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.Context;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,6 +19,10 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
 
 import bertucci.pedro.empregoja.Login.LoginFragment;
 import bertucci.pedro.empregoja.R;
@@ -26,27 +36,48 @@ import retrofit2.Callback;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class RegisterFragmentTwo extends Fragment  implements View.OnClickListener{
+public class RegisterFragmentTwo extends Fragment  implements View.OnClickListener {
 
     private FloatingActionButton btnCadastrar;
-    private EditText et_email,et_password,et_name, et_sobrenome;
+    private EditText et_cidade,et_estado;
     private TextView tv_login;
     private ProgressBar progress;
+    Context context;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_register_second,container,false);
         initViews(view);
-
-
-
         return view;
     }
 
 
-    private void initViews(View view){
 
+
+    private void initViews(View view){
+        btnCadastrar = (FloatingActionButton)view.findViewById(R.id.btnCadastrar);
+        et_cidade = (EditText)view.findViewById(R.id.et_cidade);
+
+
+        progress = (ProgressBar)view.findViewById(R.id.progress);
+
+        Geocoder geoCoder = new Geocoder(getActivity(), Locale.getDefault());
+
+        try {
+            List<Address> addresses = geoCoder.getFromLocation(-29.7649764, -50.0289451, 1);
+
+
+            if (addresses.size() > 0)
+            {
+                et_cidade.setText(addresses.get(0).getLocality());
+            }
+
+
+        }
+        catch (IOException e1) {
+            e1.printStackTrace();
+        }
 
     }
 
@@ -58,7 +89,7 @@ public class RegisterFragmentTwo extends Fragment  implements View.OnClickListen
 
 
             case R.id.btnCadastrar:
-
+                /*
                 String name = et_name.getText().toString();
                 String sobrenome = et_sobrenome.getText().toString();
                 String email = et_email.getText().toString();
@@ -72,7 +103,7 @@ public class RegisterFragmentTwo extends Fragment  implements View.OnClickListen
                 } else {
 
                     Snackbar.make(getView(), "Os campos estão vazios!", Snackbar.LENGTH_LONG).show();
-                }
+                }*/
                 break;
 
         }
