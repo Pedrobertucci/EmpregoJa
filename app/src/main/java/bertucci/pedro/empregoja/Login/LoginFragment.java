@@ -44,6 +44,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_login,container,false);
+        getActivity().setTitle(R.string.app_name);
         initViews(view);
         return view;
     }
@@ -146,15 +147,10 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
 
         Fragment register = new RegisterFragment();
         FragmentTransaction ft = getFragmentManager().beginTransaction();
+        ft.addToBackStack(null);
         ft.replace(R.id.fragment_frame,register);
         ft.commit();
     }
 
-    private void goToProfile(){
 
-        Intent intent = new Intent(getActivity(), MainProfile.class);
-        startActivity(intent);
-
-
-    }
 }

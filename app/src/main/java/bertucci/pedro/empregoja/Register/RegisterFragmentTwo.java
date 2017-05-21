@@ -51,7 +51,7 @@ public class RegisterFragmentTwo extends Fragment  implements View.OnClickListen
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_register_second,container,false);
-        getActivity().setTitle("Trabalho ja - Dados Pessoais");
+        getActivity().setTitle("Contrata Já - Dados Pessoais");
         initViews(view);
         return view;
     }
@@ -171,12 +171,12 @@ public class RegisterFragmentTwo extends Fragment  implements View.OnClickListen
                 "Nunc eros mauris, vehicula non fermentum ut, egestas ut urna. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam risus ex, sodales et metus et, interdum vulputate lacus. Donec non nisl vel massa consequat ultricies vel et lectus. Phasellus iaculis eget nisl nec tempor. Mauris ullamcorper massa nec nisl finibus, a egestas neque fermentum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi ac molestie neque. Nulla purus ex, feugiat eget ipsum sit amet, aliquet lacinia est. Sed dictum aliquet dui, vitae sollicitudin neque semper vel. In libero leo, sollicitudin a leo vel, suscipit sagittis felis. Cras nisl enim, tincidunt ac varius eu, gravida et augue. Nullam diam dolor, mollis ut nunc nec, faucibus tempus ex.\n" +
                 "\n" +
                 "Nulla facilisi. Morbi mi sapien, aliquam non nibh quis, fermentum tempor risus. Maecenas fringilla pellentesque felis. Fusce commodo felis nibh, sed blandit felis accumsan vitae. Praesent tellus lorem, faucibus ut dolor a, rutrum suscipit ipsum. Etiam finibus non metus mollis gravida. Morbi in arcu at magna bibendum ullamcorper. Donec finibus justo nec felis consectetur ultricies. Donec pretium pretium enim id mattis. Curabitur aliquet purus eget enim finibus, at cursus nisi ullamcorper.");
-        builder.setPositiveButton("Positivo", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("Concordo", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface arg0, int arg1) {
               //PASSA DADOS AQUI PARA registerProcess
             }
         });
-        builder.setNegativeButton("Negativo", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("Nao Concordo", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface arg0, int arg1) {
               //NAO DEIXA SE CADASTRAR;
             }

@@ -15,8 +15,9 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="91dp"
-        android:layout_height="80dp"
+        android:layout_width="119dp"
+        android:layout_height="70sp"
+        android:layout_gravity="clip_horizontal"
         app:srcCompat="@drawable/userpremium" />
 
     <RelativeLayout

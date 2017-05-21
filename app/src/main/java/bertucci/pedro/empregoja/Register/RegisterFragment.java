@@ -30,7 +30,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RegisterFragment extends Fragment  implements View.OnClickListener{
 
     private FloatingActionButton btn_register;
-    private EditText et_email,et_password,et_name, et_sobrenome;
+    private EditText et_email,et_password,et_password2,et_name, et_sobrenome;
     private TextView tv_login;
     private ProgressBar progress;
 
@@ -39,7 +39,7 @@ public class RegisterFragment extends Fragment  implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_register,container,false);
-        getActivity().setTitle("Trabalho ja - Cadastro Usuario");
+        getActivity().setTitle("Contrata Já - Cadastro Usuario");
         initViews(view);
 
         return view;
@@ -51,6 +51,7 @@ public class RegisterFragment extends Fragment  implements View.OnClickListener{
         et_name = (EditText)view.findViewById(R.id.et_name);
         et_email = (EditText)view.findViewById(R.id.et_email);
         et_password = (EditText)view.findViewById(R.id.et_password);
+        et_password2 = (EditText)view.findViewById(R.id.et_password2);
         et_sobrenome = (EditText)view.findViewById(R.id.et_sobrenome);
         progress = (ProgressBar)view.findViewById(R.id.progress);
         btn_register.setOnClickListener(this);
@@ -72,11 +73,21 @@ public class RegisterFragment extends Fragment  implements View.OnClickListener{
                 String sobrenome = et_sobrenome.getText().toString();
                 String email = et_email.getText().toString();
                 String password = et_password.getText().toString();
-
-                 if(!name.isEmpty() && !sobrenome.isEmpty() && !email.isEmpty() && !password.isEmpty()) {
+                String password2 = et_password2.getText().toString();
+                 if(!name.isEmpty() && !sobrenome.isEmpty() && !email.isEmpty() && !password.isEmpty() && !password2.isEmpty()) {
 
                      if(password.length()>= 6){
-                         progress.setVisibility(View.VISIBLE);
+                         if(password.equals(password2)){
+                             progress.setVisibility(View.VISIBLE);
+                             Fragment register = new RegisterFragmentTwo();
+                             FragmentTransaction ft = getFragmentManager().beginTransaction();
+                             ft.addToBackStack(null);
+                             ft.replace(R.id.fragment_frame,register);
+                             ft.commit();
+                         }else{
+                             Snackbar.make(getView(), "Senhas nao sao iguais!", Snackbar.LENGTH_LONG).show();
+                         }
+
                          /* registerProcess(name,sobrenome,email,password);
 
                          Bundle bundle = new Bundle();
@@ -87,10 +98,7 @@ public class RegisterFragment extends Fragment  implements View.OnClickListener{
 
                          register.setArguments(bundle);*/
 
-                         Fragment register = new RegisterFragmentTwo();
-                         FragmentTransaction ft = getFragmentManager().beginTransaction();
-                         ft.replace(R.id.fragment_frame,register);
-                         ft.commit();
+
 
                      }else{
                          Snackbar.make(getView(), "Senha a partir de 6 caracteres!", Snackbar.LENGTH_LONG).show();

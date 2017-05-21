@@ -35,7 +35,7 @@ implements NavigationView.OnNavigationItemSelectedListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_profile);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Emprego Já");
+        toolbar.setTitle(R.string.app_name);
         toolbar.setSubtitle("Encontre o seu emprego agora!");
         setSupportActionBar(toolbar);
 
