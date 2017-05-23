@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import bertucci.pedro.empregoja.Dados.MainDados;
+import bertucci.pedro.empregoja.Empregos.MainEmpregos;
 import bertucci.pedro.empregoja.Ensino.MainEnsino;
 import bertucci.pedro.empregoja.R;
 
@@ -122,8 +123,12 @@ implements NavigationView.OnNavigationItemSelectedListener {
                 startActivity(intent);
                 break;
 
-            case R.id.nav_candidatura:
-
+            case R.id.nav_empregos:
+                Bundle bundle3 = new Bundle();
+                bundle3.putString("parametro", unique_id);
+                Intent intent3 = new Intent(this, MainEmpregos.class);
+                intent3.putExtras(bundle3);
+                startActivity(intent3);
                 break;
 
             case R.id.nav_sair:

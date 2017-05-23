@@ -89,14 +89,14 @@ public class ProfileList extends Fragment  implements View.OnClickListener{
     }
 
     public void declara(View v){
-        btnCadastrar = (FloatingActionButton) v.findViewById(R.id.btnCadastarEnsino);
+        btnCadastrar = (FloatingActionButton) v.findViewById(R.id.btnCadastarEnsino1);
         btnCadastrar.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.btnCadastarEnsino:
+            case R.id.btnCadastarEnsino1:
                 profileEnsino();
                 break;
         }

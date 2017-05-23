@@ -127,7 +127,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
                     bundle.putString(Constants.UNIQUE_ID,resp.getUser().getUnique_id());
                     in.putExtras(bundle);
                     startActivity(in);
-                    getActivity().finish();
+
 
                 }
                 progress.setVisibility(View.INVISIBLE);

@@ -10,8 +10,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import bertucci.pedro.empregoja.Login.LoginFragment;
@@ -33,6 +37,14 @@ public class RegisterFragment extends Fragment  implements View.OnClickListener{
     private EditText et_email,et_password,et_password2,et_name, et_sobrenome;
     private TextView tv_login;
     private ProgressBar progress;
+    Spinner spinner;
+    private String genero;
+
+    String[] Sexo = {
+            "Selecione o Genero",
+            "Feminino",
+            "Masculino"};
+
 
 
     @Override
@@ -40,13 +52,34 @@ public class RegisterFragment extends Fragment  implements View.OnClickListener{
 
         View view = inflater.inflate(R.layout.fragment_register,container,false);
         getActivity().setTitle("Contrata Já - Cadastro Usuario");
-        initViews(view);
 
+        spinner = (Spinner)view.findViewById(R.id.et_sexo);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.textview, Sexo);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(
+                new AdapterView.OnItemSelectedListener() {
+
+                    @Override
+                    public void onItemSelected(AdapterView<?> arg0, View arg1,
+                                               int arg2, long arg3) {
+                        int position = spinner.getSelectedItemPosition();
+                        genero = Sexo[position];
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> arg0) {
+                        // TODO Auto-generated method stub
+
+                    }
+
+                }
+        );
+        initViews(view);
         return view;
     }
 
-    private void initViews(View view){
 
+    private void initViews(View view){
         btn_register = (FloatingActionButton)view.findViewById(R.id.btnCadastrar1);
         et_name = (EditText)view.findViewById(R.id.et_name);
         et_email = (EditText)view.findViewById(R.id.et_email);
@@ -55,18 +88,12 @@ public class RegisterFragment extends Fragment  implements View.OnClickListener{
         et_sobrenome = (EditText)view.findViewById(R.id.et_sobrenome);
         progress = (ProgressBar)view.findViewById(R.id.progress);
         btn_register.setOnClickListener(this);
-
-
-
     }
 
 
     @Override
     public void onClick(View v) {
-
         switch (v.getId()){
-
-
             case R.id.btnCadastrar1:
 
                 String name = et_name.getText().toString();
@@ -74,20 +101,26 @@ public class RegisterFragment extends Fragment  implements View.OnClickListener{
                 String email = et_email.getText().toString();
                 String password = et_password.getText().toString();
                 String password2 = et_password2.getText().toString();
-                 if(!name.isEmpty() && !sobrenome.isEmpty() && !email.isEmpty() && !password.isEmpty() && !password2.isEmpty()) {
 
-                     if(password.length()>= 6){
-                         if(password.equals(password2)){
-                             progress.setVisibility(View.VISIBLE);
-                             Fragment register = new RegisterFragmentTwo();
-                             FragmentTransaction ft = getFragmentManager().beginTransaction();
-                             ft.addToBackStack(null);
-                             ft.replace(R.id.fragment_frame,register);
-                             ft.commit();
-                         }else{
-                             Snackbar.make(getView(), "Senhas nao sao iguais!", Snackbar.LENGTH_LONG).show();
-                         }
+                if(!name.isEmpty() && !sobrenome.isEmpty() && !email.isEmpty() && !password.isEmpty() && !password2.isEmpty()) {
+                    if (genero.equals("Selecione o Genero")) {
+                        Snackbar.make(getView(), "Genero nao selecionado", Snackbar.LENGTH_LONG).show();
+                    } else {
 
+                        if (password.length() >= 6) {
+                            if (password.equals(password2)) {
+                                progress.setVisibility(View.VISIBLE);
+                                Fragment register = new RegisterFragmentTwo();
+                                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                                ft.addToBackStack(null);
+                                ft.replace(R.id.fragment_frame, register);
+                                ft.commit();
+                            } else {
+                                Snackbar.make(getView(), "Senhas nao sao iguais!", Snackbar.LENGTH_LONG).show();
+                            }
+                        }else{
+                                Snackbar.make(getView(), "Senha a partir de 6 caracteres!", Snackbar.LENGTH_LONG).show();
+                            }
                          /* registerProcess(name,sobrenome,email,password);
 
                          Bundle bundle = new Bundle();
@@ -99,16 +132,14 @@ public class RegisterFragment extends Fragment  implements View.OnClickListener{
                          register.setArguments(bundle);*/
 
 
-
-                     }else{
-                         Snackbar.make(getView(), "Senha a partir de 6 caracteres!", Snackbar.LENGTH_LONG).show();
-                     }
-
-
-                } else {
-
+                    }
+                }else{
                     Snackbar.make(getView(), "Os campos estão vazios!", Snackbar.LENGTH_LONG).show();
                 }
+
+
+
+
 
 
         }

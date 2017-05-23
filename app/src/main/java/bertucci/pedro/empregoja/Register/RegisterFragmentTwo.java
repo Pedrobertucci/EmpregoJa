@@ -1,5 +1,6 @@
 package bertucci.pedro.empregoja.Register;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Context;
@@ -12,14 +13,18 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.AppCompatButton;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +33,7 @@ import java.util.List;
 import java.util.Locale;
 
 import bertucci.pedro.empregoja.Login.LoginFragment;
+import bertucci.pedro.empregoja.Manifest;
 import bertucci.pedro.empregoja.R;
 import bertucci.pedro.empregoja.interfaces.RequestInterface;
 import bertucci.pedro.empregoja.models.Constants;
@@ -47,6 +53,37 @@ public class RegisterFragmentTwo extends Fragment  implements View.OnClickListen
     private ProgressBar progress;
     Context context;
     private AlertDialog alerta;
+    private Location location;
+    private LocationManager locationManager;
+    Spinner spinner;
+    private String area;
+
+    String[] areas = {
+            "Selecione uma area",
+            "Administrador",
+            "Advogado",
+            "Assistente Financeiro",
+            "Atendente Comercial",
+            "Auxiliar Administrativo",
+            "Biólogo",
+            "Consultor de Vendas",
+            "Diarista",
+            "Doméstica",
+            "Eletrotécnico",
+            "Enfermeiro",
+            "Entregador",
+            "Estágio",
+            "Farmacêutico",
+            "Garçom",
+            "Motoboy",
+            " Professor",
+            " Programador",
+            " Recepcionista",
+            " Técnico em Informatica",
+            " Téc em Segurança do Trabalho",
+            " Vendedor Externo",
+            " Vendedor Interno"};
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -62,7 +99,6 @@ public class RegisterFragmentTwo extends Fragment  implements View.OnClickListen
     private void initViews(View view){
         btn_Cadastrar2 = (FloatingActionButton)view.findViewById(R.id.btnCadastrar2);
         et_cidade = (EditText)view.findViewById(R.id.et_cidade);
-        btn_Cadastrar2.setOnClickListener(this);
         Geocoder geoCoder = new Geocoder(getActivity(), Locale.getDefault());
         try {
             List<Address> addresses = geoCoder.getFromLocation(-29.7649764, -50.0289451, 1);
@@ -74,6 +110,32 @@ public class RegisterFragmentTwo extends Fragment  implements View.OnClickListen
             e1.printStackTrace();
         }
 
+        spinner = (Spinner)view.findViewById(R.id.et_area);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.textview, areas);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(
+                new AdapterView.OnItemSelectedListener() {
+
+                    @Override
+                    public void onItemSelected(AdapterView<?> arg0, View arg1,
+                                               int arg2, long arg3) {
+                        int position = spinner.getSelectedItemPosition();
+                        area = areas[position];
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> arg0) {
+                        // TODO Auto-generated method stub
+
+                    }
+
+                }
+        );
+
+
+
+
+        btn_Cadastrar2.setOnClickListener(this);
     }
 
 

@@ -7,123 +7,145 @@
     android:weightSum="1">
 
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/btnCadastrar2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="33dp"
-        android:id="@+id/linearLayout">
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="40dp">
-
-            <EditText
-                android:id="@+id/et_cidade"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableRight="@drawable/ic_user"
-                android:hint="Cidade"
-                android:inputType="textPersonName" />
-
-        </android.support.design.widget.TextInputLayout>
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp">
-
-            <EditText
-                android:id="@+id/et_salarial"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableRight="@drawable/ic_mail"
-                android:hint="Pretençao salarial"
-                android:inputType="numberDecimal" />
-
-        </android.support.design.widget.TextInputLayout>
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp">
-
-            <EditText
-                android:id="@+id/et_rg"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableRight="@drawable/ic_mail"
-                android:hint="RG"
-                android:inputType="number" />
-
-        </android.support.design.widget.TextInputLayout>
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp">
-
-            <EditText
-                android:id="@+id/et_cpf"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableRight="@drawable/ic_mail"
-                android:hint="CPF"
-                android:inputType="number" />
-
-        </android.support.design.widget.TextInputLayout>
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp">
-            <EditText
-                android:id="@+id/et_telefone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableRight="@drawable/ic_mail"
-                android:hint="Telefone"
-                android:inputType="number" />
-
-        </android.support.design.widget.TextInputLayout>
-    </LinearLayout>
-
-
-
-
-        <ProgressBar
-            android:id="@+id/progress"
-            style="@style/Base.Widget.AppCompat.ProgressBar"
-            android:layout_width="77dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.30"
-            android:indeterminate="true"
-            android:visibility="invisible"
-            android:layout_alignBottom="@+id/btnCadastrar2"
-            android:layout_centerHorizontal="true" />
-
-
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/btnCadastrar2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/linearLayout"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="24dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="false"
+        android:layout_gravity="center_vertical|start"
+        android:layout_marginBottom="16sp"
+        android:layout_marginRight="16sp"
         android:clickable="true"
-        android:elevation="10dp"
-        android:padding="10dp"
-        app:fabSize="normal"
-        app:layout_anchorGravity="right"
+        android:elevation="10sp"
+        android:padding="10sp"
+        app:elevation="6sp"
+        app:layout_anchorGravity="top|end"
         app:srcCompat="@drawable/adduser" />
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="40sp"
+            android:layout_marginRight="40sp"
+            android:layout_marginTop="0dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8sp"
+                android:layout_marginTop="15sp">
+
+                <EditText
+                    android:id="@+id/et_cidade"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@drawable/ic_user"
+                    android:hint="Cidade"
+                    android:inputType="textPersonName" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8sp"
+                android:layout_marginTop="8sp">
+
+                <EditText
+                    android:id="@+id/et_salarial"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@drawable/ic_mail"
+                    android:hint="Pretençao salarial"
+                    android:inputType="numberDecimal" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8sp"
+                android:layout_marginTop="8sp">
+
+                <EditText
+                    android:id="@+id/et_rg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@drawable/ic_mail"
+                    android:hint="RG"
+                    android:inputType="number" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8sp"
+                android:layout_marginTop="8sp">
+
+                <EditText
+                    android:id="@+id/et_cpf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@drawable/ic_mail"
+                    android:hint="CPF"
+                    android:inputType="number" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8sp"
+                android:layout_marginTop="8sp">
+
+                <EditText
+                    android:id="@+id/et_telefone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@drawable/ic_mail"
+                    android:hint="Telefone"
+                    android:inputType="number" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8sp"
+                android:layout_marginTop="8sp">
+
+                <Spinner
+                    android:id="@+id/et_area"
+                    android:layout_width="match_parent"
+                    android:layout_height="40sp"
+                    android:layout_alignEnd="@+id/et_area"
+                    android:layout_alignStart="@+id/et_area"
+                    android:layout_below="@+id/et_area"
+                    android:textSize="30sp" />
+            </android.support.design.widget.TextInputLayout>
+
+            <ProgressBar
+                android:id="@+id/progress"
+                style="@style/Base.Widget.AppCompat.ProgressBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/btnCadastrar2"
+                android:layout_weight="0.30"
+                android:indeterminate="true"
+                android:visibility="invisible" />
+        </LinearLayout>
+    </ScrollView>
 
 
 </RelativeLayout>

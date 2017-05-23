@@ -106,6 +106,7 @@ public class ProfileEnsino extends Fragment implements View.OnClickListener {
     private void initViews(View view){
 
         btnCadastraEnsino = (FloatingActionButton)view.findViewById(R.id.btnCadastraEnsino);
+
         et_instituicao = (EditText)view.findViewById(R.id.et_instituicao);
         et_area =  (EditText)view.findViewById(R.id.et_area);
         et_anoInicio = (EditText)view.findViewById(R.id.et_anoIncio);

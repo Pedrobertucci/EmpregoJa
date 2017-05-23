@@ -36,15 +36,18 @@
         </android.support.v7.widget.RecyclerView>
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/btnCadastarEnsino"
+            android:id="@+id/btnCadastarEnsino1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/relativeLayout"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="17dp"
-            android:layout_toEndOf="@+id/textView2"
-            android:clickable="true"
-            app:elevation="4dp"
-            app:fabSize="normal"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="16sp"
+            android:layout_marginRight="16sp"
+            android:layout_weight="1"
+            android:clickable="false"
+            app:elevation="0dp"
             app:srcCompat="@drawable/add" />
 
     </RelativeLayout>

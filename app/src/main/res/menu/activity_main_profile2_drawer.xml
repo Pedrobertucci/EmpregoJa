@@ -12,7 +12,7 @@
             android:icon="@drawable/meuensino"
             android:title="Meus ensinos" />
         <item
-            android:id="@+id/nav_myemprego"
+            android:id="@+id/nav_empregos"
             android:icon="@drawable/emprego"
             android:title="Meus empregos" />
         <item
