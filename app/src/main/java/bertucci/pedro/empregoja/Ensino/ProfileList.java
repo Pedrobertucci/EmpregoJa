@@ -31,6 +31,8 @@ public class ProfileList extends Fragment  implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 
+        getActivity().setTitle("Contrata Ja - Meus Ensinos");
+
         unique_id = getArguments().getString("parametro");
 
         View view = inflater.inflate(R.layout.fragment_listaestudo,container,false);
