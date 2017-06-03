@@ -26,6 +26,7 @@ import bertucci.pedro.empregoja.models.ServerResponse;
 import bertucci.pedro.empregoja.models.ServerRequest;
 import bertucci.pedro.empregoja.models.User;
 
+import bertucci.pedro.empregoja.models.Usuarios;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Retrofit;
@@ -155,11 +156,11 @@ public class RegisterFragment extends Fragment  implements View.OnClickListener{
 
         RequestInterface requestInterface = retrofit.create(RequestInterface.class);
 
-        User user = new User();
-        user.setName(name);
+        Usuarios user = new Usuarios();
+      /*  user.setName(name);
         user.setSobrenome(sobrenome);
         user.setEmail(email);
-        user.setPassword(password);
+        user.setPassword(password);*/
 
         ServerRequest request = new ServerRequest();
         request.setOperation(Constants.REGISTER_OPERATION);

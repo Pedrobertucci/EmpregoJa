@@ -162,7 +162,6 @@ public class ProfileEnsino extends Fragment implements View.OnClickListener {
         RequestInterface requestInterface = retrofit.create(RequestInterface.class);
 
         Ensino ensino = new Ensino();
-        ensino.setUnique_id(unique_id);
         ensino.setInstituicao(instituicao);
         ensino.setGrau(grau);
         ensino.setAreaEstudo(areaEstudo);

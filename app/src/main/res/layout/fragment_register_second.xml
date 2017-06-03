@@ -45,14 +45,14 @@
                 android:layout_marginBottom="8sp"
                 android:layout_marginTop="15sp">
 
-                <EditText
-                    android:id="@+id/et_cidade"
+                <Spinner
+                    android:id="@+id/spinnerEstado"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:drawableRight="@drawable/ic_user"
-                    android:hint="Cidade"
-                    android:inputType="textPersonName" />
-
+                    android:layout_height="40sp"
+                    android:layout_alignEnd="@+id/et_area"
+                    android:layout_alignStart="@+id/et_area"
+                    android:layout_below="@+id/et_area"
+                    android:textSize="30sp" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout

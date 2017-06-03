@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import bertucci.pedro.empregoja.R;
 import bertucci.pedro.empregoja.Register.RegisterFragment;
@@ -25,6 +26,7 @@ import bertucci.pedro.empregoja.models.ServerRequest;
 import bertucci.pedro.empregoja.models.User;
 
 import bertucci.pedro.empregoja.Main.MainProfile;
+import bertucci.pedro.empregoja.models.Usuarios;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Retrofit;
@@ -95,6 +97,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
     }
     private void loginProcess(String email,String password){
 
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Constants.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -102,12 +105,12 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
 
         RequestInterface requestInterface = retrofit.create(RequestInterface.class);
 
-        User user = new User();
-        user.setEmail(email);
-        user.setPassword(password);
+        Usuarios usuario = new Usuarios();
+        usuario.setEmail_usuario(email);
+        usuario.setSenha_usuario(password);
         ServerRequest request = new ServerRequest();
-        request.setOperation(Constants.LOGIN_OPERATION);
-        request.setUser(user);
+            request.setOperation(Constants.LOGIN_USUARIO);
+        request.setUser(usuario);
         Call<ServerResponse> response = requestInterface.operation(request);
 
         response.enqueue(new Callback<ServerResponse>() {
@@ -119,14 +122,17 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
 
                 if(resp.getResult().equals(Constants.SUCCESS)){
 
+                    Toast toast = Toast.makeText(getActivity(),"Nome:"+resp.getUsuario().getNome_usuario()+"" +
+                            " Email: "+resp.getUsuario().getEmail_usuario()+" ", Toast.LENGTH_LONG);
+                    toast.show();
 
-                    Intent in = new Intent(getActivity(), MainProfile.class);
+                    /*Intent in = new Intent(getActivity(), MainProfile.class);
                     Bundle bundle = new Bundle();
-                    bundle.putString(Constants.NAME,resp.getUser().getName());
+                    bundle.putString(Constants.NAME,resp.getUsuario().getNome_usuario());
                     bundle.putString(Constants.EMAIL,resp.getUser().getEmail());
                     bundle.putString(Constants.UNIQUE_ID,resp.getUser().getUnique_id());
                     in.putExtras(bundle);
-                    startActivity(in);
+                    startActivity(in);*/
 
 
                 }

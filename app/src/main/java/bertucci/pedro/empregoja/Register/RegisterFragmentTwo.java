@@ -10,6 +10,7 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -40,6 +41,7 @@ import bertucci.pedro.empregoja.models.Constants;
 import bertucci.pedro.empregoja.models.ServerRequest;
 import bertucci.pedro.empregoja.models.ServerResponse;
 import bertucci.pedro.empregoja.models.User;
+import bertucci.pedro.empregoja.models.Usuarios;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Retrofit;
@@ -178,11 +180,11 @@ public class RegisterFragmentTwo extends Fragment  implements View.OnClickListen
 
         RequestInterface requestInterface = retrofit.create(RequestInterface.class);
 
-        User user = new User();
-        user.setName(name);
+        Usuarios user = new Usuarios();
+        /*user.set(name);
         user.setSobrenome(sobrenome);
         user.setEmail(email);
-        user.setPassword(password);
+        user.setPassword(password);*/
 
         ServerRequest request = new ServerRequest();
         request.setOperation(Constants.REGISTER_OPERATION);
@@ -210,13 +212,7 @@ public class RegisterFragmentTwo extends Fragment  implements View.OnClickListen
         });
     }
 
-    private void goToLogin(){
 
-        Fragment login = new LoginFragment();
-        FragmentTransaction ft = getFragmentManager().beginTransaction();
-        ft.replace(R.id.fragment_frame,login);
-        ft.commit();
-    }
 
     private void alert() {
 
@@ -246,4 +242,5 @@ public class RegisterFragmentTwo extends Fragment  implements View.OnClickListen
         alerta = builder.create();
         alerta.show();
     }
+
 }

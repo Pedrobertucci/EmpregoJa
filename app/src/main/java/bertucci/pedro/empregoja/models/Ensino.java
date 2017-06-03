@@ -12,7 +12,7 @@ public class Ensino {
     public String anoInicio;
     public String semestreFinal;
     public String anoFinal;
-    public String unique_id;
+    public String id_usuario;
 
     public String getInstituicao() {
         return instituicao;
@@ -70,12 +70,12 @@ public class Ensino {
         this.anoFinal = anoFinal;
     }
 
-    public String getUnique_id() {
-        return unique_id;
+    public String getId_usuario() {
+        return id_usuario;
     }
 
-    public void setUnique_id(String unique_id) {
-        this.unique_id = unique_id;
+    public void setId_usuario(String id_usuario) {
+        this.id_usuario = id_usuario;
     }
 }
 

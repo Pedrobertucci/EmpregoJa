@@ -5,14 +5,14 @@ package bertucci.pedro.empregoja.models;
  */
 
 public class Constants {
-    public static final String BASE_URL = "http://softcond.com/";
-    public static final String REGISTER_OPERATION = "register";
+    public static final String BASE_URL = "http://192.168.1.110:8080";
 
+    public static final String REGISTER_OPERATION = "register";
     public static final String CADASTRA_USUARIO = "addUsuario";
     public static final String LOGIN_USUARIO = "login";
 
 
-    public static final String LOGIN_OPERATION = "login";
+
     public static final String CHANGE_PASSWORD_OPERATION = "chgPass";
 
     public static final String REGISTER_OPERATION_STUDENT = "registerEnsino";

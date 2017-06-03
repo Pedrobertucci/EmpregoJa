@@ -7,7 +7,7 @@ package bertucci.pedro.empregoja.models;
 public class ServerResponse {
     private String result;
     private String message;
-    private User user;
+    private Usuarios usuario;
 
     public String getResult() {
         return result;
@@ -17,7 +17,9 @@ public class ServerResponse {
         return message;
     }
 
-    public User getUser() {
-        return user;
+    public Usuarios getUsuario() {
+        return usuario;
     }
+
+
 }
