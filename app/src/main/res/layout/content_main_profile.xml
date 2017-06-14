@@ -7,13 +7,14 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="bertucci.pedro.empregoja.Main.MainProfile"
     tools:showIn="@layout/app_bar_main_profile">
+
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/card_recycler_view"
+        android:id="@+id/recycler_emprego"
         android:layout_width="match_parent"
 
         android:layout_height="match_parent"
-        android:scrollbars="vertical"
-        android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="54dp" />
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="54dp"
+        android:scrollbars="vertical" />
 </RelativeLayout>

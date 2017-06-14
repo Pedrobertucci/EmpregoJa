@@ -8,16 +8,23 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import bertucci.pedro.empregoja.Dados.MainDados;
+import bertucci.pedro.empregoja.Empregos.EmpregosList;
 import bertucci.pedro.empregoja.Empregos.MainEmpregos;
 import bertucci.pedro.empregoja.Ensino.MainEnsino;
 import bertucci.pedro.empregoja.R;
@@ -26,7 +33,7 @@ public class MainProfile extends AppCompatActivity
 implements NavigationView.OnNavigationItemSelectedListener {
     private SharedPreferences pref;
 
-
+    private ArrayList empregosList;
     private TextView nome;
     private TextView email;
     private String id_usuario;
@@ -64,6 +71,20 @@ implements NavigationView.OnNavigationItemSelectedListener {
         email.setText(mail);
 
 
+
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_emprego);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+        recyclerView.setLayoutManager(layoutManager);
+        empregosList = new ArrayList<>();
+        empregosList.add("Programador HTML5");
+        empregosList.add("Programador Android");
+        empregosList.add("TI e Ar-condicionado");
+        empregosList.add("TI e Torradeira");
+        empregosList.add("TI e Forninho");
+        RecyclerView.Adapter adapter = new DataAdapterEmpregos(empregosList);
+        recyclerView.setAdapter(adapter);
+
+
     }
 
     @Override
@@ -80,6 +101,10 @@ implements NavigationView.OnNavigationItemSelectedListener {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        MenuItem search = menu.findItem(R.id.id_busca);
+
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(search);
         return true;
     }
 
