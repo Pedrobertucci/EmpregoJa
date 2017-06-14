@@ -6,14 +6,14 @@ package bertucci.pedro.empregoja.models;
 
 public class ServerRequest {
     private String operation;
-    private Usuarios usuario;
+    private Usuario usuario;
     private Ensino ensino;
 
     public void setOperation(String operation) {
         this.operation = operation;
     }
 
-    public void setUser(Usuarios usuario) {
+    public void setUser(Usuario usuario) {
         this.usuario = usuario;
     }
 

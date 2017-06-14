@@ -8,7 +8,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.AppCompatButton;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,16 +16,15 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import bertucci.pedro.empregoja.Main.MainProfile;
 import bertucci.pedro.empregoja.R;
 import bertucci.pedro.empregoja.Register.RegisterFragment;
 import bertucci.pedro.empregoja.interfaces.RequestInterface;
 import bertucci.pedro.empregoja.models.Constants;
 import bertucci.pedro.empregoja.models.ServerResponse;
 import bertucci.pedro.empregoja.models.ServerRequest;
-import bertucci.pedro.empregoja.models.User;
 
-import bertucci.pedro.empregoja.Main.MainProfile;
-import bertucci.pedro.empregoja.models.Usuarios;
+import bertucci.pedro.empregoja.models.Usuario;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Retrofit;
@@ -105,9 +103,9 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
 
         RequestInterface requestInterface = retrofit.create(RequestInterface.class);
 
-        Usuarios usuario = new Usuarios();
-        usuario.setEmail_usuario(email);
-        usuario.setSenha_usuario(password);
+        Usuario usuario = new Usuario();
+        usuario.setEmail(email);
+        usuario.setSenha(password);
         ServerRequest request = new ServerRequest();
             request.setOperation(Constants.LOGIN_USUARIO);
         request.setUser(usuario);
@@ -122,17 +120,17 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
 
                 if(resp.getResult().equals(Constants.SUCCESS)){
 
-                    Toast toast = Toast.makeText(getActivity(),"Nome:"+resp.getUsuario().getNome_usuario()+"" +
-                            " Email: "+resp.getUsuario().getEmail_usuario()+" ", Toast.LENGTH_LONG);
-                    toast.show();
+                    /*Toast toast = Toast.makeText(getActivity(),"Nome:"+resp.getUsuario().getNome_usuario()+"" +
+                            " Email: "+resp.getUsuario().getEmail()+" ", Toast.LENGTH_LONG);
+                    toast.show();*/
 
-                    /*Intent in = new Intent(getActivity(), MainProfile.class);
+                    Intent in = new Intent(getActivity(), MainProfile.class);
                     Bundle bundle = new Bundle();
-                    bundle.putString(Constants.NAME,resp.getUsuario().getNome_usuario());
-                    bundle.putString(Constants.EMAIL,resp.getUser().getEmail());
-                    bundle.putString(Constants.UNIQUE_ID,resp.getUser().getUnique_id());
+                    bundle.putString("nome",resp.getUsuario().getNome());
+                    bundle.putString("email",resp.getUsuario().getEmail());
+                    bundle.putString("id_usuario",resp.getUsuario().getId_usuario());
                     in.putExtras(bundle);
-                    startActivity(in);*/
+                    startActivity(in);
 
 
                 }
@@ -143,7 +141,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
             public void onFailure(Call<ServerResponse> call, Throwable t) {
 
                 progress.setVisibility(View.INVISIBLE);
-                Snackbar.make(getView(), "Ops! verifique sua Conexao!", Snackbar.LENGTH_LONG).show();
+                Snackbar.make(getView(),  t.getLocalizedMessage(), Snackbar.LENGTH_LONG).show();
 
             }
         });

@@ -5,7 +5,7 @@ package bertucci.pedro.empregoja.models;
  */
 
 public class Constants {
-    public static final String BASE_URL = "http://192.168.1.110:8080";
+    public static final String BASE_URL = "http://10.0.2.2:80/trabalhoja/api/";
 
     public static final String REGISTER_OPERATION = "register";
     public static final String CADASTRA_USUARIO = "addUsuario";
@@ -20,7 +20,7 @@ public class Constants {
     public static final String DELETA_ENSINO = "deleteEnsino";
 
     public static final String SUCCESS = "success";
-    public static final String FAILURE = "failure";
+    public static final String ERROR = "Error";
     public static final String IS_LOGGED_IN = "isLoggedIn";
 
     public static final String NAME = "name";

@@ -1,47 +1,45 @@
 package bertucci.pedro.empregoja.Register;
 
-import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.app.Fragment;
-import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
-import android.location.LocationListener;
 import android.location.LocationManager;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.AppCompatButton;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
-import bertucci.pedro.empregoja.Login.LoginFragment;
-import bertucci.pedro.empregoja.Manifest;
 import bertucci.pedro.empregoja.R;
 import bertucci.pedro.empregoja.interfaces.RequestInterface;
+import bertucci.pedro.empregoja.interfaces.RequestInterfaceAddUser;
+import bertucci.pedro.empregoja.mascaras.Mask;
+import bertucci.pedro.empregoja.models.Areas;
 import bertucci.pedro.empregoja.models.Constants;
 import bertucci.pedro.empregoja.models.ServerRequest;
 import bertucci.pedro.empregoja.models.ServerResponse;
-import bertucci.pedro.empregoja.models.User;
-import bertucci.pedro.empregoja.models.Usuarios;
+import bertucci.pedro.empregoja.models.Usuario;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Retrofit;
@@ -50,93 +48,70 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RegisterFragmentTwo extends Fragment  implements View.OnClickListener {
 
     private FloatingActionButton btn_Cadastrar2;
-    private EditText et_cidade,et_estado;
+    private EditText et_cep, et_cpf, et_rg, et_telefone,et_presetencao, et_nascimento;
     private TextView tv_login;
     private ProgressBar progress;
     Context context;
     private AlertDialog alerta;
-    private Location location;
-    private LocationManager locationManager;
-    Spinner spinner;
-    private String area;
-
-    String[] areas = {
-            "Selecione uma area",
-            "Administrador",
-            "Advogado",
-            "Assistente Financeiro",
-            "Atendente Comercial",
-            "Auxiliar Administrativo",
-            "Biólogo",
-            "Consultor de Vendas",
-            "Diarista",
-            "Doméstica",
-            "Eletrotécnico",
-            "Enfermeiro",
-            "Entregador",
-            "Estágio",
-            "Farmacêutico",
-            "Garçom",
-            "Motoboy",
-            " Professor",
-            " Programador",
-            " Recepcionista",
-            " Técnico em Informatica",
-            " Téc em Segurança do Trabalho",
-            " Vendedor Externo",
-            " Vendedor Interno"};
+    private String nome,sobrenome,sexo,senha,email;
+    private int Ano, Mes, Dia;
+    Calendar myCalendar = Calendar.getInstance();
 
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_register_second,container,false);
-        getActivity().setTitle("Contrata Já - Dados Pessoais");
-        initViews(view);
-        return view;
-    }
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+            View view = inflater.inflate(R.layout.fragment_register_second,container,false);
+            getActivity().setTitle("Contrata Já - Dados Pessoais");
+            Bundle bundle = new Bundle();
+            bundle = getArguments();
+            email = bundle.getString("email");
+            nome = bundle.getString("nome");
+            sobrenome = bundle.getString("sobrenome");
+            sexo = bundle.getString("genero");
+            senha = bundle.getString("password");
+            initViews(view);
+            return view;
+        }
 
 
 
 
     private void initViews(View view){
+
+
         btn_Cadastrar2 = (FloatingActionButton)view.findViewById(R.id.btnCadastrar2);
-        et_cidade = (EditText)view.findViewById(R.id.et_cidade);
-        Geocoder geoCoder = new Geocoder(getActivity(), Locale.getDefault());
-        try {
-            List<Address> addresses = geoCoder.getFromLocation(-29.7649764, -50.0289451, 1);
-            if (addresses.size() > 0){
-                et_cidade.setText(addresses.get(0).getLocality());
+
+        et_cep = (EditText) view.findViewById(R.id.et_cep);
+        et_presetencao = (EditText) view.findViewById(R.id.et_presencao);
+        et_cpf = (EditText) view.findViewById(R.id.et_cpf);
+        et_rg  = (EditText)  view.findViewById(R.id.et_rg);
+        et_nascimento = (EditText) view.findViewById(R.id.et_nascimento);
+        et_telefone = (EditText) view.findViewById(R.id.et_telefone);
+
+        et_cep.addTextChangedListener(Mask.insert(Mask.CEP, et_cep));
+        et_cpf.addTextChangedListener(Mask.insert(Mask.CPF, et_cpf));
+        et_telefone.addTextChangedListener(Mask.insert(Mask.CELULAR_MASK, et_telefone));
+        et_nascimento.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Calendar mcurrentDate=Calendar.getInstance();
+                Ano=mcurrentDate.get(Calendar.YEAR);
+                Mes=mcurrentDate.get(Calendar.MONTH);
+                Dia=mcurrentDate.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog mDatePicker=new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
+                    public void onDateSet(DatePicker datepicker, int selectedyear, int selectedmonth, int selectedday) {
+                        et_nascimento.setText(selectedday+"/"+selectedmonth+"/"+selectedyear);
+
+                    }
+                },Ano, Mes, Dia);
+                mDatePicker.setTitle("Selecione sua data de Nascimento");
+                mDatePicker.show();
             }
-        }
-        catch (IOException e1) {
-            e1.printStackTrace();
-        }
-
-        spinner = (Spinner)view.findViewById(R.id.et_area);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.textview, areas);
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(
-                new AdapterView.OnItemSelectedListener() {
-
-                    @Override
-                    public void onItemSelected(AdapterView<?> arg0, View arg1,
-                                               int arg2, long arg3) {
-                        int position = spinner.getSelectedItemPosition();
-                        area = areas[position];
-                    }
-
-                    @Override
-                    public void onNothingSelected(AdapterView<?> arg0) {
-                        // TODO Auto-generated method stub
-
-                    }
-
-                }
-        );
 
 
-
-
+        });
         btn_Cadastrar2.setOnClickListener(this);
     }
 
@@ -150,61 +125,62 @@ public class RegisterFragmentTwo extends Fragment  implements View.OnClickListen
             case R.id.btnCadastrar2:
 
                 alert();
-                /*
-                String name = et_name.getText().toString();
-                String sobrenome = et_sobrenome.getText().toString();
-                String email = et_email.getText().toString();
-                String password = et_password.getText().toString();
-
-                 if(!name.isEmpty() && !sobrenome.isEmpty() && !email.isEmpty() && !password.isEmpty()) {
-
-                    progress.setVisibility(View.VISIBLE);
-                    registerProcess(name,sobrenome,email,password);
-
-                } else {
-
-                    Snackbar.make(getView(), "Os campos estão vazios!", Snackbar.LENGTH_LONG).show();
-                }*/
                 break;
 
         }
 
     }
 
-    private void registerProcess(String name, String sobrenome, String email ,String password){
+    private void updateLabel() {
+
+        String myFormat = "MM/dd/yy"; //In which you need put here
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+
+        et_nascimento.setText(sdf.format(myCalendar.getTime()));
+    }
+
+    private void registerProcess(String nome, String sobrenome, String email ,String senha, String cep, String rg, String cpf, String telefone, String pretencao, String sexo,String nascimento){
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Constants.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        RequestInterface requestInterface = retrofit.create(RequestInterface.class);
+        RequestInterfaceAddUser requestInterface = retrofit.create(RequestInterfaceAddUser.class);
 
-        Usuarios user = new Usuarios();
-        /*user.set(name);
-        user.setSobrenome(sobrenome);
-        user.setEmail(email);
-        user.setPassword(password);*/
-
+        Usuario usuario = new Usuario();
+        usuario.setNome(nome);
+        usuario.setSobrenome(sobrenome);
+        usuario.setSexo(sexo);
+        usuario.setEmail(email);
+        usuario.setSenha(senha);
+        usuario.setCep(cep);
+        usuario.setRg(rg);
+        usuario.setCpf(cpf);
+        usuario.setPretencao(pretencao);
+        usuario.setNascimento(nascimento);
+        usuario.setTelefone(telefone);
         ServerRequest request = new ServerRequest();
-        request.setOperation(Constants.REGISTER_OPERATION);
-        request.setUser(user);
+        request.setOperation(Constants.CADASTRA_USUARIO);
+        request.setUser(usuario);
         Call<ServerResponse> response = requestInterface.operation(request);
 
         response.enqueue(new Callback<ServerResponse>() {
             @Override
             public void onResponse(Call<ServerResponse> call, retrofit2.Response<ServerResponse> response) {
 
-                ServerResponse resp = response.body();
+                 ServerResponse resp = response.body();
+
                 Snackbar.make(getView(), resp.getMessage(), Snackbar.LENGTH_LONG).show();
-                progress.setVisibility(View.INVISIBLE);
+
+
             }
 
             @Override
             public void onFailure(Call<ServerResponse> call, Throwable t) {
 
-                progress.setVisibility(View.INVISIBLE);
-                Log.d(Constants.TAG,"Errou");
+
+
                 Snackbar.make(getView(), t.getLocalizedMessage(), Snackbar.LENGTH_LONG).show();
 
 
@@ -217,7 +193,7 @@ public class RegisterFragmentTwo extends Fragment  implements View.OnClickListen
     private void alert() {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle("Termos e Condiçoes");
+        builder.setTitle("Termos e Condições");
         builder.setMessage("Duis iaculis id nisi a vestibulum. Proin et posuere leo, pulvinar varius turpis. Morbi ornare ligula a tortor pulvinar, eu mattis felis consequat. In ac posuere tellus. Nunc sodales metus id nisl laoreet, ut vestibulum risus scelerisque. Maecenas pharetra gravida ligula in rutrum. Nullam commodo ornare accumsan. Phasellus libero nibh, bibendum a eros vel, suscipit pharetra lorem.\n" +
                 "\n" +
                 "Integer in ipsum nisi. Integer hendrerit aliquam urna nec tincidunt. Praesent eleifend tellus non augue sagittis commodo. Aliquam non bibendum erat, ac tristique orci. Ut mauris nisl, eleifend eu rhoncus at, porta sit amet felis. Aliquam venenatis, nulla ut egestas pellentesque, quam elit viverra ante, at pulvinar ante leo a mi. Mauris sed pharetra tortor. In mollis justo justo, a condimentum odio blandit in. Praesent ut fermentum sem. Nunc leo nulla, tincidunt a molestie vel, vulputate at tortor. Nullam nec fringilla est, quis dignissim ligula. Vivamus feugiat erat vel nunc blandit, id tincidunt sem porttitor. Etiam dolor nunc, scelerisque et mollis eget, congue quis felis. Donec rutrum finibus tortor vel fringilla. Etiam vel lacus a magna elementum vehicula.\n" +
@@ -232,6 +208,32 @@ public class RegisterFragmentTwo extends Fragment  implements View.OnClickListen
         builder.setPositiveButton("Concordo", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface arg0, int arg1) {
               //PASSA DADOS AQUI PARA registerProcess
+
+
+                String cep = et_cep.getText().toString();
+                String pretencao = et_presetencao.getText().toString();
+                String rg = et_rg.getText().toString();
+                String cpf = et_cpf.getText().toString();
+                String nascimento = et_nascimento.getText().toString();
+                String telefone = et_telefone.getText().toString();
+
+                if(!cep.isEmpty() && !rg.isEmpty() && !cpf.isEmpty() && !telefone.isEmpty()) {
+                    if(rg.length() == 10){
+                        if(cpf.length() == 14){
+                            //progress.setVisibility(View.VISIBLE);
+                            registerProcess(nome,sobrenome,email,senha,cep,rg,cpf,telefone,pretencao,sexo,nascimento);
+                        }else{
+                            Snackbar.make(getView(), "Digite CPF por completo!", Snackbar.LENGTH_LONG).show();
+                        }
+                    }else{
+                        Snackbar.make(getView(), "Digite RG por completo!", Snackbar.LENGTH_LONG).show();
+                    }
+
+
+                } else {
+
+                    Snackbar.make(getView(), "Os campos estão vazios!", Snackbar.LENGTH_LONG).show();
+                }
             }
         });
         builder.setNegativeButton("Nao Concordo", new DialogInterface.OnClickListener() {

@@ -5,14 +5,12 @@ import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v7.widget.AppCompatButton;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
@@ -24,9 +22,8 @@ import bertucci.pedro.empregoja.interfaces.RequestInterface;
 import bertucci.pedro.empregoja.models.Constants;
 import bertucci.pedro.empregoja.models.ServerResponse;
 import bertucci.pedro.empregoja.models.ServerRequest;
-import bertucci.pedro.empregoja.models.User;
 
-import bertucci.pedro.empregoja.models.Usuarios;
+import bertucci.pedro.empregoja.models.Usuario;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Retrofit;
@@ -54,7 +51,23 @@ public class RegisterFragment extends Fragment  implements View.OnClickListener{
         View view = inflater.inflate(R.layout.fragment_register,container,false);
         getActivity().setTitle("Contrata Já - Cadastro Usuario");
 
+
+        initViews(view);
+        return view;
+    }
+
+
+    private void initViews(View view){
+        btn_register = (FloatingActionButton)view.findViewById(R.id.btnCadastrar1);
+        et_name = (EditText)view.findViewById(R.id.et_name);
+        et_email = (EditText)view.findViewById(R.id.et_email);
+        et_password = (EditText)view.findViewById(R.id.et_password);
+        et_password2 = (EditText)view.findViewById(R.id.et_password2);
+        et_sobrenome = (EditText)view.findViewById(R.id.et_sobrenome);
         spinner = (Spinner)view.findViewById(R.id.et_sexo);
+        progress = (ProgressBar)view.findViewById(R.id.progress);
+        btn_register.setOnClickListener(this);
+
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.textview, Sexo);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(
@@ -75,20 +88,6 @@ public class RegisterFragment extends Fragment  implements View.OnClickListener{
 
                 }
         );
-        initViews(view);
-        return view;
-    }
-
-
-    private void initViews(View view){
-        btn_register = (FloatingActionButton)view.findViewById(R.id.btnCadastrar1);
-        et_name = (EditText)view.findViewById(R.id.et_name);
-        et_email = (EditText)view.findViewById(R.id.et_email);
-        et_password = (EditText)view.findViewById(R.id.et_password);
-        et_password2 = (EditText)view.findViewById(R.id.et_password2);
-        et_sobrenome = (EditText)view.findViewById(R.id.et_sobrenome);
-        progress = (ProgressBar)view.findViewById(R.id.progress);
-        btn_register.setOnClickListener(this);
     }
 
 
@@ -113,6 +112,13 @@ public class RegisterFragment extends Fragment  implements View.OnClickListener{
                                 progress.setVisibility(View.VISIBLE);
                                 Fragment register = new RegisterFragmentTwo();
                                 FragmentTransaction ft = getFragmentManager().beginTransaction();
+                                Bundle bundle = new Bundle();
+                                bundle.putString("nome", name);
+                                bundle.putString("sobrenome", sobrenome);
+                                bundle.putString("email",email);
+                                bundle.putString("genero",this.genero);
+                                bundle.putString("password",password);
+                                register.setArguments(bundle);
                                 ft.addToBackStack(null);
                                 ft.replace(R.id.fragment_frame, register);
                                 ft.commit();
@@ -122,15 +128,10 @@ public class RegisterFragment extends Fragment  implements View.OnClickListener{
                         }else{
                                 Snackbar.make(getView(), "Senha a partir de 6 caracteres!", Snackbar.LENGTH_LONG).show();
                             }
-                         /* registerProcess(name,sobrenome,email,password);
 
-                         Bundle bundle = new Bundle();
-                         bundle.putString("name", name);
-                         bundle.putString("sobrenome", sobrenome);
-                         bundle.putString("email",email);
-                         bundle.putString("password",password);
 
-                         register.setArguments(bundle);*/
+
+
 
 
                     }
@@ -156,7 +157,7 @@ public class RegisterFragment extends Fragment  implements View.OnClickListener{
 
         RequestInterface requestInterface = retrofit.create(RequestInterface.class);
 
-        Usuarios user = new Usuarios();
+        Usuario user = new Usuario();
       /*  user.setName(name);
         user.setSobrenome(sobrenome);
         user.setEmail(email);

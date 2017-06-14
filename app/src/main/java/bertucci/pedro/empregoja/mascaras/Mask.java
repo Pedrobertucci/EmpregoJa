@@ -10,10 +10,11 @@ import android.widget.EditText;
 
 public abstract class Mask {
 
-    public static String CPF_MASK       = "###.###.###-##";
     public static String CELULAR_MASK   = "(##) #####-####";
     public static String CEP_MASK       = "#####-###";
     public static String TCP_IP         = "####.####.####.####:####";
+    public static String CEP            = "#####-###";
+    public static String CPF            = "###.###.###-##";
 
     public static String unmask(String s) {
         return s.replaceAll("[.]", "").replaceAll("[-]", "")
