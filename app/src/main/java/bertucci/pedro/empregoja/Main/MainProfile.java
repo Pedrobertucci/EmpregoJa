@@ -29,7 +29,7 @@ implements NavigationView.OnNavigationItemSelectedListener {
 
     private TextView nome;
     private TextView email;
-    private String unique_id;
+    private String id_usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +42,9 @@ implements NavigationView.OnNavigationItemSelectedListener {
 
         Bundle params = getIntent().getExtras();
 
-        String username= params.getString("name");
+        String username= params.getString("nome");
         String mail = params.getString("email");
-        unique_id = params.getString("unique_id");
+        id_usuario = params.getString("id_usuario");
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -109,7 +109,7 @@ implements NavigationView.OnNavigationItemSelectedListener {
         switch (itemId) {
             case R.id.nav_dados:
                 Bundle bundle2 = new Bundle();
-                bundle2.putString("parametro", unique_id);
+                bundle2.putString("parametro", id_usuario);
                 Intent intent2 = new Intent(this, MainDados.class);
                 intent2.putExtras(bundle2);
                 startActivity(intent2);
@@ -117,7 +117,7 @@ implements NavigationView.OnNavigationItemSelectedListener {
 
             case R.id.nav_ensino:
                 Bundle bundle = new Bundle();
-                bundle.putString("parametro", unique_id);
+                bundle.putString("parametro", id_usuario);
                 Intent intent = new Intent(this, MainEnsino.class);
                 intent.putExtras(bundle);
                 startActivity(intent);
@@ -125,7 +125,7 @@ implements NavigationView.OnNavigationItemSelectedListener {
 
             case R.id.nav_empregos:
                 Bundle bundle3 = new Bundle();
-                bundle3.putString("parametro", unique_id);
+                bundle3.putString("parametro", id_usuario);
                 Intent intent3 = new Intent(this, MainEmpregos.class);
                 intent3.putExtras(bundle3);
                 startActivity(intent3);

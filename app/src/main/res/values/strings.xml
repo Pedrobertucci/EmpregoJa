@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Contrata Já</string>
+    <string name="app_name">Trabalho Já</string>
     <string name="title_activity_main_empregos">MainActivityEmpregos</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -11,6 +11,7 @@
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
 
+    <string name="Busca">Buscar...</string>
     <string-array name="array_estados">
         <item>RS</item>
         <item>SC</item>
@@ -34,29 +35,4 @@
         <item>Doutorado</item>
     </string>
 
-    <string name="array_areas">
-       <item>Administrador </item>
-        <item>Advogado</item>
-        <item>Assistente Financeiro	</item>
-        <item>Atendente Comercial</item>
-        <item>Auxiliar Administrativo	</item>
-        <item>Biólogo </item>
-        <item>Consultor de Vendas</item>
-        <item>Diarista</item>
-        <item>Doméstica</item>
-        <item>Eletrotécnico	</item>
-        <item>Enfermeiro	</item>
-        <item>Entregador</item>
-        <item>Estágio</item>
-        <item>Farmacêutico</item>
-        <item>Garçom</item>
-        <item>Motoboy</item>
-        <item> Professor</item>
-        <item> Programador</item>
-        <item> Recepcionista</item>
-        <item> Técnico em Informatica</item>
-        <item> Técnico em Segurança do Trabalho</item>
-        <item> Vendedor Externo</item>
-        <item> Vendedor Interno</item>
-    </string>
 </resources>

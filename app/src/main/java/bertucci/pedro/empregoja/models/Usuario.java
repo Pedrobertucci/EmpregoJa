@@ -6,9 +6,9 @@ package bertucci.pedro.empregoja.models;
 
 public class Usuario {
     private String id_usuario;
-    private String nome;
-    private String sobrenome;
-    private String email;
+    private String nome_usuario;
+    private String sobrenome_usuario;
+    private String email_usuario;
     private String senha;
     private String rg;
     private String cpf;
@@ -27,28 +27,28 @@ public class Usuario {
         this.id_usuario = id_usuario;
     }
 
-    public String getNome() {
-        return nome;
+    public String getNome_usuario() {
+        return nome_usuario;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNome_usuario(String nome_usuario) {
+        this.nome_usuario = nome_usuario;
     }
 
-    public String getSobrenome() {
-        return sobrenome;
+    public String getSobrenome_usuario() {
+        return sobrenome_usuario;
     }
 
-    public void setSobrenome(String sobrenome) {
-        this.sobrenome = sobrenome;
+    public void setSobrenome_usuario(String sobrenome_usuario) {
+        this.sobrenome_usuario = sobrenome_usuario;
     }
 
-    public String getEmail() {
-        return email;
+    public String getEmail_usuario() {
+        return email_usuario;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmail_usuario(String email_usuario) {
+        this.email_usuario = email_usuario;
     }
 
     public String getSenha() {

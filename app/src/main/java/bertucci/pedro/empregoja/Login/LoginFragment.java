@@ -27,6 +27,7 @@ import bertucci.pedro.empregoja.models.ServerRequest;
 import bertucci.pedro.empregoja.models.Usuario;
 import retrofit2.Call;
 import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -104,12 +105,12 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
         RequestInterface requestInterface = retrofit.create(RequestInterface.class);
 
         Usuario usuario = new Usuario();
-        usuario.setEmail(email);
+        usuario.setEmail_usuario(email);
         usuario.setSenha(password);
         ServerRequest request = new ServerRequest();
             request.setOperation(Constants.LOGIN_USUARIO);
         request.setUser(usuario);
-        Call<ServerResponse> response = requestInterface.operation(request);
+        final Call<ServerResponse> response = requestInterface.operation(request);
 
         response.enqueue(new Callback<ServerResponse>() {
             @Override
@@ -120,14 +121,10 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
 
                 if(resp.getResult().equals(Constants.SUCCESS)){
 
-                    /*Toast toast = Toast.makeText(getActivity(),"Nome:"+resp.getUsuario().getNome_usuario()+"" +
-                            " Email: "+resp.getUsuario().getEmail()+" ", Toast.LENGTH_LONG);
-                    toast.show();*/
-
                     Intent in = new Intent(getActivity(), MainProfile.class);
                     Bundle bundle = new Bundle();
-                    bundle.putString("nome",resp.getUsuario().getNome());
-                    bundle.putString("email",resp.getUsuario().getEmail());
+                    bundle.putString("nome",resp.getUsuario().getNome_usuario());
+                    bundle.putString("email",resp.getUsuario().getEmail_usuario());
                     bundle.putString("id_usuario",resp.getUsuario().getId_usuario());
                     in.putExtras(bundle);
                     startActivity(in);
@@ -139,10 +136,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
 
             @Override
             public void onFailure(Call<ServerResponse> call, Throwable t) {
-
                 progress.setVisibility(View.INVISIBLE);
-                Snackbar.make(getView(),  t.getLocalizedMessage(), Snackbar.LENGTH_LONG).show();
-
+                Snackbar.make(getView(), "Ops Verifique seu Usuario e Senha", Snackbar.LENGTH_LONG).show();
             }
         });
     }

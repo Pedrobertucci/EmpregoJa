@@ -149,10 +149,10 @@ public class RegisterFragmentTwo extends Fragment  implements View.OnClickListen
         RequestInterfaceAddUser requestInterface = retrofit.create(RequestInterfaceAddUser.class);
 
         Usuario usuario = new Usuario();
-        usuario.setNome(nome);
-        usuario.setSobrenome(sobrenome);
+        usuario.setNome_usuario(nome);
+        usuario.setSobrenome_usuario(sobrenome);
         usuario.setSexo(sexo);
-        usuario.setEmail(email);
+        usuario.setEmail_usuario(email);
         usuario.setSenha(senha);
         usuario.setCep(cep);
         usuario.setRg(rg);
@@ -163,13 +163,13 @@ public class RegisterFragmentTwo extends Fragment  implements View.OnClickListen
         ServerRequest request = new ServerRequest();
         request.setOperation(Constants.CADASTRA_USUARIO);
         request.setUser(usuario);
-        Call<ServerResponse> response = requestInterface.operation(request);
+        final Call<ServerResponse> response = requestInterface.operation(request);
 
         response.enqueue(new Callback<ServerResponse>() {
             @Override
             public void onResponse(Call<ServerResponse> call, retrofit2.Response<ServerResponse> response) {
 
-                 ServerResponse resp = response.body();
+                ServerResponse resp = response.body();
 
                 Snackbar.make(getView(), resp.getMessage(), Snackbar.LENGTH_LONG).show();
 
@@ -179,11 +179,7 @@ public class RegisterFragmentTwo extends Fragment  implements View.OnClickListen
             @Override
             public void onFailure(Call<ServerResponse> call, Throwable t) {
 
-
-
                 Snackbar.make(getView(), t.getLocalizedMessage(), Snackbar.LENGTH_LONG).show();
-
-
             }
         });
     }
