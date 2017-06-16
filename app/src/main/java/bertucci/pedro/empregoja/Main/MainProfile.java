@@ -3,6 +3,7 @@ package bertucci.pedro.empregoja.Main;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -22,22 +24,35 @@ import android.view.View;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import bertucci.pedro.empregoja.Dados.MainDados;
-import bertucci.pedro.empregoja.Empregos.EmpregosList;
 import bertucci.pedro.empregoja.Empregos.MainEmpregos;
 import bertucci.pedro.empregoja.Ensino.MainEnsino;
 import bertucci.pedro.empregoja.R;
+import bertucci.pedro.empregoja.interfaces.RequestInterfaceListaEmpregos;
+import bertucci.pedro.empregoja.models.Constants;
+import bertucci.pedro.empregoja.models.Empregos;
+import bertucci.pedro.empregoja.models.ServerRequest;
+import bertucci.pedro.empregoja.models.ServerResponse;
+import bertucci.pedro.empregoja.models.Usuario;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainProfile extends AppCompatActivity
 implements NavigationView.OnNavigationItemSelectedListener {
     private SharedPreferences pref;
-
+    private ArrayList<Empregos> data;
     private ArrayList empregosList;
     private TextView nome;
     private TextView email;
     private String id_usuario;
-
+    private ProgressDialog progress;
+    private DataAdapterEmpregos adapter;
+    private RecyclerView recyclerView;
+    SwipeRefreshLayout mSwipeRefreshLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +67,18 @@ implements NavigationView.OnNavigationItemSelectedListener {
         String username= params.getString("nome");
         String mail = params.getString("email");
         id_usuario = params.getString("id_usuario");
+        listaEmpregos(id_usuario);
+        mSwipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.swifeRefresh);
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+
+
+            @Override
+            public void onRefresh() {
+                listaEmpregos(id_usuario);
+            }
+        });
+
+
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -72,7 +99,9 @@ implements NavigationView.OnNavigationItemSelectedListener {
 
 
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_emprego);
+
+
+        /*RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_emprego);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
         empregosList = new ArrayList<>();
@@ -83,8 +112,64 @@ implements NavigationView.OnNavigationItemSelectedListener {
         empregosList.add("TI e Forninho");
         RecyclerView.Adapter adapter = new DataAdapterEmpregos(empregosList);
         recyclerView.setAdapter(adapter);
+    */
+
+    }
+
+    private void listaEmpregos(String id_usuario){
+        progress = new ProgressDialog(this, R.style.styleDialogProgress);
+        progress.setTitle("");
+        progress.setMessage("Buscando Empregos...");
+        progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progress.show();
 
 
+
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(Constants.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        RequestInterfaceListaEmpregos requestInterface = retrofit.create(RequestInterfaceListaEmpregos.class);
+
+        Empregos emprego = new Empregos();
+        emprego.setId_usuario(id_usuario);
+
+        ServerRequest request = new ServerRequest();
+        request.setOperation(Constants.LISTA_EMPREGOS);
+        request.setEmprego(emprego);
+        final Call<ServerResponse> response = requestInterface.operation(request);
+
+        response.enqueue(new Callback<ServerResponse>() {
+            @Override
+            public void onResponse(Call<ServerResponse> call, retrofit2.Response<ServerResponse> response) {
+
+                RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_emprego);
+                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+                recyclerView.setLayoutManager(layoutManager);
+                ServerResponse resp = response.body();
+                data = new ArrayList<>(Arrays.asList(resp.getEmprego()));
+                adapter = new DataAdapterEmpregos(data);
+                recyclerView.setAdapter(adapter);
+
+                if(resp.getResult().equals(Constants.SUCCESS)){
+                progress.dismiss();
+
+                }
+                mSwipeRefreshLayout.setRefreshing(false);
+            }
+
+            @Override
+            public void onFailure(Call<ServerResponse> call, Throwable t) {
+                progress.dismiss();
+                System.out.println("errou");
+            }
+
+
+
+
+        });
     }
 
     @Override
@@ -105,7 +190,27 @@ implements NavigationView.OnNavigationItemSelectedListener {
         MenuItem search = menu.findItem(R.id.id_busca);
 
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(search);
+
+            search(searchView);
         return true;
+    }
+
+    private void search(SearchView searchView) {
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+                adapter.getFilter().filter(newText);
+                return true;
+            }
+        });
     }
 
     @Override

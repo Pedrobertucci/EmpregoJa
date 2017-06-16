@@ -8,13 +8,22 @@
     tools:context="bertucci.pedro.empregoja.Main.MainProfile"
     tools:showIn="@layout/app_bar_main_profile">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_emprego"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swifeRefresh"
         android:layout_width="match_parent"
-
         android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="54dp"
-        android:scrollbars="vertical" />
+        android:layout_marginTop="50dp">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_emprego"
+            android:layout_width="match_parent"
+
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="60dp"
+            android:scrollbars="vertical" />
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+
 </RelativeLayout>

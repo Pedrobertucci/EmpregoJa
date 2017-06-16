@@ -10,12 +10,13 @@ public class Constants {
     public static final String REGISTER_OPERATION = "register";
     public static final String CADASTRA_USUARIO = "addUsuario";
     public static final String LOGIN_USUARIO = "login";
-
+    public static final String LISTA_EMPREGOS = "listaEmpregos";
+    public static final String REGISTER_OPERATION_STUDENT = "registerEnsino";
 
 
     public static final String CHANGE_PASSWORD_OPERATION = "chgPass";
 
-    public static final String REGISTER_OPERATION_STUDENT = "registerEnsino";
+
     public static final String ATUALIZACAO_STUDENT = "atualizaEnsino";
     public static final String DELETA_ENSINO = "deleteEnsino";
 

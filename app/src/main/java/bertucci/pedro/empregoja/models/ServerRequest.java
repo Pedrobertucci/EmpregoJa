@@ -8,6 +8,7 @@ public class ServerRequest {
     private String operation;
     private Usuario usuario;
     private Ensino ensino;
+    private Empregos emprego;
 
     public void setOperation(String operation) {
         this.operation = operation;
@@ -20,5 +21,8 @@ public class ServerRequest {
     public void setEnsino(Ensino ensino){
         this.ensino = ensino;
     }
+
+    public void setEmprego(Empregos emprego){ this.emprego = emprego;}
+
 
 }
