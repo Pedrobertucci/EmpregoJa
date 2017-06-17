@@ -61,12 +61,14 @@
             android:paddingTop="10dp"
             android:text="Nome Empresa" />
 
-        <ImageView
+        <bertucci.pedro.empregoja.mascaras.RoundedImageView
             android:id="@+id/imagem_perfil"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentStart="true"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="10dp"
             card_view:srcCompat="@drawable/logo" />
 
         <TextView

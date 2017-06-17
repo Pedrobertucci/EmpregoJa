@@ -179,7 +179,7 @@ public class RegisterFragmentTwo extends Fragment  implements View.OnClickListen
             @Override
             public void onFailure(Call<ServerResponse> call, Throwable t) {
 
-                Snackbar.make(getView(), t.getLocalizedMessage(), Snackbar.LENGTH_LONG).show();
+                Snackbar.make(getView(), "Ocorreu um erro inesperado", Snackbar.LENGTH_LONG).show();
             }
         });
     }

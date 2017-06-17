@@ -42,7 +42,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainProfile extends AppCompatActivity
-implements NavigationView.OnNavigationItemSelectedListener {
+implements NavigationView.OnNavigationItemSelectedListener  {
     private SharedPreferences pref;
     private ArrayList<Empregos> data;
     private ArrayList empregosList;
@@ -74,7 +74,7 @@ implements NavigationView.OnNavigationItemSelectedListener {
 
             @Override
             public void onRefresh() {
-                listaEmpregos(id_usuario);
+                atualizaEmprego(id_usuario);
             }
         });
 
@@ -157,6 +157,53 @@ implements NavigationView.OnNavigationItemSelectedListener {
                 progress.dismiss();
 
                 }
+
+            }
+
+            @Override
+            public void onFailure(Call<ServerResponse> call, Throwable t) {
+                progress.dismiss();
+                System.out.println("errou");
+            }
+
+
+
+
+        });
+    }
+
+    private void atualizaEmprego(String id_usuario){
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(Constants.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        RequestInterfaceListaEmpregos requestInterface = retrofit.create(RequestInterfaceListaEmpregos.class);
+
+        Empregos emprego = new Empregos();
+        emprego.setId_usuario(id_usuario);
+
+        ServerRequest request = new ServerRequest();
+        request.setOperation(Constants.LISTA_EMPREGOS);
+        request.setEmprego(emprego);
+        final Call<ServerResponse> response = requestInterface.operation(request);
+
+        response.enqueue(new Callback<ServerResponse>() {
+            @Override
+            public void onResponse(Call<ServerResponse> call, retrofit2.Response<ServerResponse> response) {
+
+                RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_emprego);
+                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+                recyclerView.setLayoutManager(layoutManager);
+                ServerResponse resp = response.body();
+                data = new ArrayList<>(Arrays.asList(resp.getEmprego()));
+                adapter = new DataAdapterEmpregos(data);
+                recyclerView.setAdapter(adapter);
+
+                if(resp.getResult().equals(Constants.SUCCESS)){
+                    progress.dismiss();
+
+                }
                 mSwipeRefreshLayout.setRefreshing(false);
             }
 
@@ -172,6 +219,8 @@ implements NavigationView.OnNavigationItemSelectedListener {
         });
     }
 
+
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -184,14 +233,11 @@ implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
 
         MenuItem search = menu.findItem(R.id.id_busca);
-
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(search);
-
-            search(searchView);
+        search(searchView);
         return true;
     }
 
