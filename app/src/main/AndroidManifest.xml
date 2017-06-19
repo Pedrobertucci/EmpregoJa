@@ -4,7 +4,7 @@
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -42,7 +42,8 @@
 
         <activity android:name=".Ensino.MainEnsino" />
         <activity android:name=".Dados.MainDados" />
-        <activity android:name=".Empregos.MainEmpregos"></activity>
+        <activity android:name=".Empregos.MainEmpregos" />
+        <activity android:name=".MainSplash"></activity>
     </application>
 
 </manifest>

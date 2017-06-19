@@ -98,22 +98,6 @@ implements NavigationView.OnNavigationItemSelectedListener  {
         email.setText(mail);
 
 
-
-
-
-        /*RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_emprego);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerView.setLayoutManager(layoutManager);
-        empregosList = new ArrayList<>();
-        empregosList.add("Programador HTML5");
-        empregosList.add("Programador Android");
-        empregosList.add("TI e Ar-condicionado");
-        empregosList.add("TI e Torradeira");
-        empregosList.add("TI e Forninho");
-        RecyclerView.Adapter adapter = new DataAdapterEmpregos(empregosList);
-        recyclerView.setAdapter(adapter);
-    */
-
     }
 
     private void listaEmpregos(String id_usuario){

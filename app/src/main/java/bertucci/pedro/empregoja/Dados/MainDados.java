@@ -1,19 +1,36 @@
 package bertucci.pedro.empregoja.Dados;
 
 
+import android.app.ProgressDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.EditText;
 import android.widget.TabHost;
 
 import bertucci.pedro.empregoja.R;
 
 public class MainDados extends AppCompatActivity {
+    private ProgressDialog progress;
+    private String id_usuario;
+    private EditText nome,sobrenome,email,senha,repete_senha,cidade,pretencaoSalarial,rg,cpf,telefone;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_dados);
         setTitle("Meus Dados");
+
+        Bundle params = getIntent().getExtras();
+        id_usuario = params.getString("id_usuario");
+
+
+        progress = new ProgressDialog(this, R.style.styleDialogProgress);
+        progress.setTitle("");
+        progress.setMessage("Buscando Dados...");
+        progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progress.show();
+
         TabHost tabHost = (TabHost) findViewById(R.id.tabHost);
         tabHost.setup();
 
