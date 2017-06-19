@@ -107,9 +107,6 @@ implements NavigationView.OnNavigationItemSelectedListener  {
         progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progress.show();
 
-
-
-
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Constants.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())

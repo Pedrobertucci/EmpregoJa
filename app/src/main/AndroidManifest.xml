@@ -43,7 +43,7 @@
         <activity android:name=".Ensino.MainEnsino" />
         <activity android:name=".Dados.MainDados" />
         <activity android:name=".Empregos.MainEmpregos" />
-        <activity android:name=".MainSplash"></activity>
+        <activity android:name=".MainSplash" />
     </application>
 
 </manifest>
