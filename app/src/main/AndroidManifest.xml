@@ -44,6 +44,12 @@
         <activity android:name=".Dados.MainDados" />
         <activity android:name=".Empregos.MainEmpregos" />
         <activity android:name=".MainSplash" />
+
+
+        <activity android:name=".Empregos.MainVaga"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+
     </application>
 
 </manifest>
