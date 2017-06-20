@@ -11,7 +11,7 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/empresa"
+            android:id="@+id/nome_empresa_experiencia"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/cargo"
@@ -35,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_alignStart="@+id/empresa"
+            android:layout_alignStart="@+id/nome_empresa_experiencia"
             android:layout_marginBottom="10dp"
             android:text="Tipo Curso" />
     </RelativeLayout>

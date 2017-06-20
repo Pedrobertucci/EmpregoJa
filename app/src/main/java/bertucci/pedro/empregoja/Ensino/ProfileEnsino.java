@@ -104,11 +104,11 @@ public class ProfileEnsino extends Fragment implements View.OnClickListener {
         btnCadastraEnsino = (FloatingActionButton)view.findViewById(R.id.btnCadastraEnsino);
 
         et_instituicao = (EditText)view.findViewById(R.id.cargo);
-        et_area =  (EditText)view.findViewById(R.id.empresa);
-        et_anoInicio = (EditText)view.findViewById(R.id.mes_inicio);
-        et_semestreInicio = (EditText)view.findViewById(R.id.ano_inicio);
-        et_anoFinal = (EditText)view.findViewById(R.id.mes_final);
-        et_semestreFinal = (EditText)view.findViewById(R.id.mes_final);
+        et_area =  (EditText)view.findViewById(R.id.nome_empresa_experiencia);
+        et_anoInicio = (EditText)view.findViewById(R.id.mes_inicio_experiencia);
+        et_semestreInicio = (EditText)view.findViewById(R.id.ano_inicio_experiencia);
+        et_anoFinal = (EditText)view.findViewById(R.id.mes_final_experiencia);
+        et_semestreFinal = (EditText)view.findViewById(R.id.mes_final_experiencia);
         progress = (ProgressBar)view.findViewById(R.id.progress);
         btnCadastraEnsino.setOnClickListener(this);
 

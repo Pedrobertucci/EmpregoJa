@@ -8,7 +8,7 @@
     android:orientation="horizontal">
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/btnCadastraEnsino"
+        android:id="@+id/btnCadastraExperiencia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/relativeLayout"
@@ -34,47 +34,47 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/empresa"
+                android:layout_below="@+id/nome_empresa_experiencia"
                 android:layout_marginLeft="20sp"
                 android:layout_marginRight="20sp"
-                android:layout_toEndOf="@+id/mes_final"
+                android:layout_toEndOf="@+id/mes_final_experiencia"
                 android:id="@+id/relativeLayout">
 
                 <EditText
-                    android:id="@+id/ano_final"
+                    android:id="@+id/ano_final_experiencia"
                     android:layout_width="150sp"
                     android:layout_height="wrap_content"
-                    android:layout_alignBaseline="@+id/mes_final"
-                    android:layout_alignBottom="@+id/mes_final"
-                    android:layout_alignEnd="@+id/ano_inicio"
+                    android:layout_alignBaseline="@+id/mes_final_experiencia"
+                    android:layout_alignBottom="@+id/mes_final_experiencia"
+                    android:layout_alignEnd="@+id/ano_inicio_experiencia"
                     android:layout_alignParentRight="true"
-                    android:layout_below="@+id/ano_inicio"
+                    android:layout_below="@+id/ano_inicio_experiencia"
                     android:layout_marginTop="20dp"
-                    android:layout_toEndOf="@+id/mes_inicio"
+                    android:layout_toEndOf="@+id/mes_inicio_experiencia"
                     android:layout_weight="1"
                     android:hint="Ano Final"
                     android:inputType="numberDecimal"
-                    android:maxLength="1" />
+                    android:maxLength="4" />
 
                 <EditText
-                    android:id="@+id/mes_final"
+                    android:id="@+id/mes_final_experiencia"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
-                    android:layout_alignStart="@+id/mes_inicio"
-                    android:layout_below="@+id/mes_inicio"
+                    android:layout_alignStart="@+id/mes_inicio_experiencia"
+                    android:layout_below="@+id/mes_inicio_experiencia"
 
                     android:layout_marginTop="20sp"
-                    android:layout_toStartOf="@+id/ano_final"
+                    android:layout_toStartOf="@+id/ano_final_experiencia"
                     android:layout_weight="1"
                     android:hint="Mês Final"
                     android:inputType="numberDecimal"
-                    android:maxLength="4"
+                    android:maxLength="2"
                     tools:layout_editor_absoluteX="188sp"
                     tools:layout_editor_absoluteY="367sp" />
 
                 <EditText
-                    android:id="@+id/mes_inicio"
+                    android:id="@+id/mes_inicio_experiencia"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
@@ -82,20 +82,20 @@
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="false"
                     android:layout_marginTop="20sp"
-                    android:layout_toStartOf="@+id/ano_inicio"
+                    android:layout_toStartOf="@+id/ano_inicio_experiencia"
                     android:layout_weight="1"
                     android:hint="Mês de Inicio"
                     android:inputType="numberDecimal"
-                    android:maxLength="4"
+                    android:maxLength="2"
                     tools:layout_editor_absoluteX="188sp"
                     tools:layout_editor_absoluteY="320sp" />
 
                 <EditText
-                    android:id="@+id/ano_inicio"
+                    android:id="@+id/ano_inicio_experiencia"
                     android:layout_width="150sp"
                     android:layout_height="wrap_content"
-                    android:layout_alignBaseline="@+id/mes_inicio"
-                    android:layout_alignBottom="@+id/mes_inicio"
+                    android:layout_alignBaseline="@+id/mes_inicio_experiencia"
+                    android:layout_alignBottom="@+id/mes_inicio_experiencia"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentTop="true"
@@ -103,14 +103,14 @@
                     android:layout_weight="1"
                     android:hint="Ano Inicio"
                     android:inputType="numberDecimal"
-                    android:maxLength="1" />
+                    android:maxLength="4" />
 
                 <TextView
                     android:id="@+id/textView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
-                    android:layout_below="@+id/ano_final"
+                    android:layout_below="@+id/ano_final_experiencia"
                     android:layout_marginTop="17dp"
                     android:text="Descrição do trabalho"
 
@@ -130,7 +130,7 @@
                 android:inputType="text" />
 
             <EditText
-                android:id="@+id/empresa"
+                android:id="@+id/nome_empresa_experiencia"
                 android:layout_width="368sp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"

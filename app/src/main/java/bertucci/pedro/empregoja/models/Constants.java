@@ -14,10 +14,9 @@ public class Constants {
     public static final String REGISTER_OPERATION_STUDENT = "addEnsino";
     public static final String DADOS_USUARIO = "dadosUsuario";
     public static final String LISTA_ENSINO = "listaEnsino";
-
-
-    public static final String CHANGE_PASSWORD_OPERATION = "chgPass";
-
+    public static final String LISTA_EXPERIENCIA = "listaExperiencia";
+    public static final String REGISTER_EXPERIENCIA_JOBS = "addExperiencia";
+    public static final String VAGA = "dadosVaga";
 
     public static final String ATUALIZACAO_STUDENT = "atualizaEnsino";
     public static final String DELETA_ENSINO = "deleteEnsino";

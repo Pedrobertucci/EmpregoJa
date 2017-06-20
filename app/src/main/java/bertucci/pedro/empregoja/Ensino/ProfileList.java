@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,6 +49,8 @@ public class ProfileList extends Fragment  implements View.OnClickListener{
         View view = inflater.inflate(R.layout.fragment_listaestudo,container,false);
         declara(view);
         listaEmpregos(view,id_usuario);
+
+
         return view;
 
     }

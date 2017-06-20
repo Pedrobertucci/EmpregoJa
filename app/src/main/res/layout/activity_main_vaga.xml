@@ -73,7 +73,7 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/textView8"
+                    android:id="@+id/nome_empresa_vaga"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -106,7 +106,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/tdsada2"
+                    android:id="@+id/nome_cidade_vaga"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"

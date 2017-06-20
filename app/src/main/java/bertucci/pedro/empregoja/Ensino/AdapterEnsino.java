@@ -1,7 +1,9 @@
 package bertucci.pedro.empregoja.Ensino;
 
 import android.support.v7.widget.RecyclerView;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -35,6 +37,8 @@ public class AdapterEnsino extends RecyclerView.Adapter<AdapterEnsino.ViewHolder
         viewHolder.curso.setText(ensinos.get(i).getAreaEstudo());
         viewHolder.faculdade.setText(ensinos.get(i).getInstituicao());
         viewHolder.tipo.setText(ensinos.get(i).getGrau());
+
+
     }
 
     @Override
@@ -42,14 +46,36 @@ public class AdapterEnsino extends RecyclerView.Adapter<AdapterEnsino.ViewHolder
         return ensinos.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener, View.OnClickListener,
+            MenuItem.OnMenuItemClickListener{
         private TextView curso, faculdade, tipo;
         public ViewHolder(View view) {
             super(view);
 
             curso = (TextView)view.findViewById(R.id.cargo);
-            faculdade = (TextView) view.findViewById(R.id.empresa);
+            faculdade = (TextView) view.findViewById(R.id.nome_empresa_experiencia);
             tipo = (TextView) view.findViewById(R.id.inicio);
+
+            itemView.setOnClickListener(this);
+            itemView.setOnCreateContextMenuListener(this);
+        }
+
+        @Override
+        public void onCreateContextMenu(ContextMenu menu, View v,
+                                        ContextMenu.ContextMenuInfo menuInfo) {
+            MenuItem myActionItem = menu.add("Alterar ensino");
+            MenuItem myActionItem2 = menu.add("Deletar ensino");
+            myActionItem.setOnMenuItemClickListener(this);
+        }
+
+        @Override
+        public boolean onMenuItemClick(MenuItem item) {
+            // Menu Item Clicked!
+            return true;
+        }
+
+        @Override
+        public void onClick(View v) {
 
         }
     }

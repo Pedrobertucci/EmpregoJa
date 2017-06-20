@@ -34,7 +34,12 @@ public class AdapterExperiencia extends RecyclerView.Adapter<AdapterExperiencia.
         this.experiencia = experiencia;
     }
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(AdapterExperiencia.ViewHolder viewHolder, int i) {
+
+        viewHolder.cargo.setText(experiencia.get(i).getCargo());
+        viewHolder.nome_empresa.setText(experiencia.get(i).getEmpresa());
+        viewHolder.inicio.setText(experiencia.get(i).getMesInicio()+"/"+experiencia.get(i).getAnoInicio());
+        viewHolder.finalTrabalho.setText(experiencia.get(i).getMesFinal()+"/"+experiencia.get(i).getAnoFinal());
 
     }
 
@@ -50,7 +55,7 @@ public class AdapterExperiencia extends RecyclerView.Adapter<AdapterExperiencia.
             super(view);
 
             cargo = (TextView) view.findViewById(R.id.cargo);
-            nome_empresa = (TextView) view.findViewById(R.id.nome_empresa);
+            nome_empresa = (TextView) view.findViewById(R.id.nome_empresa_experiencia);
             inicio = (TextView) view.findViewById(R.id.inicio);
             finalTrabalho = (TextView) view.findViewById(R.id.finalTrabalho);
         }

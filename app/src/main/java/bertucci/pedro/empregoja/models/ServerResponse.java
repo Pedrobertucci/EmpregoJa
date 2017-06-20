@@ -11,7 +11,7 @@ public class ServerResponse {
     private Empregos[] emprego;
     private Ensino[] ensino;
     private Experiencia[] experiencia;
-
+    private Vaga vaga;
 
     public String getResult() {
         return result;
@@ -25,5 +25,6 @@ public class ServerResponse {
     public Empregos[] getEmprego() {return emprego;}
     public Ensino[] getEnsino(){ return ensino; }
     public Experiencia[] getExperiencia(){return experiencia;}
+    public Vaga getVaga(){return vaga;}
 
 }
