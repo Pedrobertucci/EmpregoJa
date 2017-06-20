@@ -43,13 +43,11 @@
         <activity android:name=".Ensino.MainEnsino" />
         <activity android:name=".Dados.MainDados" />
         <activity android:name=".Empregos.MainEmpregos" />
-        <activity android:name=".MainSplash" />
-
-
-        <activity android:name=".Empregos.MainVaga"
+        <activity android:name=".Main.MainSplash" />
+        <activity
+            android:name=".Empregos.MainVaga"
             android:theme="@style/AppTheme.NoActionBar" />
-
-
+        <activity android:name=".Candidaturas.MainCandidaturas"></activity>
     </application>
 
 </manifest>

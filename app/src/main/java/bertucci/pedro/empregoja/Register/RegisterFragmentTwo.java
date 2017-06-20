@@ -61,7 +61,7 @@ public class RegisterFragmentTwo extends Fragment  implements View.OnClickListen
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             View view = inflater.inflate(R.layout.fragment_register_second,container,false);
-            getActivity().setTitle("Contrata Já - Dados Pessoais");
+            getActivity().setTitle("Dados Pessoais");
             Bundle bundle = new Bundle();
             bundle = getArguments();
             email = bundle.getString("email");

@@ -11,7 +11,9 @@ public class Constants {
     public static final String CADASTRA_USUARIO = "addUsuario";
     public static final String LOGIN_USUARIO = "login";
     public static final String LISTA_EMPREGOS = "listaEmpregos";
-    public static final String REGISTER_OPERATION_STUDENT = "registerEnsino";
+    public static final String REGISTER_OPERATION_STUDENT = "addEnsino";
+    public static final String DADOS_USUARIO = "dadosUsuario";
+    public static final String LISTA_ENSINO = "listaEnsino";
 
 
     public static final String CHANGE_PASSWORD_OPERATION = "chgPass";
@@ -28,5 +30,5 @@ public class Constants {
     public static final String EMAIL = "email";
     public static final String UNIQUE_ID = "unique_id";
 
-    public static final String TAG = "Emprego Já App";
+    public static final String TAG = "Trabalho Já App";
 }

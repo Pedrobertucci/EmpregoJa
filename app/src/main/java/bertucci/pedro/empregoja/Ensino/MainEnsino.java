@@ -21,6 +21,10 @@ public class MainEnsino extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         unique_id = bundle.getString("parametro");
+        if (getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
         initFragment();
     }
 
@@ -34,5 +38,11 @@ public class MainEnsino extends AppCompatActivity {
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         ft.replace(R.id.frame_ensino,fragment);
         ft.commit();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

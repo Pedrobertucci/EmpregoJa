@@ -49,7 +49,7 @@ public class RegisterFragment extends Fragment  implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_register,container,false);
-        getActivity().setTitle("Contrata Já - Cadastro Usuario");
+        getActivity().setTitle("Cadastro Usuario");
 
 
         initViews(view);

@@ -12,7 +12,7 @@ public class Usuario {
     private String senha;
     private String rg;
     private String cpf;
-    private String pretencao;
+    private String pretencaoSalarial;
     private String telefone;
     private String idade;
     private String cep;
@@ -76,11 +76,11 @@ public class Usuario {
     }
 
     public String getPretencao() {
-        return pretencao;
+        return pretencaoSalarial;
     }
 
     public void setPretencao(String pretencao) {
-        this.pretencao = pretencao;
+        this.pretencaoSalarial = pretencao;
     }
 
     public String getTelefone() {

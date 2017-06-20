@@ -94,9 +94,9 @@
                     android:id="@+id/et_sexo"
                     android:layout_width="match_parent"
                     android:layout_height="40sp"
-                    android:layout_alignEnd="@+id/et_area"
-                    android:layout_alignStart="@+id/et_area"
-                    android:layout_below="@+id/et_area"
+                    android:layout_alignEnd="@+id/empresa"
+                    android:layout_alignStart="@+id/empresa"
+                    android:layout_below="@+id/empresa"
                     android:textSize="30sp" />
             </android.support.design.widget.TextInputLayout>
 

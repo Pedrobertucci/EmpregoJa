@@ -29,7 +29,7 @@
                 android:layout_marginTop="70dp">
 
                 <EditText
-                    android:id="@+id/at_name"
+                    android:id="@+id/nome_usuario"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableRight="@drawable/ic_user"
@@ -44,7 +44,7 @@
                 android:layout_marginTop="8dp">
 
                 <EditText
-                    android:id="@+id/at_sobrenome"
+                    android:id="@+id/sobrenome_usuario"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableRight="@drawable/ic_user"
@@ -59,7 +59,7 @@
                 android:layout_marginTop="8dp">
 
                 <EditText
-                    android:id="@+id/at_email"
+                    android:id="@+id/email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableRight="@drawable/ic_mail"
@@ -67,7 +67,9 @@
                     android:inputType="textEmailAddress" />
 
             </android.support.design.widget.TextInputLayout>
+
             <android.support.design.widget.TextInputLayout
+                android:id="@+id/senha1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
@@ -83,7 +85,9 @@
 
 
             </android.support.design.widget.TextInputLayout>
+
             <android.support.design.widget.TextInputLayout
+                android:id="@+id/senha2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
@@ -142,11 +146,11 @@
                 android:layout_marginTop="70dp">
 
                 <EditText
-                    android:id="@+id/et_cidade"
+                    android:id="@+id/cep"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableRight="@drawable/ic_user"
-                    android:hint="Cidade"
+                    android:hint="Cidade - Cep"
                     android:inputType="textPersonName" />
 
             </android.support.design.widget.TextInputLayout>
@@ -157,7 +161,7 @@
                 android:layout_marginTop="8dp">
 
                 <EditText
-                    android:id="@+id/et_salarial"
+                    android:id="@+id/salarial"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableRight="@drawable/ic_mail"
@@ -172,7 +176,7 @@
                 android:layout_marginTop="8dp">
 
                 <EditText
-                    android:id="@+id/et_rg"
+                    android:id="@+id/rg"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableRight="@drawable/ic_mail"
@@ -187,7 +191,7 @@
                 android:layout_marginTop="8dp">
 
                 <EditText
-                    android:id="@+id/et_cpf"
+                    android:id="@+id/cpf"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableRight="@drawable/ic_mail"
@@ -200,8 +204,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="8dp">
+
                 <EditText
-                    android:id="@+id/et_telefone"
+                    android:id="@+id/telefone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableRight="@drawable/ic_mail"

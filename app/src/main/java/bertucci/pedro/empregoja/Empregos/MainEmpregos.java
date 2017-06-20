@@ -21,6 +21,11 @@ public class MainEmpregos extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         unique_id = bundle.getString("parametro");
+        if (getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
+
         initFragment();
     }
 
@@ -33,5 +38,11 @@ public class MainEmpregos extends AppCompatActivity {
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         ft.replace(R.id.frame_emprego,fragment);
         ft.commit();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

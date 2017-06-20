@@ -9,16 +9,17 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import bertucci.pedro.empregoja.R;
+import bertucci.pedro.empregoja.models.Ensino;
 
 /**
  * Created by b_ped on 19/04/2017.
  */
 
 public class AdapterEnsino extends RecyclerView.Adapter<AdapterEnsino.ViewHolder> {
-    private ArrayList<String> countries;
+    private ArrayList<Ensino> ensinos;
 
-    public AdapterEnsino(ArrayList<String> countries) {
-        this.countries = countries;
+    public AdapterEnsino(ArrayList<Ensino> ensinos) {
+        this.ensinos = ensinos;
     }
 
     @Override
@@ -31,20 +32,25 @@ public class AdapterEnsino extends RecyclerView.Adapter<AdapterEnsino.ViewHolder
 
     @Override
     public void onBindViewHolder(AdapterEnsino.ViewHolder viewHolder, int i) {
-        viewHolder.tv_country.setText(countries.get(i));
+        viewHolder.curso.setText(ensinos.get(i).getAreaEstudo());
+        viewHolder.faculdade.setText(ensinos.get(i).getInstituicao());
+        viewHolder.tipo.setText(ensinos.get(i).getGrau());
     }
 
     @Override
     public int getItemCount() {
-        return countries.size();
+        return ensinos.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        private TextView tv_country;
+        private TextView curso, faculdade, tipo;
         public ViewHolder(View view) {
             super(view);
 
-            tv_country = (TextView)view.findViewById(R.id.tv_country);
+            curso = (TextView)view.findViewById(R.id.cargo);
+            faculdade = (TextView) view.findViewById(R.id.empresa);
+            tipo = (TextView) view.findViewById(R.id.inicio);
+
         }
     }
 }

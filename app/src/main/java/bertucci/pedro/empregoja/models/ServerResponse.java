@@ -9,6 +9,9 @@ public class ServerResponse {
     private String message;
     private Usuario usuario;
     private Empregos[] emprego;
+    private Ensino[] ensino;
+    private Experiencia[] experiencia;
+
 
     public String getResult() {
         return result;
@@ -20,7 +23,7 @@ public class ServerResponse {
         return usuario;
     }
     public Empregos[] getEmprego() {return emprego;}
-
-
+    public Ensino[] getEnsino(){ return ensino; }
+    public Experiencia[] getExperiencia(){return experiencia;}
 
 }

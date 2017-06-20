@@ -26,7 +26,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import bertucci.pedro.empregoja.Candidaturas.MainCandidaturas;
 import bertucci.pedro.empregoja.Dados.MainDados;
+import bertucci.pedro.empregoja.Empregos.DataAdapterEmpregos;
 import bertucci.pedro.empregoja.Empregos.MainEmpregos;
 import bertucci.pedro.empregoja.Ensino.MainEnsino;
 import bertucci.pedro.empregoja.R;
@@ -35,7 +37,6 @@ import bertucci.pedro.empregoja.models.Constants;
 import bertucci.pedro.empregoja.models.Empregos;
 import bertucci.pedro.empregoja.models.ServerRequest;
 import bertucci.pedro.empregoja.models.ServerResponse;
-import bertucci.pedro.empregoja.models.Usuario;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Retrofit;
@@ -288,6 +289,13 @@ implements NavigationView.OnNavigationItemSelectedListener  {
                 startActivity(intent3);
                 break;
 
+            case R.id.nav_candidatura:
+                Bundle bundle4 = new Bundle();
+                bundle4.putString("parametro", id_usuario);
+                Intent intent4 = new Intent(this, MainCandidaturas.class);
+                intent4.putExtras(bundle4);
+                startActivity(intent4);
+                break;
             case R.id.nav_sair:
                 logout();
                 break;

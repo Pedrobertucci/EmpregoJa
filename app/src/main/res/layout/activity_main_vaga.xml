@@ -5,12 +5,6 @@
     android:layout_height="match_parent"
     >
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </RelativeLayout>
-
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar_layout"
         android:layout_width="match_parent"
@@ -31,7 +25,7 @@
                 android:layout_height="200dp"
                 android:scaleType="centerCrop"
 
-                android:src="@drawable/side_nav_bar"
+                android:src="@drawable/splash"
                 app:layout_collapseMode="parallax"
                 app:layout_collapseParallaxMultiplier="0.7" />
 
@@ -54,6 +48,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/white"
+        android:padding="14dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
 
@@ -70,58 +65,116 @@
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:text="Resumo da Vaga"
-                android:textStyle="bold"
-                android:textSize="16sp"/>
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/textView7"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="10dp"
-                android:text="Empresa:"
-                android:textStyle="bold"/>
-            <TextView
-                android:id="@+id/tdsada"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="15dp"
+                    android:padding="10dp"
+                    android:text="Jarpdev Soluçoes web e mobile" />
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:padding="10dp"
+                    android:text="Empresa:"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="10dp"
-                android:text="Cidade:"
-                android:textStyle="bold"/>
-            <TextView
-                android:id="@+id/tdsadsa"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tdsada"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:padding="10dp"
+                    android:text="Cidade:"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tdsada2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="15dp"
+                    android:padding="10dp"
+                    android:text="Capao da  Canoa"
+                    android:textStyle="normal" />
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="10dp"
-                android:text="Salario:"
-                android:textStyle="bold"/>
-            <View   android:id="@+id/firstDivider"
-                android:layout_height="1dp"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tdsadsa"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp"
+                    android:text="Salario:"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textViesw8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="15dp"
+                    android:padding="10dp"
+                    android:text="A combinar" />
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/firstDivider"
                 android:layout_width="fill_parent"
+                android:layout_height="1dp"
                 android:background="#c3c3c3" />
+
             <TextView
                 android:id="@+id/tdsads32132a"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="10dp"
                 android:text="Descricao do emprego:"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/td2132a"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="10dp"
                 android:text="@string/loren"
-                android:textStyle="normal"/>
+                android:textStyle="normal" />
+
+
             <Button
-                android:layout_weight="0"
-                android:id="@+id/button2"
+
+                android:id="@+id/btn_enviaCv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
                 android:background="@color/colorAccent"
-                android:text="ENVIAR CV"
+                android:text="ENVIAR CURRICULUM"
                 android:textColor="@color/cardview_light_background"
-                android:textSize="20sp"
-                android:layout_alignParentRight="true" />
+                android:textSize="14sp" />
 
         </LinearLayout>
 
