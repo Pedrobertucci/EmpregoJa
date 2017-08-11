@@ -14,6 +14,7 @@ public class ServerResponse {
     private Vaga vaga;
     private Curriculos curriculo;
     private Candidatura[] candidatura;
+    private Ensino ensinoperfil;
 
     public String getResult() {
         return result;
@@ -21,9 +22,7 @@ public class ServerResponse {
     public String getMessage() {
         return message;
     }
-    public Usuario getUsuario() {
-        return usuario;
-    }
+    public Usuario getUsuario() {return usuario;}
     public Empregos[] getEmprego() {return emprego;}
     public Ensino[] getEnsino(){ return ensino; }
     public Experiencia[] getExperiencia(){return experiencia;}

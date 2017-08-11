@@ -20,10 +20,11 @@ public class Constants {
     public static final String CURRICULUM = "enviaCurriculo";
     public static final String ATUALIZA_USUARIO = "atualizaUsuario";
     public static final String LISTA_CANDIDATURAS = "listaCandidaturas";
-
+    public static final String ALTERA_ENSINO = "editaEnsino";
     public static final String ATUALIZACAO_STUDENT = "atualizaEnsino";
     public static final String DELETA_ENSINO = "deleteEnsino";
-
+    public static final String MOSTRA_ENSINO = "listaEnsino";
+    public static final String ALTERA_CURSO = "editaEnsino";
     public static final String SUCCESS = "success";
     public static final String ERROR = "Error";
     public static final String IS_LOGGED_IN = "isLoggedIn";

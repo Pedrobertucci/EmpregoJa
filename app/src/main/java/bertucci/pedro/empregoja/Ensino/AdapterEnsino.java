@@ -48,6 +48,13 @@ public class AdapterEnsino extends RecyclerView.Adapter<AdapterEnsino.ViewHolder
             public void onClick(View v) {
               Intent myIntent = new Intent(v.getContext(), MainAtualizaEnsino.class);
                 myIntent.putExtra("id_estudo",ensinos.get(i).getId_formacaoAcademica()); //Optional parameters
+                myIntent.putExtra("nome_instituicao",ensinos.get(i).getInstituicao());
+                myIntent.putExtra("grau",ensinos.get(i).getGrau());
+                myIntent.putExtra("area_estudo", ensinos.get(i).areaEstudo);
+                myIntent.putExtra("ano_inicio", ensinos.get(i).getAnoInicio());
+                myIntent.putExtra("ano_final", ensinos.get(i).getAnoFinal());
+                myIntent.putExtra("semestre_inicio", ensinos.get(i).getSemestreInicio());
+                myIntent.putExtra("semestre_final", ensinos.get(i).getSemestreFinal());
              v.getContext().startActivity(myIntent);
             }
         });
