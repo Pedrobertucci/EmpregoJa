@@ -8,10 +8,10 @@
     android:orientation="horizontal">
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/btnCadastraExperiencia"
+        android:id="@+id/btnCadastraEnsino"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/relativeLayout"
+
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="false"
         android:layout_alignParentRight="true"
@@ -20,7 +20,7 @@
         android:layout_weight="1"
         android:clickable="false"
         app:elevation="0dp"
-        app:srcCompat="@drawable/add" />
+        app:srcCompat="@drawable/update" />
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -34,7 +34,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/atualiza_curso"
+                android:layout_below="@+id/grau_atualiza"
                 android:layout_marginLeft="20sp"
                 android:layout_marginRight="20sp"
                 android:layout_toEndOf="@+id/ano_final_atualiza"
@@ -52,9 +52,9 @@
                     android:layout_marginTop="20dp"
                     android:layout_toEndOf="@+id/ano_inicio_atualiza"
                     android:layout_weight="1"
-                    android:hint="Ano Final"
+                    android:hint="Semestre Final"
                     android:inputType="numberDecimal"
-                    android:maxLength="4" />
+                    android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/ano_final_atualiza"
@@ -67,9 +67,9 @@
                     android:layout_marginTop="20sp"
                     android:layout_toStartOf="@+id/semestre_final_atualiza"
                     android:layout_weight="1"
-                    android:hint="Mês Final"
+                    android:hint="Ano Final"
                     android:inputType="numberDecimal"
-                    android:maxLength="2"
+                    android:maxLength="4"
                     tools:layout_editor_absoluteX="188sp"
                     tools:layout_editor_absoluteY="367sp" />
 
@@ -84,9 +84,9 @@
                     android:layout_marginTop="20sp"
                     android:layout_toStartOf="@+id/semestre_inicio_atualiza"
                     android:layout_weight="1"
-                    android:hint="Mês de Inicio"
+                    android:hint="Ano Inicio"
                     android:inputType="numberDecimal"
-                    android:maxLength="2"
+                    android:maxLength="4"
                     tools:layout_editor_absoluteX="188sp"
                     tools:layout_editor_absoluteY="320sp" />
 
@@ -101,20 +101,9 @@
                     android:layout_alignParentTop="true"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
-                    android:hint="Ano Inicio"
+                    android:hint="Semestre Início"
                     android:inputType="numberDecimal"
-                    android:maxLength="4" />
-
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_below="@+id/semestre_final_atualiza"
-                    android:layout_marginTop="17dp"
-                    android:text="Descrição do trabalho"
-
-                    android:textSize="18sp" />
+                    android:maxLength="1" />
             </RelativeLayout>
 
             <EditText
@@ -126,7 +115,7 @@
                 android:layout_marginRight="20sp"
                 android:layout_marginTop="15sp"
                 android:layout_weight="1"
-                android:hint="Cargo"
+                android:hint="Instituição"
                 android:inputType="text" />
 
             <EditText
@@ -139,21 +128,21 @@
                 android:layout_marginRight="20sp"
                 android:layout_marginTop="18sp"
                 android:layout_weight="1"
-                android:hint="Empresa"
+                android:hint="Curso"
                 android:inputType="text"
                 tools:layout_editor_absoluteX="8sp"
                 tools:layout_editor_absoluteY="68sp" />
 
-            <EditText
-                android:id="@+id/descricao"
-                android:layout_width="wrap_content"
-                android:layout_height="150dp"
-                android:layout_alignEnd="@+id/relativeLayout"
-                android:layout_alignParentBottom="true"
-                android:layout_alignStart="@+id/relativeLayout"
-                android:layout_marginBottom="74dp"
-                android:ems="10"
-                android:inputType="textMultiLine" />
+
+            <Spinner
+                android:id="@+id/grau_atualiza"
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:layout_alignEnd="@+id/atualiza_curso"
+                android:layout_alignStart="@+id/atualiza_curso"
+                android:layout_below="@+id/atualiza_curso"
+                android:layout_marginTop="9dp"
+                android:textSize="30sp" />
 
 
         </RelativeLayout>

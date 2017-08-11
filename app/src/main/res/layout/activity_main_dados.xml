@@ -69,14 +69,14 @@
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
-                android:id="@+id/senha1"
+                android:id="@+id/senha11"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
                 android:layout_marginTop="8dp">
 
                 <EditText
-                    android:id="@+id/at_password"
+                    android:id="@+id/senha1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableRight="@drawable/ic_key"
@@ -87,14 +87,14 @@
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
-                android:id="@+id/senha2"
+                android:id="@+id/senha22"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
                 android:layout_marginTop="8dp">
 
                 <EditText
-                    android:id="@+id/at_password2"
+                    android:id="@+id/senha2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableRight="@drawable/ic_key"
@@ -120,7 +120,7 @@
                     android:visibility="invisible" />
 
                 <android.support.design.widget.FloatingActionButton
-                    android:id="@+id/btnCadastrar"
+                    android:id="@+id/btnAtualizar1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
@@ -231,7 +231,7 @@
                     android:visibility="invisible" />
 
                 <android.support.design.widget.FloatingActionButton
-                    android:id="@+id/btnCadastrar2"
+                    android:id="@+id/btnAtualizar2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"

@@ -9,7 +9,7 @@ public class Usuario {
     private String nome_usuario;
     private String sobrenome_usuario;
     private String email_usuario;
-    private String senha;
+    private String senha_usuario;
     private String rg;
     private String cpf;
     private String pretencaoSalarial;
@@ -18,6 +18,22 @@ public class Usuario {
     private String cep;
     private String sexo;
     private String nascimento;
+
+    public String getSenha_usuario() {
+        return senha_usuario;
+    }
+
+    public void setSenha_usuario(String senha_usuario) {
+        this.senha_usuario = senha_usuario;
+    }
+
+    public String getPretencaoSalarial() {
+        return pretencaoSalarial;
+    }
+
+    public void setPretencaoSalarial(String pretencaoSalarial) {
+        this.pretencaoSalarial = pretencaoSalarial;
+    }
 
     public String getId_usuario() {
         return id_usuario;
@@ -51,13 +67,7 @@ public class Usuario {
         this.email_usuario = email_usuario;
     }
 
-    public String getSenha() {
-        return senha;
-    }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
 
     public String getRg() {
         return rg;

@@ -32,7 +32,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ProfileList extends Fragment  implements View.OnClickListener{
 
-    private ArrayList escolaridadeList;
+
     private String id_usuario;
     private FloatingActionButton btnCadastrar;
     private ProgressDialog progress;

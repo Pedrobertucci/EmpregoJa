@@ -45,6 +45,8 @@ public class ProfileEnsino extends Fragment implements View.OnClickListener {
     String[] ensino = {
             "Selecione o Grau",
             "Ensino Fundamental",
+            "Ensino Medio",
+            "Curso",
             "Tecnico",
             "Tecnologo",
             "Graduaçao",
@@ -60,7 +62,7 @@ public class ProfileEnsino extends Fragment implements View.OnClickListener {
         id_usuario = getArguments().getString("parametro");
         View view = inflater.inflate(R.layout.fragment_ensino,container,false);
 
-        spinner = (Spinner)view.findViewById(R.id.et_grau);
+        spinner = (Spinner)view.findViewById(R.id.grau_atualiza);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.textview, ensino);
 
         spinner.setAdapter(adapter);
@@ -103,12 +105,12 @@ public class ProfileEnsino extends Fragment implements View.OnClickListener {
 
         btnCadastraEnsino = (FloatingActionButton)view.findViewById(R.id.btnCadastraEnsino);
 
-        et_instituicao = (EditText)view.findViewById(R.id.cargo);
-        et_area =  (EditText)view.findViewById(R.id.nome_empresa_experiencia);
-        et_anoInicio = (EditText)view.findViewById(R.id.mes_inicio_experiencia);
-        et_semestreInicio = (EditText)view.findViewById(R.id.ano_inicio_experiencia);
-        et_anoFinal = (EditText)view.findViewById(R.id.mes_final_experiencia);
-        et_semestreFinal = (EditText)view.findViewById(R.id.mes_final_experiencia);
+        et_instituicao = (EditText)view.findViewById(R.id.instituicao_atualiza);
+        et_area =  (EditText)view.findViewById(R.id.atualiza_curso);
+        et_anoInicio = (EditText)view.findViewById(R.id.ano_inicio_atualiza);
+        et_semestreInicio = (EditText)view.findViewById(R.id.semestre_inicio_atualiza);
+        et_anoFinal = (EditText)view.findViewById(R.id.ano_final_atualiza);
+        et_semestreFinal = (EditText)view.findViewById(R.id.ano_final_atualiza);
         progress = (ProgressBar)view.findViewById(R.id.progress);
         btnCadastraEnsino.setOnClickListener(this);
 

@@ -12,7 +12,7 @@ import retrofit2.http.POST;
 
 public interface RequestInterfaceAddUser {
 
-    @POST("/trabalhoja/api/Usuario/addUsuario/")
+    @POST("Usuario/addUsuario/")
     Call<ServerResponse> operation(@Body ServerRequest request);
 
 

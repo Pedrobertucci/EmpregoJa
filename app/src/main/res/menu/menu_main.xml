@@ -2,9 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/id_busca"
-        android:title="@string/Busca"
-        android:icon="@drawable/lupa"
-        app:showAsAction="ifRoom|collapseActionView"
-        app:actionViewClass="android.support.v7.widget.SearchView" />
+        android:id="@+id/id_criadores"
+        android:title="Suporte" />
 </menu>

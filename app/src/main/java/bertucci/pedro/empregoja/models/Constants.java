@@ -5,7 +5,7 @@ package bertucci.pedro.empregoja.models;
  */
 
 public class Constants {
-    public static final String BASE_URL = "http://10.0.2.2:80/trabalhoja/api/";
+    public static final String BASE_URL = "http://trabalho-ja.tempsite.ws/api/";
 
     public static final String REGISTER_OPERATION = "register";
     public static final String CADASTRA_USUARIO = "addUsuario";
@@ -17,6 +17,9 @@ public class Constants {
     public static final String LISTA_EXPERIENCIA = "listaExperiencia";
     public static final String REGISTER_EXPERIENCIA_JOBS = "addExperiencia";
     public static final String VAGA = "dadosVaga";
+    public static final String CURRICULUM = "enviaCurriculo";
+    public static final String ATUALIZA_USUARIO = "atualizaUsuario";
+    public static final String LISTA_CANDIDATURAS = "listaCandidaturas";
 
     public static final String ATUALIZACAO_STUDENT = "atualizaEnsino";
     public static final String DELETA_ENSINO = "deleteEnsino";

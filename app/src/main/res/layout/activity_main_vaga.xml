@@ -131,7 +131,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textViesw8"
+                    android:id="@+id/salario_vaga"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -157,13 +157,13 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/td2132a"
+                android:id="@+id/descricao_vaga"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="10dp"
                 android:text="@string/loren"
-                android:textStyle="normal" />
-
+                android:textStyle="normal"
+                android:ellipsize="end"/>
 
             <Button
 
@@ -176,10 +176,10 @@
                 android:textColor="@color/cardview_light_background"
                 android:textSize="14sp" />
 
+
         </LinearLayout>
 
 
     </android.support.v4.widget.NestedScrollView>
-
 
 </android.support.design.widget.CoordinatorLayout>

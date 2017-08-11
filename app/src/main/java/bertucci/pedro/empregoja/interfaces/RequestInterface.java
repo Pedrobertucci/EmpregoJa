@@ -16,7 +16,7 @@ import retrofit2.http.POST;
 public interface RequestInterface {
 
 
-    @POST("/trabalhoja/api/Usuario/LoginApp/")
+    @POST("Usuario/LoginApp/")
     Call<ServerResponse> operation(@Body ServerRequest request);
 
 

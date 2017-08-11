@@ -11,7 +11,7 @@
         android:id="@+id/btnCadastraEnsino"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/relativeLayout"
+
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="false"
         android:layout_alignParentRight="true"
@@ -34,38 +34,38 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/et_grau"
+                android:layout_below="@+id/grau_atualiza"
                 android:layout_marginLeft="20sp"
                 android:layout_marginRight="20sp"
-                android:layout_toEndOf="@+id/mes_final_experiencia"
+                android:layout_toEndOf="@+id/ano_final_atualiza"
                 android:id="@+id/relativeLayout">
 
                 <EditText
-                    android:id="@+id/ano_final_experiencia"
+                    android:id="@+id/semestre_final_atualiza"
                     android:layout_width="150sp"
                     android:layout_height="wrap_content"
-                    android:layout_alignBaseline="@+id/mes_final_experiencia"
-                    android:layout_alignBottom="@+id/mes_final_experiencia"
-                    android:layout_alignEnd="@+id/ano_inicio_experiencia"
+                    android:layout_alignBaseline="@+id/ano_final_atualiza"
+                    android:layout_alignBottom="@+id/ano_final_atualiza"
+                    android:layout_alignEnd="@+id/semestre_inicio_atualiza"
                     android:layout_alignParentRight="true"
-                    android:layout_below="@+id/ano_inicio_experiencia"
+                    android:layout_below="@+id/semestre_inicio_atualiza"
                     android:layout_marginTop="20dp"
-                    android:layout_toEndOf="@+id/mes_inicio_experiencia"
+                    android:layout_toEndOf="@+id/ano_inicio_atualiza"
                     android:layout_weight="1"
                     android:hint="Semestre Final"
                     android:inputType="numberDecimal"
                     android:maxLength="1" />
 
                 <EditText
-                    android:id="@+id/mes_final_experiencia"
+                    android:id="@+id/ano_final_atualiza"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
-                    android:layout_alignStart="@+id/mes_inicio_experiencia"
-                    android:layout_below="@+id/mes_inicio_experiencia"
+                    android:layout_alignStart="@+id/ano_inicio_atualiza"
+                    android:layout_below="@+id/ano_inicio_atualiza"
 
                     android:layout_marginTop="20sp"
-                    android:layout_toStartOf="@+id/ano_final_experiencia"
+                    android:layout_toStartOf="@+id/semestre_final_atualiza"
                     android:layout_weight="1"
                     android:hint="Ano Final"
                     android:inputType="numberDecimal"
@@ -74,7 +74,7 @@
                     tools:layout_editor_absoluteY="367sp" />
 
                 <EditText
-                    android:id="@+id/mes_inicio_experiencia"
+                    android:id="@+id/ano_inicio_atualiza"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
@@ -82,7 +82,7 @@
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="false"
                     android:layout_marginTop="20sp"
-                    android:layout_toStartOf="@+id/ano_inicio_experiencia"
+                    android:layout_toStartOf="@+id/semestre_inicio_atualiza"
                     android:layout_weight="1"
                     android:hint="Ano Inicio"
                     android:inputType="numberDecimal"
@@ -91,11 +91,11 @@
                     tools:layout_editor_absoluteY="320sp" />
 
                 <EditText
-                    android:id="@+id/ano_inicio_experiencia"
+                    android:id="@+id/semestre_inicio_atualiza"
                     android:layout_width="150sp"
                     android:layout_height="wrap_content"
-                    android:layout_alignBaseline="@+id/mes_inicio_experiencia"
-                    android:layout_alignBottom="@+id/mes_inicio_experiencia"
+                    android:layout_alignBaseline="@+id/ano_inicio_atualiza"
+                    android:layout_alignBottom="@+id/ano_inicio_atualiza"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentTop="true"
@@ -107,7 +107,7 @@
             </RelativeLayout>
 
             <EditText
-                android:id="@+id/cargo"
+                android:id="@+id/instituicao_atualiza"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textView"
@@ -119,11 +119,11 @@
                 android:inputType="text" />
 
             <EditText
-                android:id="@+id/nome_empresa_experiencia"
+                android:id="@+id/atualiza_curso"
                 android:layout_width="368sp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/cargo"
+                android:layout_below="@+id/instituicao_atualiza"
                 android:layout_marginLeft="20sp"
                 android:layout_marginRight="20sp"
                 android:layout_marginTop="18sp"
@@ -135,12 +135,12 @@
 
 
             <Spinner
-                android:id="@+id/et_grau"
+                android:id="@+id/grau_atualiza"
                 android:layout_width="match_parent"
                 android:layout_height="40sp"
-                android:layout_alignEnd="@+id/nome_empresa_experiencia"
-                android:layout_alignStart="@+id/nome_empresa_experiencia"
-                android:layout_below="@+id/nome_empresa_experiencia"
+                android:layout_alignEnd="@+id/atualiza_curso"
+                android:layout_alignStart="@+id/atualiza_curso"
+                android:layout_below="@+id/atualiza_curso"
                 android:layout_marginTop="9dp"
                 android:textSize="30sp" />
 

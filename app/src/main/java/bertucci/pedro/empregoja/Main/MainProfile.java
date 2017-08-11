@@ -1,27 +1,42 @@
 
 package bertucci.pedro.empregoja.Main;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
+import android.text.util.Linkify;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.PermissionRequest;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,16 +46,24 @@ import bertucci.pedro.empregoja.Dados.MainDados;
 import bertucci.pedro.empregoja.Empregos.DataAdapterEmpregos;
 import bertucci.pedro.empregoja.Empregos.MainEmpregos;
 import bertucci.pedro.empregoja.Ensino.MainEnsino;
+import bertucci.pedro.empregoja.Manifest;
 import bertucci.pedro.empregoja.R;
 import bertucci.pedro.empregoja.interfaces.RequestInterfaceListaEmpregos;
 import bertucci.pedro.empregoja.models.Constants;
 import bertucci.pedro.empregoja.models.Empregos;
 import bertucci.pedro.empregoja.models.ServerRequest;
 import bertucci.pedro.empregoja.models.ServerResponse;
+import permissions.dispatcher.NeedsPermission;
+import permissions.dispatcher.OnNeverAskAgain;
+import permissions.dispatcher.OnPermissionDenied;
+import permissions.dispatcher.OnShowRationale;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+
+import static android.Manifest.permission.ACCESS_FINE_LOCATION;
+import static bertucci.pedro.empregoja.Login.LoginFragment.USUARIO_CURRICULO;
 
 public class MainProfile extends AppCompatActivity
 implements NavigationView.OnNavigationItemSelectedListener  {
@@ -54,6 +77,11 @@ implements NavigationView.OnNavigationItemSelectedListener  {
     private DataAdapterEmpregos adapter;
     private RecyclerView recyclerView;
     SwipeRefreshLayout mSwipeRefreshLayout;
+    public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
+    LocationManager locationManager;
+    private static final int PERMISSION_REQUEST_CODE = 1;
+    private View view;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,7 +127,71 @@ implements NavigationView.OnNavigationItemSelectedListener  {
         email.setText(mail);
 
 
+        permission();
+
+
     }
+
+    public void permission(){
+        if (checkPermission()) {
+            Toast.makeText(this,"Permission already granted.",Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(this,"Please request permission.",Toast.LENGTH_LONG).show();
+        }
+        if (!checkPermission()){
+            requestPermission();
+        }else {
+            Toast.makeText(this,"Permission already granted.",Toast.LENGTH_LONG).show();
+        }
+
+    }
+
+    private boolean checkPermission(){
+        int result = ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION);
+        if (result == PackageManager.PERMISSION_GRANTED){
+
+            return true;
+
+        } else {
+
+            return false;
+
+        }
+    }
+
+    private void requestPermission(){
+
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this, android.Manifest.permission.ACCESS_FINE_LOCATION)){
+            Toast.makeText(getApplicationContext(),"GPS permission allows us to access location data. Please allow in App Settings for additional functionality.",Toast.LENGTH_LONG).show();
+        } else {
+            ActivityCompat.requestPermissions(this,new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},PERMISSION_REQUEST_CODE);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case PERMISSION_REQUEST_CODE:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    Snackbar.make(view,"Permission Granted, Now you can access location data.",Snackbar.LENGTH_LONG).show();
+
+                } else {
+
+                    Snackbar.make(view,"Permission Denied, You cannot access location data.",Snackbar.LENGTH_LONG).show();
+
+                }
+                break;
+        }
+    }
+
+    public void getLocation() {
+
+        LocationManager lm = (LocationManager) getSystemService(LOCATION_SERVICE);
+        Location loc = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        Toast.makeText(this,"Latitude: " + loc.getLatitude() + "Longitude: " + loc.getLongitude(),Toast.LENGTH_LONG).show();
+    }
+
 
     private void listaEmpregos(String id_usuario){
         progress = new ProgressDialog(this, R.style.styleDialogProgress);
@@ -132,7 +224,7 @@ implements NavigationView.OnNavigationItemSelectedListener  {
                 recyclerView.setLayoutManager(layoutManager);
                 ServerResponse resp = response.body();
                 data = new ArrayList<>(Arrays.asList(resp.getEmprego()));
-                adapter = new DataAdapterEmpregos(data);
+                adapter = new DataAdapterEmpregos(data,resp.getMessage());
                 recyclerView.setAdapter(adapter);
 
                 if(resp.getResult().equals(Constants.SUCCESS)){
@@ -179,7 +271,7 @@ implements NavigationView.OnNavigationItemSelectedListener  {
                 recyclerView.setLayoutManager(layoutManager);
                 ServerResponse resp = response.body();
                 data = new ArrayList<>(Arrays.asList(resp.getEmprego()));
-                adapter = new DataAdapterEmpregos(data);
+                adapter = new DataAdapterEmpregos(data,resp.getMessage());
                 recyclerView.setAdapter(adapter);
 
                 if(resp.getResult().equals(Constants.SUCCESS)){
@@ -217,29 +309,11 @@ implements NavigationView.OnNavigationItemSelectedListener  {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
 
-        MenuItem search = menu.findItem(R.id.id_busca);
-        SearchView searchView = (SearchView) MenuItemCompat.getActionView(search);
-        search(searchView);
+
         return true;
     }
 
-    private void search(SearchView searchView) {
-
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-
-                adapter.getFilter().filter(newText);
-                return true;
-            }
-        });
-    }
+    
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -249,8 +323,21 @@ implements NavigationView.OnNavigationItemSelectedListener  {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.id_criadores) {
+            Context context = getApplicationContext();
+            TextView textView = null;
+            textView.setText(R.string.suporte);
+            textView.setMovementMethod(LinkMovementMethod.getInstance());
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainProfile.this);
+            alertDialogBuilder.setTitle("Suporte Aplicativo");
+            alertDialogBuilder.setMessage(Html.fromHtml(String.valueOf(textView))).setCancelable(false);
+            alertDialogBuilder.setPositiveButton("Fechar",new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
 
+                }
+            });
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
             return true;
         }
 
@@ -297,7 +384,7 @@ implements NavigationView.OnNavigationItemSelectedListener  {
                 startActivity(intent4);
                 break;
             case R.id.nav_sair:
-                logout();
+                goToLogin();
                 break;
 
         }
@@ -326,8 +413,12 @@ implements NavigationView.OnNavigationItemSelectedListener  {
     }
 
     private void goToLogin(){
-
+        Context context = getApplicationContext();
+        SharedPreferences settings = context.getSharedPreferences(USUARIO_CURRICULO, Context.MODE_PRIVATE);
+        settings.edit().clear().commit();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+
+
 }

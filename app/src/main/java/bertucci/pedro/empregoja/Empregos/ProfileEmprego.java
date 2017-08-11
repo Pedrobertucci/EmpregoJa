@@ -55,12 +55,12 @@ public class ProfileEmprego extends Fragment implements View.OnClickListener {
 
         btnCadastraExperiencia = (FloatingActionButton)view.findViewById(R.id.btnCadastraExperiencia);
 
-        cargoEmprego = (EditText)view.findViewById(R.id.cargo);
-        empresa =  (EditText)view.findViewById(R.id.nome_empresa_experiencia);
-        mes_inicio = (EditText)view.findViewById(R.id.mes_inicio_experiencia);
-        ano_inicio = (EditText)view.findViewById(R.id.ano_inicio_experiencia);
-        mes_final = (EditText)view.findViewById(R.id.mes_final_experiencia);
-        ano_final = (EditText)view.findViewById(R.id.ano_final_experiencia);
+        cargoEmprego = (EditText)view.findViewById(R.id.instituicao_atualiza);
+        empresa =  (EditText)view.findViewById(R.id.atualiza_curso);
+        mes_inicio = (EditText)view.findViewById(R.id.ano_inicio_atualiza);
+        ano_inicio = (EditText)view.findViewById(R.id.semestre_inicio_atualiza);
+        mes_final = (EditText)view.findViewById(R.id.ano_final_atualiza);
+        ano_final = (EditText)view.findViewById(R.id.semestre_final_atualiza);
         descricao = (EditText)view.findViewById(R.id.descricao);
         btnCadastraExperiencia.setOnClickListener(this);
 

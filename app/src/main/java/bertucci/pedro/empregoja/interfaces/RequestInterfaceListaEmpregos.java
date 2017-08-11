@@ -11,6 +11,6 @@ import retrofit2.http.POST;
  */
 
 public interface RequestInterfaceListaEmpregos {
-    @POST("/trabalhoja/api/Empregos/listaEmpregos/")
+    @POST("Empregos/listaEmpregos/")
     Call<ServerResponse> operation(@Body ServerRequest request);
 }

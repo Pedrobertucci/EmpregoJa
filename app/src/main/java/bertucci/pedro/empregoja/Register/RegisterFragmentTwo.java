@@ -4,38 +4,25 @@ import android.app.DatePickerDialog;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.location.Address;
-import android.location.Geocoder;
-import android.location.Location;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.Spinner;
 import android.widget.TextView;
 
-import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 import java.util.Locale;
 
 import bertucci.pedro.empregoja.R;
-import bertucci.pedro.empregoja.interfaces.RequestInterface;
 import bertucci.pedro.empregoja.interfaces.RequestInterfaceAddUser;
 import bertucci.pedro.empregoja.mascaras.Mask;
-import bertucci.pedro.empregoja.models.Areas;
 import bertucci.pedro.empregoja.models.Constants;
 import bertucci.pedro.empregoja.models.ServerRequest;
 import bertucci.pedro.empregoja.models.ServerResponse;
@@ -79,7 +66,7 @@ public class RegisterFragmentTwo extends Fragment  implements View.OnClickListen
     private void initViews(View view){
 
 
-        btn_Cadastrar2 = (FloatingActionButton)view.findViewById(R.id.btnCadastrar2);
+        btn_Cadastrar2 = (FloatingActionButton)view.findViewById(R.id.btnAtualizar2);
 
         et_cep = (EditText) view.findViewById(R.id.et_cep);
         et_presetencao = (EditText) view.findViewById(R.id.et_presencao);
@@ -90,6 +77,7 @@ public class RegisterFragmentTwo extends Fragment  implements View.OnClickListen
 
         et_cep.addTextChangedListener(Mask.insert(Mask.CEP, et_cep));
         et_cpf.addTextChangedListener(Mask.insert(Mask.CPF, et_cpf));
+
         et_telefone.addTextChangedListener(Mask.insert(Mask.CELULAR_MASK, et_telefone));
         et_nascimento.setOnClickListener(new View.OnClickListener() {
 
@@ -122,7 +110,7 @@ public class RegisterFragmentTwo extends Fragment  implements View.OnClickListen
         switch (v.getId()){
 
 
-            case R.id.btnCadastrar2:
+            case R.id.btnAtualizar2:
 
                 alert();
                 break;
@@ -153,7 +141,7 @@ public class RegisterFragmentTwo extends Fragment  implements View.OnClickListen
         usuario.setSobrenome_usuario(sobrenome);
         usuario.setSexo(sexo);
         usuario.setEmail_usuario(email);
-        usuario.setSenha(senha);
+        usuario.setSenha_usuario(senha);
         usuario.setCep(cep);
         usuario.setRg(rg);
         usuario.setCpf(cpf);
@@ -232,7 +220,7 @@ public class RegisterFragmentTwo extends Fragment  implements View.OnClickListen
                 }
             }
         });
-        builder.setNegativeButton("Nao Concordo", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("Não concordo", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface arg0, int arg1) {
               //NAO DEIXA SE CADASTRAR;
             }

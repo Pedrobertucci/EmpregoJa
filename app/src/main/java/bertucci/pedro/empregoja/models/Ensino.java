@@ -5,6 +5,7 @@ package bertucci.pedro.empregoja.models;
  */
 
 public class Ensino {
+    public String id_formacaoAcademica;
     public String instituicao;
     public String grau;
     public String areaEstudo;
@@ -13,6 +14,15 @@ public class Ensino {
     public String semestreFinal;
     public String anoFinal;
     public String id_usuario;
+
+
+    public String getId_formacaoAcademica() {
+        return id_formacaoAcademica;
+    }
+
+    public void setId_formacaoAcademica(String id_formacaoAcademica) {
+        this.id_formacaoAcademica = id_formacaoAcademica;
+    }
 
     public String getInstituicao() {
         return instituicao;

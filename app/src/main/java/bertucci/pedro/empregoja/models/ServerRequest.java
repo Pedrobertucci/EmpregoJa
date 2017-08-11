@@ -11,23 +11,22 @@ public class ServerRequest {
     private Empregos emprego;
     private Experiencia experiencia;
     private Vaga vaga;
+    private Curriculos curriculo;
+    private Candidatura candidatura;
 
     public void setOperation(String operation) {
         this.operation = operation;
     }
-
     public void setUser(Usuario usuario) {
         this.usuario = usuario;
     }
-
     public void setEnsino(Ensino ensino){
         this.ensino = ensino;
     }
-
     public void setEmprego(Empregos emprego){ this.emprego = emprego;}
-
     public void setExperiencia(Experiencia experiencia){ this.experiencia = experiencia;}
-
     public void setVaga(Vaga vaga){ this.vaga = vaga;}
+    public void setCurriculo(Curriculos curriculo){ this.curriculo = curriculo;}
+    public void setCandidatura(Candidatura candidatura){ this.candidatura = candidatura;}
 
 }
