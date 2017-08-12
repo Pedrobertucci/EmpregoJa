@@ -254,8 +254,6 @@ public class MainDados extends AppCompatActivity {
                 ServerResponse resp = response.body();
 
                Toast.makeText(MainDados.this, resp.getMessage(), Toast.LENGTH_LONG).show();
-
-
             }
 
             @Override

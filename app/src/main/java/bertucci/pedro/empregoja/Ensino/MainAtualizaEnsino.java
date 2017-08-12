@@ -112,11 +112,6 @@ public class MainAtualizaEnsino extends AppCompatActivity {
         });
     }
     public void salvaEnsino(){
-        progress = new ProgressDialog(this, R.style.styleDialogProgress);
-        progress.setTitle("");
-        progress.setMessage("Salvando dados do ensino...");
-        progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        progress.show();
 
         String id_formacao = this.id_formacao;
         String instituicao = instituicao_atualiza.getText().toString();
@@ -146,9 +141,10 @@ public class MainAtualizaEnsino extends AppCompatActivity {
 
         progress = new ProgressDialog(this, R.style.styleDialogProgress);
         progress.setTitle("");
-        progress.setMessage("Atualizando Dados...");
+        progress.setMessage("Salvando dados do ensino...");
         progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progress.show();
+
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Constants.BASE_URL)
@@ -160,8 +156,8 @@ public class MainAtualizaEnsino extends AppCompatActivity {
         Ensino ensino = new Ensino();
         ensino.setId_formacaoAcademica(id_formacao);
         ensino.setInstituicao(instituicao);
-        ensino.setAreaEstudo(areaEstudo);
         ensino.setGrau(grau);
+        ensino.setAreaEstudo(areaEstudo);
         ensino.setSemestreInicio(semestreInicio);
         ensino.setSemestreFinal(semestreFinal);
         ensino.setAnoInicio(anoInicio);
@@ -176,12 +172,14 @@ public class MainAtualizaEnsino extends AppCompatActivity {
         response.enqueue(new Callback<ServerResponse>() {
             @Override
             public void onResponse(Call<ServerResponse> call, retrofit2.Response<ServerResponse> response) {
+                progress.dismiss();
                 ServerResponse resp = response.body();
                 Toast.makeText(MainAtualizaEnsino.this, resp.getMessage(), Toast.LENGTH_LONG).show();
             }
 
             @Override
             public void onFailure(Call<ServerResponse> call, Throwable t) {
+                progress.dismiss();
                 Toast.makeText(MainAtualizaEnsino.this, "Ocorreu um erro inesperado", Toast.LENGTH_LONG).show();
             }
         });
