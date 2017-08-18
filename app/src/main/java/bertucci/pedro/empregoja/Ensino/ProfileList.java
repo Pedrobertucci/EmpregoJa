@@ -11,11 +11,13 @@ import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import bertucci.pedro.empregoja.R;
+import bertucci.pedro.empregoja.interfaces.RequestInterfaceDeletaEnsino;
 import bertucci.pedro.empregoja.interfaces.RequestInterfaceEnsinoList;
 import bertucci.pedro.empregoja.models.Constants;
 import bertucci.pedro.empregoja.models.Ensino;
@@ -135,6 +137,8 @@ public class ProfileList extends Fragment  implements View.OnClickListener{
         ft.addToBackStack(null);
         ft.commit();
     }
+
+
 
 
 

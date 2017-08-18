@@ -68,7 +68,7 @@ public class RegisterFragmentTwo extends Fragment  implements View.OnClickListen
 
         btn_Cadastrar2 = (FloatingActionButton)view.findViewById(R.id.btnAtualizar2);
 
-        et_cep = (EditText) view.findViewById(R.id.et_cep);
+        et_cep = (EditText) view.findViewById(R.id.et_cidade);
         et_presetencao = (EditText) view.findViewById(R.id.et_presencao);
         et_cpf = (EditText) view.findViewById(R.id.et_cpf);
         et_rg  = (EditText)  view.findViewById(R.id.et_rg);
@@ -79,6 +79,8 @@ public class RegisterFragmentTwo extends Fragment  implements View.OnClickListen
         et_cpf.addTextChangedListener(Mask.insert(Mask.CPF, et_cpf));
 
         et_telefone.addTextChangedListener(Mask.insert(Mask.CELULAR_MASK, et_telefone));
+        et_rg.addTextChangedListener(Mask.insert(Mask.RG,et_rg));
+
         et_nascimento.setOnClickListener(new View.OnClickListener() {
 
             @Override

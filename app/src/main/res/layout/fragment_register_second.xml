@@ -46,12 +46,12 @@
                 android:layout_marginTop="15sp">
 
                 <EditText
-                    android:id="@+id/et_cep"
+                    android:id="@+id/et_cidade"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableRight="@drawable/ic_mail"
-                    android:hint="Seu Cep"
-                    android:inputType="numberDecimal" />
+                    android:hint="Sua cidade"
+                    android:inputType="text" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout

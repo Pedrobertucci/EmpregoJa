@@ -16,6 +16,8 @@ public class Empregos {
     private String foto_perfil;
     private String nome_cidade;
     private String id_premium;
+    private Double latitude;
+    private Double longitude;
 
     public String getId_vaga() {
         return id_vaga;
@@ -95,5 +97,21 @@ public class Empregos {
 
     public void setFoto_perfil(String foto_perfil) {
         this.foto_perfil = foto_perfil;
+    }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
     }
 }

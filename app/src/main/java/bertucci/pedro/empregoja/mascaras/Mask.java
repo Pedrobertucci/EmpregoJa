@@ -15,6 +15,7 @@ public abstract class Mask {
     public static String TCP_IP         = "####.####.####.####:####";
     public static String CEP            = "#####-###";
     public static String CPF            = "###.###.###-##";
+    public static String RG             = "##.###.###-#";
 
     public static String unmask(String s) {
         return s.replaceAll("[.]", "").replaceAll("[-]", "")

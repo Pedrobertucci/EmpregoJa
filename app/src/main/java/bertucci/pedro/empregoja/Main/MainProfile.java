@@ -5,14 +5,24 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
+import android.app.Service;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.location.Criteria;
 import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.IBinder;
+import android.provider.Settings;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
@@ -31,12 +41,15 @@ import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.text.util.Linkify;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.PermissionRequest;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -46,6 +59,7 @@ import bertucci.pedro.empregoja.Dados.MainDados;
 import bertucci.pedro.empregoja.Empregos.DataAdapterEmpregos;
 import bertucci.pedro.empregoja.Empregos.MainEmpregos;
 import bertucci.pedro.empregoja.Ensino.MainEnsino;
+import bertucci.pedro.empregoja.Localizacao.GPS_Service;
 import bertucci.pedro.empregoja.Manifest;
 import bertucci.pedro.empregoja.R;
 import bertucci.pedro.empregoja.interfaces.RequestInterfaceListaEmpregos;
@@ -61,12 +75,13 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.HTTP;
 
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 import static bertucci.pedro.empregoja.Login.LoginFragment.USUARIO_CURRICULO;
 
 public class MainProfile extends AppCompatActivity
-implements NavigationView.OnNavigationItemSelectedListener  {
+implements NavigationView.OnNavigationItemSelectedListener {
     private SharedPreferences pref;
     private ArrayList<Empregos> data;
     private ArrayList empregosList;
@@ -78,9 +93,19 @@ implements NavigationView.OnNavigationItemSelectedListener  {
     private RecyclerView recyclerView;
     SwipeRefreshLayout mSwipeRefreshLayout;
     public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
-    LocationManager locationManager;
     private static final int PERMISSION_REQUEST_CODE = 1;
     private View view;
+     Location location;
+    private double latitude;
+    private double longitude;
+    private LocationManager mLocationManager = null;
+    private static final int LOCATION_INTERVAL = 1000;
+    private static final float LOCATION_DISTANCE = 10f;
+    private BroadcastReceiver broadcastReceiver;
+    private TextView textView;
+    private LocationManager locationManager;
+    private LocationListener listener;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,24 +116,20 @@ implements NavigationView.OnNavigationItemSelectedListener  {
         toolbar.setSubtitle("Encontre o seu emprego agora!");
         setSupportActionBar(toolbar);
 
+
         Bundle params = getIntent().getExtras();
 
         String username= params.getString("nome");
         String mail = params.getString("email");
         id_usuario = params.getString("id_usuario");
-        listaEmpregos(id_usuario);
+
         mSwipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.swifeRefresh);
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-
-
             @Override
             public void onRefresh() {
                 atualizaEmprego(id_usuario);
             }
         });
-
-
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -127,70 +148,71 @@ implements NavigationView.OnNavigationItemSelectedListener  {
         email.setText(mail);
 
 
-        permission();
+        locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
+
+        listener = new LocationListener() {
+            @Override
+            public void onLocationChanged(Location location) {
+
+                latitude = location.getLatitude();
+                longitude = location.getLongitude();
+            }
+
+            @Override
+            public void onStatusChanged(String s, int i, Bundle bundle) {
+
+            }
+
+            @Override
+            public void onProviderEnabled(String s) {
+
+            }
+
+            @Override
+            public void onProviderDisabled(String s) {
+
+                Intent i = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                startActivity(i);
+            }
+        };
+        busca();
+        listaEmpregos(id_usuario);
 
     }
 
-    public void permission(){
-        if (checkPermission()) {
-            Toast.makeText(this,"Permission already granted.",Toast.LENGTH_LONG).show();
-        } else {
-            Toast.makeText(this,"Please request permission.",Toast.LENGTH_LONG).show();
-        }
-        if (!checkPermission()){
-            requestPermission();
-        }else {
-            Toast.makeText(this,"Permission already granted.",Toast.LENGTH_LONG).show();
-        }
-
-    }
-
-    private boolean checkPermission(){
-        int result = ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION);
-        if (result == PackageManager.PERMISSION_GRANTED){
-
-            return true;
-
-        } else {
-
-            return false;
-
-        }
-    }
-
-    private void requestPermission(){
-
-        if (ActivityCompat.shouldShowRequestPermissionRationale(this, android.Manifest.permission.ACCESS_FINE_LOCATION)){
-            Toast.makeText(getApplicationContext(),"GPS permission allows us to access location data. Please allow in App Settings for additional functionality.",Toast.LENGTH_LONG).show();
-        } else {
-            ActivityCompat.requestPermissions(this,new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},PERMISSION_REQUEST_CODE);
-        }
-    }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-        switch (requestCode) {
-            case PERMISSION_REQUEST_CODE:
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
-                    Snackbar.make(view,"Permission Granted, Now you can access location data.",Snackbar.LENGTH_LONG).show();
-
-                } else {
-
-                    Snackbar.make(view,"Permission Denied, You cannot access location data.",Snackbar.LENGTH_LONG).show();
-
-                }
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode){
+            case 10:
+                busca();
+                break;
+            default:
                 break;
         }
     }
 
-    public void getLocation() {
 
-        LocationManager lm = (LocationManager) getSystemService(LOCATION_SERVICE);
-        Location loc = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        Toast.makeText(this,"Latitude: " + loc.getLatitude() + "Longitude: " + loc.getLongitude(),Toast.LENGTH_LONG).show();
+    void busca(){
+
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                requestPermissions(new String[]{android.Manifest.permission.ACCESS_COARSE_LOCATION,android.Manifest.permission.ACCESS_FINE_LOCATION,android.Manifest.permission.INTERNET}
+                        ,10);
+            }
+            return;
+        }else{
+            locationManager.requestLocationUpdates("gps", 5000, 0, listener);
+        }
+        // this code won't execute IF permissions are not allowed, because in the line above there is return statement.
+
+                //noinspection MissingPermission
+
+
     }
+
+
 
 
     private void listaEmpregos(String id_usuario){
@@ -209,6 +231,8 @@ implements NavigationView.OnNavigationItemSelectedListener  {
 
         Empregos emprego = new Empregos();
         emprego.setId_usuario(id_usuario);
+        emprego.setLatitude(latitude);
+        emprego.setLongitude(longitude);
 
         ServerRequest request = new ServerRequest();
         request.setOperation(Constants.LISTA_EMPREGOS);
@@ -231,18 +255,13 @@ implements NavigationView.OnNavigationItemSelectedListener  {
                 progress.dismiss();
 
                 }
-
-            }
+           }
 
             @Override
             public void onFailure(Call<ServerResponse> call, Throwable t) {
                 progress.dismiss();
                 System.out.println("errou");
             }
-
-
-
-
         });
     }
 
@@ -252,10 +271,13 @@ implements NavigationView.OnNavigationItemSelectedListener  {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
+
         RequestInterfaceListaEmpregos requestInterface = retrofit.create(RequestInterfaceListaEmpregos.class);
 
         Empregos emprego = new Empregos();
         emprego.setId_usuario(id_usuario);
+        emprego.setLatitude(latitude);
+        emprego.setLongitude(longitude);
 
         ServerRequest request = new ServerRequest();
         request.setOperation(Constants.LISTA_EMPREGOS);
@@ -293,8 +315,6 @@ implements NavigationView.OnNavigationItemSelectedListener  {
         });
     }
 
-
-
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -313,7 +333,6 @@ implements NavigationView.OnNavigationItemSelectedListener  {
         return true;
     }
 
-    
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -324,26 +343,25 @@ implements NavigationView.OnNavigationItemSelectedListener  {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.id_criadores) {
-            Context context = getApplicationContext();
-            TextView textView = null;
-            textView.setText(R.string.suporte);
-            textView.setMovementMethod(LinkMovementMethod.getInstance());
-            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainProfile.this);
-            alertDialogBuilder.setTitle("Suporte Aplicativo");
-            alertDialogBuilder.setMessage(Html.fromHtml(String.valueOf(textView))).setCancelable(false);
-            alertDialogBuilder.setPositiveButton("Fechar",new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int id) {
+            AlertDialog.Builder alertbox = new AlertDialog.Builder(MainProfile.this);
+            alertbox.setMessage(Html.fromHtml(getString(R.string.suporte)));
+            alertbox.setTitle("Suporte Aplicativo");
+            alertbox.setIcon(R.drawable.alert);
 
-                }
-            });
-            AlertDialog alertDialog = alertDialogBuilder.create();
-            alertDialog.show();
+            alertbox.setPositiveButton("Ok",
+                    new DialogInterface.OnClickListener() {
+
+                        public void onClick(DialogInterface arg0,
+                                            int arg1) {
+
+                        }
+                    });
+            alertbox.show();
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
-
 
     private void displaySelectedScreen(int itemId) {
 
@@ -400,7 +418,6 @@ implements NavigationView.OnNavigationItemSelectedListener  {
         drawer.closeDrawer(GravityCompat.START);
     }
 
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -419,6 +436,7 @@ implements NavigationView.OnNavigationItemSelectedListener  {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+
 
 
 }

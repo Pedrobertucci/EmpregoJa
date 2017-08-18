@@ -1,8 +1,11 @@
 package bertucci.pedro.empregoja.Ensino;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
@@ -15,8 +18,17 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import bertucci.pedro.empregoja.Main.MainProfile;
 import bertucci.pedro.empregoja.R;
+import bertucci.pedro.empregoja.interfaces.RequestInterfaceDeletaEnsino;
+import bertucci.pedro.empregoja.models.Constants;
 import bertucci.pedro.empregoja.models.Ensino;
+import bertucci.pedro.empregoja.models.ServerRequest;
+import bertucci.pedro.empregoja.models.ServerResponse;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by b_ped on 19/04/2017.
@@ -60,6 +72,72 @@ public class AdapterEnsino extends RecyclerView.Adapter<AdapterEnsino.ViewHolder
         });
 
 
+        viewHolder.deleta_estudo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+
+                AlertDialog.Builder alertbox = new AlertDialog.Builder(v.getRootView().getContext());
+                alertbox.setMessage("Deseja mesmo deletar esse ensino?");
+                alertbox.setTitle("Deletando Ensino");
+                alertbox.setIcon(R.drawable.lixeira);
+
+                alertbox.setPositiveButton("Sim",
+                        new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface arg0,
+                                                int arg1) {
+                                Retrofit retrofit = new Retrofit.Builder()
+                                        .baseUrl(Constants.BASE_URL)
+                                        .addConverterFactory(GsonConverterFactory.create())
+                                        .build();
+
+                                RequestInterfaceDeletaEnsino requestInterface = retrofit.create(RequestInterfaceDeletaEnsino.class);
+
+                                final Ensino ensino = new Ensino();
+                                ensino.setId_formacaoAcademica(ensinos.get(i).getId_formacaoAcademica());
+
+                                ServerRequest request = new ServerRequest();
+                                request.setOperation(Constants.DELETA_ENSINO);
+                                request.setEnsino(ensino);
+                                Call<ServerResponse> response = requestInterface.operation(request);
+
+                                response.enqueue(new Callback<ServerResponse>() {
+                                    @Override
+                                    public void onResponse(Call<ServerResponse> call, retrofit2.Response<ServerResponse> response) {
+
+                                        ServerResponse resp = response.body();
+                                        System.out.println("Ensino Deletada com sucesso");
+
+                                        Bundle bundle = new Bundle();
+                                        bundle.putString("parametro", ensinos.get(i).getId_usuario());
+                                        Intent myIntent = new Intent(v.getContext(), MainEnsino.class);
+                                        myIntent.putExtras(bundle);
+                                        v.getContext().startActivity(myIntent);
+
+                                        return;
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<ServerResponse> call, Throwable t) {
+
+                                    }
+                                });
+                            }
+                        });
+                alertbox.setNegativeButton("Cancelar",
+                        new DialogInterface.OnClickListener() {
+
+                                public void onClick(DialogInterface arg0,
+                                                    int arg1) {
+
+                                }
+                    });
+                alertbox.show();
+
+            }
+        });
+
+
     }
 
 
@@ -88,6 +166,10 @@ public class AdapterEnsino extends RecyclerView.Adapter<AdapterEnsino.ViewHolder
 
 
 
+
+    }
+
+    private  void deletaEnsino(final View v, String id_formacaoAcademica){
 
     }
 }
