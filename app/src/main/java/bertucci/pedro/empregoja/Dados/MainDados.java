@@ -142,7 +142,7 @@ public class MainDados extends AppCompatActivity {
                     cpf.setText(resp.getUsuario().getCpf());
                     telefone.setText(resp.getUsuario().getTelefone());
                     pretencaoSalarial.setText(resp.getUsuario().getPretencao());
-                    cidade.setText(resp.getUsuario().getCep());
+                    cidade.setText(resp.getUsuario().getCidade());
                 }
 
             }
@@ -237,7 +237,7 @@ public class MainDados extends AppCompatActivity {
         usuario.setSobrenome_usuario(sobrenome);
         usuario.setEmail_usuario(email);
         usuario.setSenha_usuario(senha);
-        usuario.setCep(cep);
+        usuario.setCidade(cep);
         usuario.setRg(rg);
         usuario.setCpf(cpf);
         usuario.setPretencao(pretencao);
@@ -279,7 +279,7 @@ public class MainDados extends AppCompatActivity {
         usuario.setNome_usuario(name);
         usuario.setSobrenome_usuario(sobrenome);
         usuario.setEmail_usuario(email);
-        usuario.setCep(cep);
+        usuario.setCidade(cep);
         usuario.setRg(rg);
         usuario.setCpf(cpf);
         usuario.setPretencao(pretencao);

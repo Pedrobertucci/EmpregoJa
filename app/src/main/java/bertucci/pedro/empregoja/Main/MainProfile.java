@@ -96,8 +96,8 @@ implements NavigationView.OnNavigationItemSelectedListener {
     private static final int PERMISSION_REQUEST_CODE = 1;
     private View view;
      Location location;
-    private double latitude;
-    private double longitude;
+    private double latitude = -29.8028079;
+    private double longitude = -50.0412311;
     private LocationManager mLocationManager = null;
     private static final int LOCATION_INTERVAL = 1000;
     private static final float LOCATION_DISTANCE = 10f;
@@ -105,7 +105,7 @@ implements NavigationView.OnNavigationItemSelectedListener {
     private TextView textView;
     private LocationManager locationManager;
     private LocationListener listener;
-
+    private String resposta;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -176,8 +176,18 @@ implements NavigationView.OnNavigationItemSelectedListener {
                 startActivity(i);
             }
         };
-        busca();
+        valida();
+
         listaEmpregos(id_usuario);
+
+
+
+
+
+
+
+
+
 
     }
 
@@ -186,7 +196,7 @@ implements NavigationView.OnNavigationItemSelectedListener {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch (requestCode){
             case 10:
-                busca();
+                valida();
                 break;
             default:
                 break;
@@ -194,7 +204,7 @@ implements NavigationView.OnNavigationItemSelectedListener {
     }
 
 
-    void busca(){
+    void valida(){
 
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -202,14 +212,13 @@ implements NavigationView.OnNavigationItemSelectedListener {
                         ,10);
             }
             return;
-        }else{
-            locationManager.requestLocationUpdates("gps", 5000, 0, listener);
         }
-        // this code won't execute IF permissions are not allowed, because in the line above there is return statement.
+        buscaGeo();
 
-                //noinspection MissingPermission
+    }
 
-
+    public void buscaGeo(){
+        locationManager.requestLocationUpdates("gps", 5000, 0, listener);
     }
 
 
@@ -247,9 +256,11 @@ implements NavigationView.OnNavigationItemSelectedListener {
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
                 recyclerView.setLayoutManager(layoutManager);
                 ServerResponse resp = response.body();
+
                 data = new ArrayList<>(Arrays.asList(resp.getEmprego()));
                 adapter = new DataAdapterEmpregos(data,resp.getMessage());
                 recyclerView.setAdapter(adapter);
+
 
                 if(resp.getResult().equals(Constants.SUCCESS)){
                 progress.dismiss();
@@ -260,7 +271,6 @@ implements NavigationView.OnNavigationItemSelectedListener {
             @Override
             public void onFailure(Call<ServerResponse> call, Throwable t) {
                 progress.dismiss();
-                System.out.println("errou");
             }
         });
     }

@@ -15,7 +15,7 @@ public class Usuario {
     private String pretencaoSalarial;
     private String telefone;
     private String idade;
-    private String cep;
+    private String Cidade;
     private String sexo;
     private String nascimento;
 
@@ -109,12 +109,12 @@ public class Usuario {
         this.idade = idade;
     }
 
-    public String getCep() {
-        return cep;
+    public String getCidade() {
+        return Cidade;
     }
 
-    public void setCep(String cep) {
-        this.cep = cep;
+    public void setCidade(String cidade) {
+        Cidade = cidade;
     }
 
     public String getSexo() {
