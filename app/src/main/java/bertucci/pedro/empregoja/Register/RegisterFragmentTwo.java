@@ -144,7 +144,7 @@ public class RegisterFragmentTwo extends Fragment  implements View.OnClickListen
         usuario.setSexo(sexo);
         usuario.setEmail_usuario(email);
         usuario.setSenha_usuario(senha);
-        usuario.setCep(cep);
+        usuario.setCidade(cep);
         usuario.setRg(rg);
         usuario.setCpf(cpf);
         usuario.setPretencao(pretencao);
