@@ -1,0 +1,109 @@
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:layout_margin="5dp"
+    card_view:cardCornerRadius="1dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="170sp"
+            android:layout_height="60sp"
+            android:layout_below="@+id/instituicao_atualiza"
+            android:layout_alignParentEnd="true">
+
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="80dp"
+                android:layout_height="35sp"
+                android:layout_marginLeft="1sp"
+                android:layout_marginRight="5sp"
+                android:background="@color/colorAccent"
+                android:text="Excluir"
+                android:textColor="@color/cardview_light_background"
+                android:textSize="14sp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true" />
+
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="80dp"
+                android:layout_height="35sp"
+                android:layout_alignBottom="@+id/button4"
+                android:layout_alignTop="@+id/btnDeletaEstudo"
+                android:layout_marginLeft="1sp"
+                android:layout_marginRight="1sp"
+                android:layout_toStartOf="@+id/btnDeletaEstudo"
+                android:background="@color/colorPrimaryDark"
+                android:text="Editar"
+                android:textColor="@color/cardview_light_background"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/atualiza_curso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/instituicao_atualiza"
+            android:layout_alignTop="@+id/instituicao_atualiza"
+            android:layout_marginTop="25dp"
+            android:text="Nome da Empresa" />
+
+        <TextView
+            android:id="@+id/instituicao_atualiza"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="8dp"
+            android:text="Cargo Trabalhado"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/inicio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textView3"
+            android:layout_alignBottom="@+id/textView3"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@+id/textView3"
+            android:text="Data do Inicio" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/atualiza_curso"
+            android:layout_below="@+id/atualiza_curso"
+            android:layout_marginTop="3dp"
+            android:text="Início"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/atualiza_curso"
+            android:layout_below="@+id/inicio"
+            android:layout_marginTop="3dp"
+            android:text="Términio"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/finalTrabalho"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="D Final do Mes"
+            android:layout_alignBaseline="@+id/textView9"
+            android:layout_alignBottom="@+id/textView9"
+            android:layout_toEndOf="@+id/textView9"
+            android:layout_marginStart="12dp" />
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>
